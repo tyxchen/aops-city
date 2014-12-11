@@ -1,0 +1,13 @@
+// Mixins
+
+@mixin reset($options) {
+  @each $option in $options {
+    @if $option == background {
+      background: $t;
+    } @else if $option == border {
+      border: none;
+    } @else {
+      #{$option}: 0;
+    }
+  }
+}

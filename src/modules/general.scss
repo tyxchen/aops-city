@@ -1,0 +1,22 @@
+// General
+
+// Body
+
+body {
+  background-image: url('http://i.imgur.com/52bmxYe.jpg');
+  background-attachment: fixed;
+  background-position: 42% 0;
+}
+
+#wrapper {
+  width: 100%;
+  padding: 0;
+}
+
+#content {
+  position: relative;
+  background: white;
+  margin-top: 90vh;
+  z-index: 1;
+}
+

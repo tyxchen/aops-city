@@ -1,0 +1,50 @@
+/**
+ * City.css
+ *
+ * Written by NeoMathematicalKid
+ *
+ * Inspired by Air (by asf), Libre (by PythonNut), and Grey (by Tungsten)
+ *
+ * Released under the MIT license (see LICENSE.md)
+ */
+@import url(http://fonts.googleapis.com/css?family=Lato:300|Open+Sans:400,700,700italic,400italic);
+/**
+ * Modules
+ */
+body {
+  background-image: url("http://i.imgur.com/52bmxYe.jpg");
+  background-attachment: fixed;
+  background-position: 42% 0;
+}
+
+#wrapper {
+  width: 100%;
+  padding: 0;
+}
+
+#content {
+  position: relative;
+  background: white;
+  margin-top: 90vh;
+  z-index: 1;
+}
+
+#header {
+  position: fixed;
+  top: 40%;
+  left: 0;
+  right: 0;
+  height: 15vh;
+  background: transparent;
+  border: none;
+}
+
+#header h1 {
+  font-size: 10vh;
+  color: #fff;
+  font-family: 'Lato';
+}
+
+
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7O0FBRVEsa0dBQTBGOzs7O0FDRWxHLElBQUs7RUFDSCxnQkFBZ0IsRUFBRSxxQ0FBcUM7RUFDdkQscUJBQXFCLEVBQUUsS0FBSztFQUM1QixtQkFBbUIsRUFBRSxLQUFLOzs7QUFHNUIsUUFBUztFQUNQLEtBQUssRUFBRSxJQUFJO0VBQ1gsT0FBTyxFQUFFLENBQUM7OztBQUdaLFFBQVM7RUFDUCxRQUFRLEVBQUUsUUFBUTtFQUNsQixVQUFVLEVBQUUsS0FBSztFQUNqQixVQUFVLEVBQUUsSUFBSTtFQUNoQixPQUFPLEVBQUUsQ0FBQzs7O0FDakJaLE9BQVE7RUFDTixRQUFRLEVBQUUsS0FBSztFQUNmLEdBQUcsRUFBRSxHQUFHO0VBQ1IsSUFBSSxFQUFFLENBQUM7RUFDUCxLQUFLLEVBQUUsQ0FBQztFQUNSLE1BQU0sRUFBRSxJQUFJO0VDRlIsVUFBVSxFQ0VaLFdBQVc7RURBVCxNQUFNLEVBQUUsSUFBSTs7O0FESWxCLFVBQVc7RUFDVCxTQUFTLEVBQUUsSUFBSTtFQUNmLEtBQUssRUFBRSxJQUFJO0VBQ1gsV0FBVyxFQUFFLE1BQU0iLCJzb3VyY2VzIjpbIi4uLy4uLy4uL0FvUFMlMjBDU1MvY2l0eS9zcmMvcHJlcmVxcy9mb250cy5zY3NzIiwiLi4vLi4vLi4vQW9QUyUyMENTUy9jaXR5L3NyYy9tb2R1bGVzL2dlbmVyYWwuc2NzcyIsIi4uLy4uLy4uL0FvUFMlMjBDU1MvY2l0eS9zcmMvbW9kdWxlcy9oZWFkZXIuc2NzcyIsIi4uLy4uLy4uL0FvUFMlMjBDU1MvY2l0eS9zcmMvcHJlcmVxcy9fbWl4aW5zLnNjc3MiLCIuLi8uLi8uLi9Bb1BTJTIwQ1NTL2NpdHkvc3JjL3ByZXJlcXMvX3ZhcmlhYmxlcy5zY3NzIl0sIm5hbWVzIjpbXSwiZmlsZSI6Im1haW4uY3NzIiwic291cmNlUm9vdCI6Ii4vIiwic291cmNlc0NvbnRlbnQiOltdfQ== */
