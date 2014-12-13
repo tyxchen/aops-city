@@ -9,28 +9,29 @@
  */
 
 // Fonts
-@import "prereqs/fonts";
+@import 'prereqs/fonts';
 
 // Variables, placeholders, mixins, etc.
-@import "prereqs/variables";
-@import "prereqs/placeholders";
-@import "prereqs/mixins";
+@import 'prereqs/include';
 
 /**
  * Modules
  */
 
 // General (e.g. links)
-@import "modules/general";
+@import 'modules/general';
 
 // Header
-@import "modules/header";
+@import 'modules/header';
 
 // Main
-@import "modules/main";
+@import 'modules/main';
 
 // Sidebar
-@import "modules/side";
+@import 'modules/side';
 
 // Misc (pagination, etc.)
-@import "modules/misc";
+@import 'modules/misc';
+
+// @media rules
+@import 'modules/media';

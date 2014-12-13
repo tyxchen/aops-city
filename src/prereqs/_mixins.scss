@@ -1,13 +1,55 @@
 // Mixins
 
-@mixin reset($options) {
-  @each $option in $options {
-    @if $option == background {
-      background: $t;
-    } @else if $option == border {
-      border: none;
+// Extends
+@mixin extend($selector) {
+  /* Rule extends #{$selector} */
+  @extend #{$selector};
+}
+
+// Reset properties
+@mixin reset($props) {
+  @each $prop in $props {
+    @if index((background, background-image), $prop) {
+      #{$prop}: none;
+    } @else if $prop == background-color {
+      background-color: $t;
+    } @else if index((width, height), $prop) {
+      #{$prop}: 100%;
     } @else {
-      #{$option}: 0;
+      #{$prop}: 0;
     }
   }
+}
+
+// Position element
+@mixin position($top: null, $left: null, $right: null, $bottom: null) {
+  @if $top != null {
+    top: $top;
+  }
+  @if $left != null {
+    left: $left;
+  }
+  @if $right != null {
+    right: $right;
+  }
+  @if $bottom != null {
+    bottom: $bottom;
+  }
+}
+
+// Position element with position: relative
+@mixin shift($values...) {
+  position: relative;
+  @include position($values...);
+}
+
+// Fix dimensions of element
+@mixin dimensions($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+// URL Filters
+@mixin urlFilter($url, $id, $base64: true) {
+  filter: url('data:image/svg+xml;utf8' + if($base64, ';base64,', ',') + '#{$url}#{$id}');
 }

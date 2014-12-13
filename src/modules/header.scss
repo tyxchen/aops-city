@@ -1,16 +1,41 @@
-// Header
+// Header module
+// Encompasses the header and the navigation bar
 
+/**
+ * Navigation bar
+ *
+ * - #navigation_box The navigation bar
+ */
+#navigation_box {
+  @include extend('%reset-all');
+
+  position: fixed;
+  color: $t;
+  font-size: 1em;
+
+  @include position(0, 0, 0);
+
+  a {
+    color: #fff;
+  }
+}
+
+/**
+ * Header
+ */
 #header {
   position: fixed;
-  top: 40%;
-  left: 0;
-  right: 0;
   height: 15vh;
+
+  @include position(38vh, 0, 0);
   @include reset((background, border));
 }
 
 #header h1 {
-  font-size: 10vh;
+  @include extend('%reset-all');
+
   color: #fff;
+  font-size: 1.1em;
   font-family: 'Lato';
+  font-weight: 300;
 }

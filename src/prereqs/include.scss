@@ -1,0 +1,17 @@
+// Master include file
+
+@import "variables";
+@import "mixins";
+
+/**
+ * Groups
+ */
+/* Reset background, padding, border & margin */
+%reset-all {
+  @include reset((background, padding, border, margin));
+}
+
+/* Set box-sizing to border-box */
+%border-box {
+  box-sizing: border-box;
+}
