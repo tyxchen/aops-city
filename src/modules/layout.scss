@@ -37,11 +37,17 @@ body {
 
 #content {
   position: relative;
-  background: $bgGeneral;
+  background-image: linear-gradient(
+    to bottom,
+    transparentize($bgGeneral, 0.05) 0,
+    $bgGeneral 8vh,
+    $bgGeneral 100%
+  );
   padding: 0 5%;
-  padding-top: 10vh;
-  margin-top: 90vh;
+  padding-top: 8vh;
+  margin-top: 92vh;
 
+  // Create a not-so-subtle floor fade
   &::before {
     @include extend('%pseudo');
 
@@ -56,8 +62,8 @@ body {
   }
 
   // Create a pseudo-element to cover the header when the user scrolls down
-  // This is impossible to do with z-index due to elements with fixed
-  // position not respecting it
+  // This is impossible to do with z-index due to the header deciding to
+  // not respect it
   &::after {
     @include extend('%pseudo');
 

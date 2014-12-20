@@ -18,6 +18,15 @@
   box-sizing: border-box;
 }
 
+/* No user select */
+%no-user-select {
+  /* Source for %no-user-select */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 /* Pseudo-element shared styles */
 %pseudo {
   /* Source for %pseudo */

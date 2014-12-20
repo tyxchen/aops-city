@@ -1,3 +1,15 @@
 // Miscellaneous stuff
 
 .pag {}
+
+#post-new-entry {
+  @include extend('%heading');
+
+  &-img {
+    display: none;
+  }
+}
+
+.codecontent a:link {
+  background-image: none;
+}

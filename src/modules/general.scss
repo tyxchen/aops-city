@@ -4,7 +4,9 @@
  * Encompasses links, buttons, etc.
  */
 
-a:link {
+a:link,
+a:hover,
+a:visited {
   color: $fgAccent;
 }
 
