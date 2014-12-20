@@ -1,0 +1,59 @@
+// General module
+// Encompasses body, wrapper, links, and general layout
+
+// Body
+
+body {
+  font-family: Merriweather, Garamond, times, serif;
+  font-size: 1rem;
+  color: $fgGeneral;
+
+  &::after {
+    @include extend('%pseudo');
+
+    position: fixed;
+
+    background-image: url('https://i.imgur.com/ICzZp79.jpg');
+    background-position: 42% 0;
+    background-size: cover;
+
+    z-index: -1;
+
+    @include position(0, 0, 0, 0);
+  }
+}
+
+#wrapper {
+  @include extend('%border-box');
+
+  width: 100%;
+  padding: 0;
+
+  @include reset((background, border));
+}
+
+#content {
+  position: relative;
+  background: $bgGeneral;
+  padding: 0 5%;
+  padding-top: 10vh;
+  margin-top: 90vh;
+
+  &::before {
+    @include extend('%pseudo');
+
+    background-image: linear-gradient(to top, transparentize($fgGeneral, 0.5) 0, transparentize($fgGeneral, 0.9) 50%, $t 100%);
+
+    @include position(-8%, 0, 0, 100%);
+  }
+
+  &::after {
+    @include extend('%pseudo');
+
+    background-color: $bgGeneral;
+    z-index: -1;
+
+    @include position(0);
+  }
+}
+

@@ -1,51 +1,7 @@
-// General module
-// Encompasses body, wrapper, links, and general layout
+/**
+ * General module
+ *
+ * Encompasses links, buttons, etc.
+ */
 
-// Body
-
-body {
-  background-image: url('http://i.imgur.com/52bmxYe.jpg');
-  background-attachment: fixed;
-  background-position: 42% 0;
-  background-size: cover;
-
-  font-family: 'Lato', HelveticaNeue, Helvetica, Arial, sans-serif;
-  font-size: 1rem;
-}
-
-#wrapper::before,
-#wrapper::after {
-  @include extend(body);
-
-  content: "";
-  position: absolute;
-
-  @include position(-5vh, 0, 0, 0);
-  @include urlFilter('PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGZpbHRlciBpZD0iYmx1ciI+ICAgPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMyIgLz48L2ZpbHRlcj48L3N2Zz4=', '#blur');
-  @include reset(border);
-}
-
-#wrapper::after {
-  top: -90vh;
-  z-index: -1;
-
-  @include urlFilter('PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGZpbHRlciBpZD0iYmx1ciI+ICAgPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMSIgLz48L2ZpbHRlcj48L3N2Zz4=', '#blur');
-}
-
-#wrapper {
-  @include extend('%border-box');
-
-  position: relative;
-  width: 100%;
-  padding: 0 5%;
-
-  @include reset((background-color, border));
-}
-
-#content {
-  position: relative;
-  background: white;
-  margin-top: 90vh;
-  z-index: 1;
-}
-
+a {}

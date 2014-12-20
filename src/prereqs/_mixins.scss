@@ -23,6 +23,11 @@
 
 // Position element
 @mixin position($top: null, $left: null, $right: null, $bottom: null) {
+  @if $left == null and $right == null and $bottom == null {
+    $left: $top;
+    $right: $top;
+    $bottom: $top;
+  }
   @if $top != null {
     top: $top;
   }
@@ -49,7 +54,24 @@
   height: $height;
 }
 
-// URL Filters
-@mixin urlFilter($url, $id, $base64: true) {
-  filter: url('data:image/svg+xml;utf8' + if($base64, ';base64,', ',') + '#{$url}#{$id}');
+// Filters
+@mixin filter($type, $range) {
+  $val: '<svg version="1.1" xmlns="http://www.w3.org/2000/svg"><filter id="#{$type}">';
+  $ulrange: $range/($range*0+1);
+  $range: '(' + $range + ')'; // we can't add brackets at the exact rule for whatever reason
+
+  @if $type == 'blur' {
+    $val: $val + '<feGaussianBlur stdDeviation="#{$ulrange}"/>';
+  } @else if $type == 'grayscale' {
+    $val: $val + '<feColorMatrix type="saturate" values="0"/>';
+  }
+
+  $val: $val + '</filter></svg>';
+
+  /* Chrome 18+, Safari 6+, Opera 15+ */
+  -webkit-filter: #{$type}#{$range};
+  /* Firefox 34- */
+  filter: url('data:image/svg+xml;utf8,' + $val + '##{$type}');
+  /* W3C spec, Firefox 35+ */
+  filter: #{$type}#{$range};
 }

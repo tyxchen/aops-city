@@ -1,4 +1,4 @@
-/**
+/*!
  * City.css
  *
  * Written by NeoMathematicalKid
@@ -18,8 +18,11 @@
  * Modules
  */
 
-// General (e.g. links)
+// General (e.g. links, buttons)
 @import 'modules/general';
+
+// General layout
+@import 'modules/layout';
 
 // Header
 @import 'modules/header';

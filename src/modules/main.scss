@@ -1,0 +1,28 @@
+/**
+ * Main module
+ *
+ * Encompasses #main, entries, comments, and postform
+ */
+
+#main {
+  @include extend('%reset-all');
+  @include extend('%border-box');
+
+  position: relative;
+  width: 100%;
+}
+
+div.entrywrap,
+div.entry {
+  line-height: 2em;
+
+  @include reset((background-color, border));
+}
+
+div.commentwrap {
+  @include extend('.entrywrap');
+}
+
+div.comment {
+  @include extend('.entry');
+}

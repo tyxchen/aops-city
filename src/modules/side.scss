@@ -1,0 +1,73 @@
+// Side module
+// Encompasses sidebar
+
+.widget {
+  display: none;
+}
+
+.widget:not([id]) {
+  display: block;
+  position: fixed;
+  top: 0;
+  z-index: -1;
+}
+
+#user-menu-widget {
+  p {
+    display: none;
+  }
+
+  .avatar {
+    position: absolute;
+    display: block;
+    margin-left: -2.5em;
+
+    @include position(-3.5em, 50%);
+
+    img {
+      border-radius: 50%;
+      border: 1px solid $fgSub;
+
+      @include dimensions(5em);
+    }
+  }
+
+  strong a {
+    @include extend('.avatar');
+
+    top: -2.6rem;
+    font-family: Raleway;
+    font-size: 80%;
+    color: $t;
+    line-height: 5rem;
+    border-radius: 50%;
+    margin-left: -2.6rem;
+    overflow: hidden;
+    z-index: 1000;
+    transition: 0.3s ease;
+
+    @include dimensions(5.2rem);
+
+    &::after {
+      content: "";
+      position: absolute;
+
+      background-color: red;
+      background-image: linear-gradient(to bottom, $t, transparentize($fgGeneral, 0.4));
+      background-position: 50% 0;
+      transition: 0.3s ease;
+      z-index: 100;
+
+      @include position(-100%, 0, 0, 100%);
+    }
+
+    &:hover {
+      color: $fgHeader;
+
+      &::after {
+        top: 0;
+        bottom: 0;
+      }
+    }
+  }
+}
