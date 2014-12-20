@@ -1,5 +1,8 @@
-// General module
-// Encompasses body, wrapper, links, and general layout
+/**
+ * Layout module
+ *
+ * Encompasses body, wrapper, and general layout
+ */
 
 // Body
 
@@ -42,11 +45,19 @@ body {
   &::before {
     @include extend('%pseudo');
 
-    background-image: linear-gradient(to top, transparentize($fgGeneral, 0.5) 0, transparentize($fgGeneral, 0.9) 50%, $t 100%);
+    background-image: linear-gradient(
+      to top,
+      transparentize($bgHeader, 0.5) 0,
+      transparentize($bgHeader, 0.9) 60%,
+      $t 100%
+    );
 
-    @include position(-8%, 0, 0, 100%);
+    @include position(-20vh, 0, 0, 100%);
   }
 
+  // Create a pseudo-element to cover the header when the user scrolls down
+  // This is impossible to do with z-index due to elements with fixed
+  // position not respecting it
   &::after {
     @include extend('%pseudo');
 

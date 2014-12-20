@@ -25,6 +25,9 @@
     @include position(-3.5em, 50%);
 
     img {
+      background-color: $fgSub;
+      display: block;
+      color: $t;
       border-radius: 50%;
       border: 1px solid $fgSub;
 
@@ -35,28 +38,34 @@
   strong a {
     @include extend('.avatar');
 
-    top: -2.6rem;
+    top: -2.5rem;
     font-family: Raleway;
     font-size: 80%;
+    text-overflow: ellipsis;
     color: $t;
     line-height: 5rem;
     border-radius: 50%;
+    padding: 0.1rem;
     margin-left: -2.6rem;
     overflow: hidden;
     z-index: 1000;
-    transition: 0.3s ease;
+    transition: 0.2s ease-in;
 
-    @include dimensions(5.2rem);
+    @include dimensions(5rem);
 
     &::after {
       content: "";
       position: absolute;
 
-      background-color: red;
-      background-image: linear-gradient(to bottom, $t, transparentize($fgGeneral, 0.4));
+      background-image: linear-gradient(
+        to bottom,
+        $t,
+        $t 10%,
+        transparentize($bgHeader, 0.5)
+      );
       background-position: 50% 0;
-      transition: 0.3s ease;
-      z-index: 100;
+      transition: 0.25s ease-out;
+      z-index: -1;
 
       @include position(-100%, 0, 0, 100%);
     }

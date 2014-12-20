@@ -1,12 +1,18 @@
 // Mixins
 
 // Extends
+//
+// $selector - The selector to extend
+
 @mixin extend($selector) {
   /* Rule extends #{$selector} */
   @extend #{$selector};
 }
 
 // Reset properties
+//
+// $props - A list of properties to reset
+
 @mixin reset($props) {
   @each $prop in $props {
     @if index((background, background-image), $prop) {
@@ -22,6 +28,12 @@
 }
 
 // Position element
+//
+// $top    - The value for `top`
+// $left   - The value for `left`
+// $right  - The value for `right`
+// $bottom - The value for `bottom`
+
 @mixin position($top: null, $left: null, $right: null, $bottom: null) {
   @if $left == null and $right == null and $bottom == null {
     $left: $top;
@@ -43,18 +55,30 @@
 }
 
 // Position element with position: relative
+//
+// $values... - The values by which to shift the element. See the position
+//              mixin for possible arguments
+
 @mixin shift($values...) {
   position: relative;
   @include position($values...);
 }
 
 // Fix dimensions of element
+//
+// $width  - The width of the element
+// $height - The height of the element. Defaults to its width if not specified.
+
 @mixin dimensions($width, $height: $width) {
   width: $width;
   height: $height;
 }
 
 // Filters
+//
+// $type  - The type of filter
+// $range - The filter's range (e.g. 100%)
+
 @mixin filter($type, $range) {
   $val: '<svg version="1.1" xmlns="http://www.w3.org/2000/svg"><filter id="#{$type}">';
   $ulrange: $range/($range*0+1);

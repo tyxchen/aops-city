@@ -4,4 +4,38 @@
  * Encompasses links, buttons, etc.
  */
 
-a {}
+a:link {
+  color: $fgAccent;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include extend('%heading');
+
+  color: inherit;
+}
+
+h1 {
+  font-size: 1.7em;
+}
+
+h2 {
+  font-size: 1.2em;
+}
+
+[style="text-decoration: underline"],
+.hidden-label {
+  /* Based on
+   * https://medium.com/designing-medium/crafting-link-underlines-on-medium-7c03a9274f9
+   */
+
+  text-decoration: none !important;
+  background-image: linear-gradient(to bottom, currentColor, currentColor);
+  background-size: 1px 1px;
+  background-repeat: repeat-x;
+  background-position: 0 1.06em;
+}

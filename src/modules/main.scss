@@ -19,6 +19,29 @@ div.entry {
   @include reset((background-color, border));
 }
 
+div.entrywrap {
+  a {
+    @include extend('[style="text-decoration: underline"]');
+
+    background-image: linear-gradient(
+      to bottom,
+      lighten($fgAccent, 30%),
+      lighten($fgAccent, 30%)
+    );
+  }
+}
+
+div.entry {
+  h2 {
+    font-size: 0.9em;
+    margin-left: 0.2em;
+  }
+
+  img[alt='Permanent Link'] {
+    display: none;
+  }
+}
+
 div.commentwrap {
   @include extend('.entrywrap');
 }

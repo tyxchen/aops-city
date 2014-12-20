@@ -8,14 +8,15 @@
 
 %title {
   /* Source for %title */
+  @include extend('%heading');
+
   color: $fgHeader;
-  font-family: Raleway, Lato, Roboto, 'Segoe UI', 'Lucida Grande', 'DejaVu Sans', sans-serif;
   text-shadow: 1px 1px 1px transparentize($bgHeader, 0.4);
 }
 
 %nav-bar {
   /* Source for %nav-bar */
-  transition: background-color 0.3s ease-out;
+  transition: 0.3s ease;
 
   &:hover {
     background-color: transparentize($bgHeader, 0.4);
@@ -32,8 +33,14 @@
 
   position: fixed;
   color: $t;
-  background-image: linear-gradient(to bottom, transparentize($bgHeader, 0.75) 0%, transparentize($bgHeader, 0.8) 20%, transparentize($bgHeader, 0.95) 80%, $t 100%);
-  font-size: 1em;
+  background-image: linear-gradient(
+    to bottom,
+    transparentize($bgHeader, 0.75) 0%,
+    transparentize($bgHeader, 0.8) 20%,
+    transparentize($bgHeader, 0.95) 80%,
+    $t 100%
+  );
+  font-size: 0.9em;
   white-space: nowrap;
   padding: 0.2em 1em;
   padding-top: 0.1em;
