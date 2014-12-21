@@ -4,12 +4,14 @@
  * Encompasses links, buttons, etc.
  */
 
+// Links
 a:link,
 a:hover,
 a:visited {
-  color: $fgAccent;
+  color: lighten($fgAccent, 15%);
 }
 
+// Headings
 h1,
 h2,
 h3,
@@ -29,6 +31,7 @@ h2 {
   font-size: 1.2em;
 }
 
+// Custom underline code
 [style="text-decoration: underline"],
 .hidden-label {
   /* Based on
@@ -40,4 +43,35 @@ h2 {
   background-size: 1px 1px;
   background-repeat: repeat-x;
   background-position: 0 1.06em;
+}
+
+// Text inputs
+[type="text"],
+textarea {
+  @include extend('%border-box');
+
+  background-color: $bgAccent;
+  font-size: inherit;
+  width: 100%;
+  padding: 0.5em;
+  border: none;
+  border-bottom: 0.1em solid $fgSub;
+  border-radius: 0.3em;
+  box-shadow: 0 0 0 1px lighten($fgSub, 10%);
+}
+
+// Buttons
+[type="button"],
+[type="reset"],
+[type="submit"],
+button {
+  @include extend('%reset-all');
+
+  background-color: $bgAccent;
+  font-size: inherit;
+  font-family: Lato, 'Lucida Grande', 'DejaVu Sans', Verdana, sans-serif;
+  padding: 0.2em 0.5em !important;
+  border-bottom: 0.1em solid $fgSub;
+  border-radius: 0.3em;
+  box-shadow: 0 0 0 1px lighten($fgSub, 10%);
 }

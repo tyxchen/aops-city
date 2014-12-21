@@ -22,12 +22,6 @@ div.entry {
 div.entrywrap {
   a {
     @include extend('[style="text-decoration: underline"]');
-
-    background-image: linear-gradient(
-      to bottom,
-      lighten($fgAccent, 30%),
-      lighten($fgAccent, 30%)
-    );
   }
 }
 

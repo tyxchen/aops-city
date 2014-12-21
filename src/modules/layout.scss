@@ -43,7 +43,7 @@ body {
     $bgGeneral 8vh,
     $bgGeneral 100%
   );
-  padding: 0 5%;
+  padding: 0 5vw;
   padding-top: 8vh;
   margin-top: 92vh;
 
@@ -59,18 +59,6 @@ body {
     );
 
     @include position(-20vh, 0, 0, 100%);
-  }
-
-  // Create a pseudo-element to cover the header when the user scrolls down
-  // This is impossible to do with z-index due to the header deciding to
-  // not respect it
-  &::after {
-    @include extend('%pseudo');
-
-    background-color: $bgGeneral;
-    z-index: -1;
-
-    @include position(0);
   }
 }
 

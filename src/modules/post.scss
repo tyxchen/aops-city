@@ -1,0 +1,51 @@
+/**
+ * Posting module
+ *
+ * Encompasses posting & commenting forms
+ */
+
+fieldset {
+  @include extend('%reset-all');
+}
+
+#postform {
+  @include extend('%border-box');
+
+  position: absolute;
+  background: $bgGeneral;
+  padding: 3vh 5vw;
+  overflow: auto;
+
+  @include position(-94vh, -5vw, -5vw, 0);
+}
+
+.submit-buttons,
+#message-box {
+  margin-top: 1em;
+}
+
+#smiley-box {
+  display: none;
+}
+
+#tabs {
+  text-align: center;
+
+  li {
+    display: inline-block;
+    padding: 0 0.5em;
+    border-right: 1px solid $fgSub;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  .activetab a {
+    color: $fgAccent;
+  }
+}
+
+.panel {
+  margin-bottom: 0.5em;
+}
