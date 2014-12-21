@@ -4,6 +4,11 @@
  * Encompasses sidebar
  */
 
+#side {
+  @include reset(padding);
+  @include dimensions(0);
+}
+
 // Hide all widgets
 .widget {
   display: none;
@@ -25,32 +30,36 @@
     @include position(-2.6rem, 50%);
 
     img {
-      background-color: $fgSub;
+      background-color: $bgSub;
       display: block;
       color: $t;
       border-radius: 50%;
-      border: 1px solid $fgSub;
+      border: 1px solid $bgSub;
 
       @include dimensions(5rem);
     }
   }
 
   strong a {
-    @include extend('.avatar');
+    @include extend('%heading');
 
-    top: -2.7rem;
-    font-family: Raleway;
+    position: absolute;
+    display: block;
+
     font-size: 0.8rem;
     text-overflow: ellipsis;
     color: $t;
     line-height: 5rem;
+
     border-radius: 50%;
     padding: 0.2rem;
     margin-left: -2.5rem;
     overflow: hidden;
     z-index: 1;
+
     transition: 0.15s 0.02s ease-in;
 
+    @include position(-2.7rem, 50%);
     @include dimensions(4.8rem);
 
     &::after {
@@ -60,13 +69,14 @@
       background-image: linear-gradient(
         to bottom,
         $t,
-        $t 10%,
-        transparentize($bgHeader, 0.5)
+        $t 30%,
+        transparentize($bgHeader, 0.7)
       );
       background-position: 50% 0;
       opacity: 0;
-      transition: 0.25s ease-out;
       z-index: -1;
+
+      transition: 0.25s ease-out;
 
       @include position(0);
     }
@@ -94,26 +104,37 @@
 }
 
 #blog_keywords {
+  @include extend('%heading');
+  @include extend('%transition03');
+
   position: fixed;
   top: 0;
   right: 0;
   display: block;
+
   // Image from https://www.iconfinder.com/icons/296814/search_icon
+  background-color: $t;
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABpUlEQVRYhe2Uv2sVQRSFbzQoKIsPss9dZu4990fEv+GRgFU6RQQRLIMQQfBpnSZgI1gI2mnAEBBbBWMniISgBCQEooX/jUWwCYS8dfeJyH7tnDPnm2aIenp6mjGTUhKktGg5j1KRyr81fMYYDwI4MNZPDqwH66uA7hjrl0vwW0Q0M5VlKcsUIrsBPMlFMXf0PKUkIboRrG+J6Fyn4xFxIVj2NeerJ2WdsRLAFhGd6k5A5IWz3p8076JPTeReJ+NSlsmg36nBi8qyLAI4IKLTrQXmgbvGWGvac5FNy3nUWiCAZ57ketOeMR6qyJ3WAga8BLDUtOeMFWeMWwsE8MhElv+kp8w3WwsAWArWN80FdGc4HNatBYho1qA/6rq2SQtIadFE33UxfnhhxrUAtono7EnZwWAwMNa9nPPlzgSIiAJYDeBjVVUXj8toVXmI7Drr10lkG2Mit0PkpwkeW86jXBRzdV0PXeSKA8/nod80pQVnjAP6YSoSFdF5E1l24HUA2y7y2YF1E7lBRLO/c4cS2JqKxKT8MxIOvO8lnDHu5Gfs6flv+QWNSEzhePjGxQAAAABJRU5ErkJggg==');
   background-repeat: no-repeat;
   background-size: auto 1.7em;
-  background-position: 0.2em 0.25em;
+  background-position: 0.2em 0.65em;
+
   color: lighten($bgHeader, 30%);
-  font-family: Raleway;
-  width: 7em;
   padding-left: 2.2em;
-  margin: 0.4em;
   z-index: 11;
   cursor: pointer;
-  transition: 0.3s ease;
 
+  @include reset((border, box-shadow, border-radius));
+  @include dimensions(8em, 3em);
+
+  &:hover {
+    background-color: lighten($bgSub, 16%);
+  }
   &:focus {
+    @extend :hover;
+
     width: 15em;
+    background-color: lighten($bgSub, 15%);
     color: $bgHeader;
     cursor: auto;
   }

@@ -10,6 +10,15 @@ fieldset {
 
 #postform {
   font-family: Lato, 'Lucida Grande', 'DejaVu Sans', Verdana, sans-serif;
+
+  > fieldset {
+    color: $t;
+    margin-top: 1.5em;
+
+    > p:first-child {
+      margin-top: -1em;
+    }
+  }
 }
 
 .comment:nth-child(2),
@@ -29,6 +38,28 @@ fieldset {
     position: relative;
     z-index: 1;
   }
+}
+
+input.btnbbcode {
+  @include extend('%reset-all');
+
+  font-size: inherit;
+  font-family: inherit;
+  width: auto !important;
+  color: $fgSub;
+  margin: 0 0.2em;
+  cursor: pointer;
+
+  &[value~="u"],
+  &[value~="i"] {
+    text-transform: uppercase;
+  }
+}
+
+.genmed {
+  @include extend('input.btnbbcode');
+
+  cursor: auto;
 }
 
 .submit-buttons,
@@ -55,6 +86,7 @@ fieldset {
 
   .activetab a {
     color: $fgAccent;
+    outline: none;
   }
 }
 

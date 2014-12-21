@@ -1,7 +1,8 @@
-// Miscellaneous stuff
+/**
+ * Miscellaneous stuff
+ */
 
-.pag {}
-
+// Post new entry
 #post-new-entry {
   @include extend('%heading');
 
@@ -10,13 +11,27 @@
   }
 }
 
-.codecontent a:link {
-  background-image: none;
+[style*="font-size:"] {
+  font-size: inherit !important;
+}
+
+#category-new,
+#category-sel-add {
+  display: block;
+  margin: 0.5em 0;
+}
+
+#category-new {
+  width: 20%;
+}
+
+.total-posts {
+  font-size: 0.9em;
 }
 
 // <3
 #main::after {
-	content: "Made with open source and \2665.";
+	content: "City.css made by NMK, with \2665.";
   position: relative;
 	top: 2em;
   font-size: 0.8em;

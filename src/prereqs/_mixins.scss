@@ -15,7 +15,7 @@
 
 @mixin reset($props) {
   @each $prop in $props {
-    @if index((background, background-image), $prop) {
+    @if index((background, background-image, border, box-shadow), $prop) {
       #{$prop}: none;
     } @else if $prop == background-color {
       background-color: $t;

@@ -39,6 +39,7 @@ h2 {
    */
 
   text-decoration: none !important;
+
   background-image: linear-gradient(to bottom, currentColor, currentColor);
   background-size: 1px 1px;
   background-repeat: repeat-x;
@@ -49,29 +50,51 @@ h2 {
 [type="text"],
 textarea {
   @include extend('%border-box');
+  @include extend('%transition03');
 
   background-color: $bgAccent;
   font-size: inherit;
   width: 100%;
+
   padding: 0.5em;
-  border: none;
-  border-bottom: 0.1em solid $fgSub;
+  border: 1px solid lighten($bgSub, 10%);
   border-radius: 0.3em;
-  box-shadow: 0 0 0 1px lighten($fgSub, 10%);
+  outline: none;
+
+  &:hover {
+    border-color: lighten($bgSub, 5%);
+  }
+  &:focus {
+    border-color: $bgSub;
+  }
+}
+
+textarea {
+  resize: vertical;
 }
 
 // Buttons
-[type="button"],
+[type="button"]:not(.btnbbcode),
 [type="reset"],
 [type="submit"],
 button {
   @include extend('%reset-all');
+  @include extend('%transition03');
 
   background-color: $bgAccent;
   font-size: inherit;
   font-family: Lato, 'Lucida Grande', 'DejaVu Sans', Verdana, sans-serif;
+
   padding: 0.2em 0.5em !important;
-  border-bottom: 0.1em solid $fgSub;
+  border-bottom: 0.1em solid $bgSub;
   border-radius: 0.3em;
-  box-shadow: 0 0 0 1px lighten($fgSub, 10%);
+  box-shadow: 0 0 0 1px lighten($bgSub, 10%);
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($bgAccent, 7%);
+  }
+  &:focus {
+    background-color: darken($bgAccent, 12%);
+  }
 }
