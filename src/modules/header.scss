@@ -63,6 +63,14 @@
   }
 }
 
+#right_navigation_box {
+  float: left;
+  margin-left: 0.8em;
+
+  a {
+    margin-left: 0.4em;
+  }
+}
 
 // The header, containing the blog title
 //
@@ -71,10 +79,10 @@
 // Styleguide Header.Header.
 
 #header {
-  position: fixed;
+  position: absolute;
   height: 2em;
 
-  @include position(37vh, 0, 0);
+  @include position(31vh, 0, 0);
   @include reset((background, border));
 
   h1 {
@@ -84,5 +92,6 @@
 
     font-size: 1.1em;
     font-weight: 200;
+    z-index: 10;
   }
 }

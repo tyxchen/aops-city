@@ -37,15 +37,10 @@ body {
 
 #content {
   position: relative;
-  background-image: linear-gradient(
-    to bottom,
-    transparentize($bgGeneral, 0.05) 0,
-    $bgGeneral 8vh,
-    $bgGeneral 100%
-  );
+  background-color: $bgGeneral;
   padding: 0 5vw;
-  padding-top: 8vh;
-  margin-top: 92vh;
+  padding-top: 5vh;
+  margin-top: 72vh;
 
   // Create a not-so-subtle floor fade
   &::before {
@@ -53,12 +48,12 @@ body {
 
     background-image: linear-gradient(
       to top,
-      transparentize($bgHeader, 0.5) 0,
+      transparentize($bgHeader, 0.6) 0,
       transparentize($bgHeader, 0.9) 60%,
       $t 100%
     );
 
-    @include position(-20vh, 0, 0, 100%);
+    @include position(-15vh, 0, 0, 100%);
   }
 }
 

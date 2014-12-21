@@ -13,3 +13,15 @@
 .codecontent a:link {
   background-image: none;
 }
+
+// <3
+#main::after {
+	content: "Made with open source and \2665.";
+  position: relative;
+	top: 2em;
+  font-size: 0.8em;
+  font-family: Lato, 'Lucida Grande', 'DejaVu Sans', Verdana, sans-serif;
+  color: $fgSub;
+	display: block;
+	text-align: center;
+}

@@ -9,14 +9,26 @@ fieldset {
 }
 
 #postform {
-  @include extend('%border-box');
+  font-family: Lato, 'Lucida Grande', 'DejaVu Sans', Verdana, sans-serif;
+}
 
-  position: absolute;
-  background: $bgGeneral;
-  padding: 3vh 5vw;
-  overflow: auto;
+.comment:nth-child(2),
+#postform:first-child {
+  margin-top: -70vh;
 
-  @include position(-94vh, -5vw, -5vw, 0);
+  &::after {
+    @include extend('%pseudo');
+
+    position: fixed;
+    background-color: $bgGeneral;
+
+    @include position(0);
+  }
+
+  * {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 .submit-buttons,
