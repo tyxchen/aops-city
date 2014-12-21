@@ -7,3 +7,112 @@
     font-size: 17px;
   }
 }
+
+// Mobile view
+
+@media only screen and (max-width: 800px), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (min-resolution: 132dpi), only screen and (min-resolution: 1.5dppx) {
+  html {
+    font-size: 2.5vh;
+  }
+
+  #content::before {
+    display: none;
+  }
+
+  #header h1 {
+    font-size: 3rem;
+    text-overflow: ellipsis;
+  }
+
+  #navigation_box {
+    font-size: 0.01px;
+  }
+
+  #left_navigation_box a:not(:nth-last-child(2)) {
+    display: none;
+  }
+  #left_navigation_box a:nth-last-child(2) {
+    font-size: 1rem;
+    border-top: none;
+
+    &::before {
+      content: "\3008";
+      font-size: 0.9em;
+      padding-left: 0.5em;
+      padding-right: 0.2em;
+    }
+  }
+
+  #blog_keywords:focus {
+    width: 100%;
+  }
+
+  #user-menu-widget strong a {
+    display: none;
+  }
+
+  div.quotetitle,
+  div.quotecontent {
+    border-left: 1px solid $fgSub;
+    padding-left: 0.5rem;
+    margin: 0;
+  }
+
+  div.quotecontent {
+    padding-top: 0.5em;
+  }
+
+  .codetitle {
+    display: block;
+    margin-top: 1em;
+
+    b {
+      font-weight: normal;
+    }
+  }
+
+  .codecontent {
+    white-space: normal;
+    overflow-x: visible;
+    margin-left: 0;
+
+    ol {
+      white-space: pre;
+      margin-left: 0;
+    }
+
+    > div::before {
+      top: -2.5rem;
+    }
+    &:hover > div::before {
+      opacity: 0.8
+    }
+  }
+}
+
+// Landscape mode requires slight edits.
+
+@media only screen and (max-width: 800px) and (orientation: landscape), only screen and (-webkit-min-device-pixel-ratio: 1.5) and (orientation: landscape), only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (min-resolution: 132dpi) and (orientation: landscape), only screen and (min-resolution: 1.5dppx) and (orientation: landscape) {
+  html {
+    font-size: 5vh;
+  }
+
+  #content {
+    margin-top: 90vh;
+
+  }
+
+  #user-menu-widget .avatar {
+    top: -1.6rem;
+    margin-left: -1.6rem;
+
+    img {
+      @include dimensions(3rem);
+    }
+  }
+
+  .comment:nth-child(2),
+  #postform:first-child {
+    margin-top: -80vh;
+  }
+}

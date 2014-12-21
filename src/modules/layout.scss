@@ -10,6 +10,7 @@ body {
   font-family: Merriweather, Garamond, times, serif;
   font-size: 1rem;
   color: $fgGeneral;
+  overflow-x: hidden;
 
   &::after {
     @include extend('%pseudo');

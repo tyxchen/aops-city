@@ -68,9 +68,24 @@ div.comment {
 .message {
   overflow-x: auto;
 
-  a {
+  a:link,
+  a:hover,
+  a:visited {
     @include extend('[style="text-decoration: underline"]');
   }
+  a:visited {
+    color: $fgGeneral;
+  }
+}
+
+div.actions,
+div.modactions {
+  font-size: 0.7em;
+}
+
+// The AoPS blog structure is kinda crazy
+div.modactions div.modactions {
+  font-size: 1em;
 }
 
 // Quotes and code

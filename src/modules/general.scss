@@ -92,9 +92,9 @@ button {
   cursor: pointer;
 
   &:hover {
-    background-color: darken($bgAccent, 7%);
+    background-color: darken($bgAccent, 5%);
   }
   &:focus {
-    background-color: darken($bgAccent, 12%);
+    background-color: darken($bgAccent, 10%);
   }
 }

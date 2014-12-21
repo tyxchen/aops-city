@@ -27,6 +27,20 @@ gulp.task('autoprefixer', ['sass'], function () {
     .pipe(autoprefixer({browsers: ['last 2 versions']}));
 });
 
+gulp.task('production:sass', function () {
+  return sass('src/main.scss', {sourcemap: false, style: 'compressed'})
+    .on('error', function (e) {
+      console.error(e.message);
+    })
+    .pipe(rename({basename: 'city', suffix: '.min'}))
+    .pipe(gulp.dest('dist/'));
+});
+
+gulp.task('production', ['production:sass'], function () {
+  return gulp.src('dist/city.css')
+    .pipe(autoprefixer({browsers: ['last 2 versions']}));
+});
+
 gulp.task('default', ['autoprefixer', 'watch']);
 
 gulp.task('watch', function () {
