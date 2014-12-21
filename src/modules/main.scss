@@ -1,0 +1,169 @@
+/**
+ * Main module
+ *
+ * Encompasses #main, entries, comments, and postform
+ */
+
+#main {
+  @include extend('%reset-all');
+  @include extend('%border-box');
+
+  position: relative;
+  width: 100%;
+  padding-bottom: 3em;
+}
+
+// Entries
+div.entrywrap,
+div.entry {
+  line-height: 2em;
+
+  @include reset((background-color, border));
+}
+
+div.entrywrap a {
+  text-decoration: none !important;
+}
+
+div.entry {
+  position: relative;
+  padding: 0 1.2em;
+  margin: 0 -1.4em;
+
+  h2 {
+    font-size: 0.9em;
+    margin-left: 0.3em;
+
+    // Permalink
+    > a::before {
+      @include extend('%transition03');
+
+      content: "\00B6";
+      position: absolute;
+      color: $t;
+      font-size: 1.8em;
+      margin-right: 0.3em;
+      z-index: 11;
+
+      @include position(0.1em, 0);
+    }
+  }
+  &:hover h2 > a::before {
+    color: $bgSub;
+  }
+
+  img[alt='Permanent Link'] {
+    display: none;
+  }
+}
+
+div.commentwrap {
+  @include extend('.entrywrap');
+}
+
+div.comment {
+  @include extend('.entry');
+}
+
+.message {
+  overflow-x: auto;
+
+  a:link,
+  a:hover,
+  a:visited {
+    @include extend('[style="text-decoration: underline"]');
+  }
+  a:visited {
+    color: $fgGeneral;
+  }
+}
+
+div.actions,
+div.modactions {
+  font-size: 0.7em;
+}
+
+// The AoPS blog structure is kinda crazy
+div.modactions div.modactions {
+  font-size: 1em;
+}
+
+// Quotes and code
+
+%qcontent {
+  /* Source for %qcontent */
+  margin: 0.5em 1rem;
+
+  + br {
+    display: none;
+  }
+}
+div.quotetitle,
+div.quotecontent {
+  @include extend('%reset-all');
+}
+
+div.quotetitle {
+  @include extend('%heading');
+
+  color: $fgSub;
+  font-size: 1.4em;
+  font-weight: normal;
+  margin-left: 1rem;
+}
+
+div.quotecontent {
+  @include extend('%qcontent');
+
+  font-size: 1.7em;
+
+  // Reduce font size and margins on nested quotes
+
+  div.quotetitle {
+    font-size: 0.7em;
+    margin-top: 1rem;
+  }
+
+  div.quotecontent {
+    font-size: 0.8em;
+  }
+}
+
+.codetitle {
+  display: none;
+}
+
+.codecontent {
+  @include extend('%qcontent');
+
+  position: relative;
+  font-family: Monaco, 'DejaVu Mono', Consolas, monospace;
+  white-space: pre;
+  overflow-x: auto;
+
+  a:link {
+    background-image: none;
+  }
+
+  > div::before {
+    @include extend('%transition03');
+
+    content: attr(class);
+    position: absolute;
+
+    background-color: $bgGeneral;
+    color: $fgSub;
+    opacity: 0.8;
+    padding: 0 0.7em;
+
+    @include position(0, null, 0);
+  }
+  &:hover > div::before {
+    opacity: 0.2;
+  }
+
+  ol {
+    margin-top: 0;
+    overflow-x: auto;
+  }
+}

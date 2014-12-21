@@ -1,0 +1,60 @@
+/**
+ * Layout module
+ *
+ * Encompasses body, wrapper, and general layout
+ */
+
+// Body
+
+body {
+  font-family: Merriweather, Garamond, times, serif;
+  font-size: 1rem;
+  color: $fgGeneral;
+  overflow-x: hidden;
+
+  &::after {
+    @include extend('%pseudo');
+
+    position: fixed;
+
+    background-image: url('https://i.imgur.com/ICzZp79.jpg');
+    background-position: 42% 0;
+    background-size: cover;
+
+    z-index: -1;
+
+    @include position(0, 0, 0, 0);
+  }
+}
+
+#wrapper {
+  @include extend('%border-box');
+
+  width: 100%;
+  padding: 0;
+
+  @include reset((background, border));
+}
+
+#content {
+  position: relative;
+  background-color: $bgGeneral;
+  padding: 0 5vw;
+  padding-top: 5vh;
+  margin-top: 72vh;
+
+  // Create a not-so-subtle floor fade
+  &::before {
+    @include extend('%pseudo');
+
+    background-image: linear-gradient(
+      to top,
+      transparentize($bgHeader, 0.6) 0,
+      transparentize($bgHeader, 0.9) 60%,
+      $t 100%
+    );
+
+    @include position(-15vh, 0, 0, 100%);
+  }
+}
+

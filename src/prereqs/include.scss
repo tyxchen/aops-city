@@ -1,0 +1,47 @@
+// Master include file
+
+@import "variables";
+@import "mixins";
+
+/**
+ * Groups
+ */
+/* Reset background, padding, border & margin */
+%reset-all {
+  /* Source for %reset-all */
+  @include reset((background, padding, border, margin));
+}
+
+/* Set box-sizing to border-box */
+%border-box {
+  /* Source for %border-box */
+  box-sizing: border-box;
+}
+
+/* No user select */
+%no-user-select {
+  /* Source for %no-user-select */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Pseudo-element shared styles */
+%pseudo {
+  /* Source for %pseudo */
+  content: "";
+  position: absolute;
+}
+
+/* Headings */
+%heading {
+  /* Source for %heading */
+  font-family: Raleway, Lato, Roboto, 'Segoe UI', 'Lucida Grande', 'DejaVu Sans', sans-serif;
+}
+
+/* Transitions */
+%transition03 {
+  /* Source for %transition03 */
+  transition: 0.3s ease;
+}

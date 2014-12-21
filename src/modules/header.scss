@@ -1,0 +1,102 @@
+/**
+ * Header module
+ *
+ * Encompasses the header and the navigation bar
+ */
+
+// Placeholders
+
+%title {
+  /* Source for %title */
+  @include extend('%heading');
+
+  color: $fgHeader;
+  text-shadow: 1px 1px 1px transparentize($bgHeader, 0.4);
+}
+
+// The navigation bar, containing navigation
+//
+// Styleguide Header.NavigationBox.
+
+#navigation_box {
+  @include extend('%reset-all');
+  @include extend('%no-user-select');
+  @include extend('%transition03');
+
+  position: fixed;
+
+  color: $t;
+  background-color: $fgHeader;
+  font-size: 0.9em;
+
+  white-space: nowrap;
+  padding: 0.2em 1em;
+  padding-top: 0.1em;
+  border-bottom: 1px solid lighten($bgHeader, 70%);
+
+  opacity: 0.95;
+  z-index: 10;
+
+  @include position(0, 0, 0);
+
+  &:hover {
+    opacity: 1;
+  }
+
+  a {
+    @include extend('%title');
+
+    color: $bgHeader;
+    text-shadow: none;
+    font-weight: 300;
+    line-height: 3em;
+
+    padding: 1em 0.4em;
+    border-top: 0.3em solid lighten($bgHeader, 2%);
+    margin: 0 -0.3em;
+
+    transition: 0.2s ease;
+
+    &:hover {
+      padding-top: 0.8em;
+      color: darken($bgHeader, 10%);
+    }
+
+    @at-root #left_navigation_box a:last-child {
+      @extend :hover;
+    }
+  }
+}
+
+#right_navigation_box {
+  float: left;
+  margin-left: 0.8em;
+
+  a {
+    margin-left: 0.4em;
+  }
+}
+
+// The header, containing the blog title
+//
+// h1 - The blog's title
+//
+// Styleguide Header.Header.
+
+#header {
+  position: absolute;
+  height: 2em;
+
+  @include position(31vh, 0, 0);
+  @include reset((background, border));
+
+  h1 {
+    @include extend('%title');
+    @include extend('%reset-all');
+    @include extend('%no-user-select');
+
+    font-size: 1.1em;
+    font-weight: 200;
+    z-index: 10;
+  }
+}

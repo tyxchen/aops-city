@@ -1,7 +1,7 @@
 {
   "name": "aops-city",
   "description": "An AoPS Blog CSS inspired by city skylines",
-  "version": "0.0.1-dev",
+  "version": "0.5.0-rc",
   "bugs": "https://github.com/tyxchen/aops-city/issues",
   "license": "MIT",
   "repository": {
@@ -15,7 +15,7 @@
     "gulp-concat": "~2.4.2",
     "gulp-changed": "~1.1.0",
     "gulp-csslint": "~0.1.5",
-    "gulp-ruby-sass": "~1.0.0-alpha",
+    "gulp-ruby-sass": "^1.0.0-alpha",
     "gulp-autoprefixer": "~2.0.0",
     "gulp-sourcemaps": "~1.2.8"
   }

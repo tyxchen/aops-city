@@ -1,0 +1,101 @@
+// Mixins
+
+// Extends
+//
+// $selector - The selector to extend
+
+@mixin extend($selector) {
+  /* Rule extends #{$selector} */
+  @extend #{$selector};
+}
+
+// Reset properties
+//
+// $props - A list of properties to reset
+
+@mixin reset($props) {
+  @each $prop in $props {
+    @if index((background, background-image, border, box-shadow), $prop) {
+      #{$prop}: none;
+    } @else if $prop == background-color {
+      background-color: $t;
+    } @else if index((width, height), $prop) {
+      #{$prop}: 100%;
+    } @else {
+      #{$prop}: 0;
+    }
+  }
+}
+
+// Position element
+//
+// $top    - The value for `top`
+// $left   - The value for `left`
+// $right  - The value for `right`
+// $bottom - The value for `bottom`
+
+@mixin position($top: null, $left: null, $right: null, $bottom: null) {
+  @if $left == null and $right == null and $bottom == null {
+    $left: $top;
+    $right: $top;
+    $bottom: $top;
+  }
+  @if $top != null {
+    top: $top;
+  }
+  @if $left != null {
+    left: $left;
+  }
+  @if $right != null {
+    right: $right;
+  }
+  @if $bottom != null {
+    bottom: $bottom;
+  }
+}
+
+// Position element with position: relative
+//
+// $values... - The values by which to shift the element. See the position
+//              mixin for possible arguments
+
+@mixin shift($values...) {
+  position: relative;
+  @include position($values...);
+}
+
+// Fix dimensions of element
+//
+// $width  - The width of the element
+// $height - The height of the element. Defaults to its width if not specified.
+
+@mixin dimensions($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+// Filters
+//
+// $type  - The type of filter
+// $range - The filter's range (e.g. 100%)
+
+@mixin filter($type, $range) {
+  $val: '<svg version="1.1" xmlns="http://www.w3.org/2000/svg"><filter id="#{$type}">';
+  $ulrange: $range/($range*0+1);
+  $range: '(' + $range + ')'; // we can't add brackets at the exact rule for whatever reason
+
+  @if $type == 'blur' {
+    $val: $val + '<feGaussianBlur stdDeviation="#{$ulrange}"/>';
+  } @else if $type == 'grayscale' {
+    $val: $val + '<feColorMatrix type="saturate" values="0"/>';
+  }
+
+  $val: $val + '</filter></svg>';
+
+  /* Chrome 18+, Safari 6+, Opera 15+ */
+  -webkit-filter: #{$type}#{$range};
+  /* Firefox 34- */
+  filter: url('data:image/svg+xml;utf8,' + $val + '##{$type}');
+  /* W3C spec, Firefox 35+ */
+  filter: #{$type}#{$range};
+}
