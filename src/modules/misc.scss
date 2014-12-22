@@ -11,32 +11,40 @@
   }
 }
 
-[style*="font-size:"] {
+// Reset inline styles
+:not(.message):not([class^="quote"]):not([class^="code"]) > [style*="font-size:"] {
   font-size: inherit !important;
-}
-
-#category-new,
-#category-sel-add {
-  display: block;
-  margin: 0.5em 0;
-}
-
-#category-new {
-  width: 20%;
 }
 
 .total-posts {
   font-size: 0.9em;
 }
 
+#main > p:not([id]) {
+  float: right;
+  margin-top: 1.5em;
+
+  a:link,
+  a:hover,
+  a:visited {
+    color: $fgSub;
+  }
+}
+#main > h1 {
+  padding-bottom: 0.2em;
+  border-bottom: 1px solid $bgSub10;
+  margin-top: 0.5em;
+  margin-bottom: 1.3em;
+}
+
 // <3
 #main::after {
-	content: "City.css made by NMK, with \2665.";
+  content: "City.css made by NMK, with \2665.";
   position: relative;
-	top: 2em;
+  top: 2em;
   font-size: 0.8em;
   font-family: Lato, 'Lucida Grande', 'DejaVu Sans', Verdana, sans-serif;
   color: $fgSub;
-	display: block;
-	text-align: center;
+  display: block;
+  text-align: center;
 }

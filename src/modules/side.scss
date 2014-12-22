@@ -70,7 +70,7 @@
         to bottom,
         $t,
         $t 30%,
-        transparentize($bgHeader, 0.7)
+        transparentize($ovrHeader, 0.7)
       );
       background-position: 50% 0;
       opacity: 0;
@@ -83,7 +83,7 @@
 
     &:hover {
       color: $fgHeader;
-      text-shadow: 1px 1px 1px transparentize($bgHeader, 0.4);
+      text-shadow: 1px 1px 1px transparentize($ovrHeader, 0.4);
 
       &::after {
         opacity: 1;
@@ -119,7 +119,7 @@
   background-size: auto 1.7em;
   background-position: 0.3em 0.65em;
 
-  color: lighten($bgHeader, 30%);
+  color: lighten($ovrHeader, 30%);
   padding-left: 2.2em;
   z-index: 11;
   cursor: pointer;
@@ -135,7 +135,7 @@
 
     width: 15em;
     background-color: lighten($bgSub, 15%);
-    color: $bgHeader;
+    color: $ovrHeader;
     cursor: auto;
   }
 }

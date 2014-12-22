@@ -1,14 +1,35 @@
 // Variables
 
-// Colours
+// Default palette. Use in all (slight variations permitted) situations.
+//
+// $bgGeneral - General background. Use for, well, general backgrounds.
+// $fgGeneral - General text colour. Use for general text
+// $bgAccent  - Accent background colour. Use for backgrounds that require
+//              attention
+// $fgAccent  - Accent foreground colour. Use for foregrounds that require
+//              attention
+// $fgHeader  - Header text colour. Use for text in the header
+// $ovrHeader - Overlay colour. Use for text overlayed on images
+//
+// Sub palette. Use in situations that require "down-popping".
+//
+// $bgSub     - Muted gray background
+// $bgSub5    - $bgSub, 5% lighter
+// $bgSub10   - $bgSub, 10% lighter
+// $fgSub     - Muted gray foreground
+
 $bgGeneral: #fff;
 $fgGeneral: #444;
-$bgAccent: #fefefe;
+$bgAccent: #efeac4;
 $fgAccent: #090909;
 
-$bgHeader: #333;
 $fgHeader: #fff;
+$ovrHeader: #333;
+
 $bgSub: #ccc;
+$bgSub5: #d9d9d9;
+$bgSub10: #e6e6e6;
+
 $fgSub: #aaa;
 
 $t: transparent;

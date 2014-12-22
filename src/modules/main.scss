@@ -43,7 +43,6 @@ div.entry {
       color: $t;
       font-size: 1.8em;
       margin-right: 0.3em;
-      z-index: 11;
 
       @include position(0.1em, 0);
     }
@@ -90,14 +89,6 @@ div.modactions div.modactions {
 
 // Quotes and code
 
-%qcontent {
-  /* Source for %qcontent */
-  margin: 0.5em 1rem;
-
-  + br {
-    display: none;
-  }
-}
 div.quotetitle,
 div.quotecontent {
   @include extend('%reset-all');
@@ -113,9 +104,8 @@ div.quotetitle {
 }
 
 div.quotecontent {
-  @include extend('%qcontent');
-
   font-size: 1.7em;
+  margin: 0.5em 1rem;
 
   // Reduce font size and margins on nested quotes
 
@@ -134,17 +124,17 @@ div.quotecontent {
 }
 
 .codecontent {
-  @include extend('%qcontent');
-
   position: relative;
   font-family: Monaco, 'DejaVu Mono', Consolas, monospace;
   white-space: pre;
   overflow-x: auto;
+  margin: 0.5em 1rem;
 
   a:link {
     background-image: none;
   }
 
+  // Annotate with code types
   > div::before {
     @include extend('%transition03');
 
@@ -157,9 +147,22 @@ div.quotecontent {
     padding: 0 0.7em;
 
     @include position(0, null, 0);
+
+    // Some languages could have better names
   }
+  // Fade on hover to avoid obscuring code
   &:hover > div::before {
     opacity: 0.2;
+  }
+
+  > .cpp::before {
+    content: "c++";
+  }
+  > .csharp::before {
+    content: "c#";
+  }
+  > .objc::before {
+    content: "objective-c";
   }
 
   ol {

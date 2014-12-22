@@ -8,7 +8,9 @@ fieldset {
   @include extend('%reset-all');
 }
 
+// Block out header image on post/comment pages
 #postform {
+  position: relative;
   font-family: Lato, 'Lucida Grande', 'DejaVu Sans', Verdana, sans-serif;
 
   > fieldset {
@@ -40,15 +42,21 @@ fieldset {
   }
 }
 
+// BBCode buttons
 input.btnbbcode {
   @include extend('%reset-all');
+  @include extend('%transition03');
 
   font-size: inherit;
   font-family: inherit;
   width: auto !important;
-  color: $fgSub;
+  color: $fgGeneral;
   margin: 0 0.2em;
   cursor: pointer;
+
+  &:hover {
+    color: $fgAccent;
+  }
 
   &[value~="u"],
   &[value~="i"] {
@@ -62,6 +70,7 @@ input.btnbbcode {
   cursor: auto;
 }
 
+// Button and editing wrappers
 .submit-buttons,
 #message-box {
   margin-top: 1em;
@@ -71,6 +80,7 @@ input.btnbbcode {
   display: none;
 }
 
+// Tabs
 #tabs {
   text-align: center;
 
@@ -92,4 +102,15 @@ input.btnbbcode {
 
 .panel {
   margin-bottom: 0.5em;
+}
+
+// Spacing for category tab
+#category-new,
+#category-sel-add {
+  display: block;
+  margin: 0.5em 0;
+}
+
+#category-new {
+  width: 20%;
 }

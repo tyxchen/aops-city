@@ -8,7 +8,7 @@
 a:link,
 a:hover,
 a:visited {
-  color: lighten($fgAccent, 15%);
+  color: darken($fgGeneral, 9%);
 }
 
 // Headings
@@ -34,9 +34,8 @@ h2 {
 // Custom underline code
 [style="text-decoration: underline"],
 .hidden-label {
-  /* Based on
-   * https://medium.com/designing-medium/crafting-link-underlines-on-medium-7c03a9274f9
-   */
+  // Based on
+  // https://medium.com/designing-medium/crafting-link-underlines-on-medium-7c03a9274f9
 
   text-decoration: none !important;
 
@@ -52,17 +51,17 @@ textarea {
   @include extend('%border-box');
   @include extend('%transition03');
 
-  background-color: $bgAccent;
+  background-color: $bgGeneral;
   font-size: inherit;
   width: 100%;
 
   padding: 0.5em;
-  border: 1px solid lighten($bgSub, 10%);
+  border: 1px solid $bgSub10;
   border-radius: 0.3em;
   outline: none;
 
   &:hover {
-    border-color: lighten($bgSub, 5%);
+    border-color: $bgSub5;
   }
   &:focus {
     border-color: $bgSub;
@@ -81,20 +80,20 @@ button {
   @include extend('%reset-all');
   @include extend('%transition03');
 
-  background-color: $bgAccent;
+  background-color: $bgGeneral;
   font-size: inherit;
   font-family: Lato, 'Lucida Grande', 'DejaVu Sans', Verdana, sans-serif;
 
   padding: 0.2em 0.5em !important;
   border-bottom: 0.1em solid $bgSub;
   border-radius: 0.3em;
-  box-shadow: 0 0 0 1px lighten($bgSub, 10%);
+  box-shadow: 0 0 0 1px $bgSub10;
   cursor: pointer;
 
   &:hover {
-    background-color: darken($bgAccent, 5%);
+    background-color: darken($bgGeneral, 5%);
   }
   &:focus {
-    background-color: darken($bgAccent, 10%);
+    background-color: darken($bgGeneral, 10%);
   }
 }

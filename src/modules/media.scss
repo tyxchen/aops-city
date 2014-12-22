@@ -15,6 +15,11 @@
     font-size: 2.5vh;
   }
 
+  // smaller sized image
+  body::after {
+    background-image: url('http://i.imgur.com/25xM0pc.png');
+  }
+
   #content::before {
     display: none;
   }
@@ -90,16 +95,19 @@
   }
 }
 
-// Landscape mode requires slight edits.
+// Landscape mode requires slight edits
 
 @media only screen and (max-width: 800px) and (orientation: landscape), only screen and (-webkit-min-device-pixel-ratio: 1.5) and (orientation: landscape), only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (min-resolution: 132dpi) and (orientation: landscape), only screen and (min-resolution: 1.5dppx) and (orientation: landscape) {
   html {
     font-size: 5vh;
   }
 
+  body::after {
+    background-image: url('http://i.imgur.com/sC2zr6O.png');
+  }
+
   #content {
     margin-top: 90vh;
-
   }
 
   #user-menu-widget .avatar {
