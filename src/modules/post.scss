@@ -114,3 +114,12 @@ input.btnbbcode {
 #category-new {
   width: 20%;
 }
+
+// Errors
+.error {
+  color: #f00;
+  background-color: $bgAccent;
+  line-height: 2em;
+  padding: 0.5em 1em;
+  margin-top: 0.5em !important;
+}
