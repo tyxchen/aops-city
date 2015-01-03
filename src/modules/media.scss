@@ -33,10 +33,11 @@
     font-size: 0.01px;
   }
 
-  #left_navigation_box a:not(:nth-last-child(2)) {
+  #left_navigation_box a {
     display: none;
   }
   #left_navigation_box a:nth-last-child(2) {
+    display: inline-block;
     font-size: 1rem;
     border-top: none;
 

@@ -112,30 +112,110 @@
   right: 0;
   display: block;
 
-  // Image from https://www.iconfinder.com/icons/296814/search_icon
   background-color: $t;
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABpUlEQVRYhe2Uv2sVQRSFbzQoKIsPss9dZu4990fEv+GRgFU6RQQRLIMQQfBpnSZgI1gI2mnAEBBbBWMniISgBCQEooX/jUWwCYS8dfeJyH7tnDPnm2aIenp6mjGTUhKktGg5j1KRyr81fMYYDwI4MNZPDqwH66uA7hjrl0vwW0Q0M5VlKcsUIrsBPMlFMXf0PKUkIboRrG+J6Fyn4xFxIVj2NeerJ2WdsRLAFhGd6k5A5IWz3p8076JPTeReJ+NSlsmg36nBi8qyLAI4IKLTrQXmgbvGWGvac5FNy3nUWiCAZ57ketOeMR6qyJ3WAga8BLDUtOeMFWeMWwsE8MhElv+kp8w3WwsAWArWN80FdGc4HNatBYho1qA/6rq2SQtIadFE33UxfnhhxrUAtono7EnZwWAwMNa9nPPlzgSIiAJYDeBjVVUXj8toVXmI7Drr10lkG2Mit0PkpwkeW86jXBRzdV0PXeSKA8/nod80pQVnjAP6YSoSFdF5E1l24HUA2y7y2YF1E7lBRLO/c4cS2JqKxKT8MxIOvO8lnDHu5Gfs6flv+QWNSEzhePjGxQAAAABJRU5ErkJggg==');
-  background-repeat: no-repeat;
-  background-size: auto 1.7em;
-  background-position: 0.3em 0.65em;
 
   color: lighten($ovrHeader, 30%);
-  padding-left: 2.2em;
+  // we need the important flag as the scss compiler messes with placeholder
+  // extends, creating a #blog_keywords[type="text"] rule with border-color
+  // set to lighten($bgSub, 5%)
+  border-left: 1.6em solid $fgHeader !important;
   z-index: 11;
   cursor: pointer;
 
-  @include reset((border, box-shadow, border-radius));
-  @include dimensions(8em, 3em);
+  transition:
+    all 0s linear,
+    width 0.4s ease,
+    background-color 0s linear 0.4s;
 
-  &:hover {
-    background-color: lighten($bgSub, 16%);
-  }
+  @include reset((border, box-shadow, border-radius));
+  @include dimensions(0, 3em);
+
   &:focus {
     @extend :hover;
 
     width: 15em;
     background-color: lighten($bgSub, 15%);
     color: $ovrHeader;
+    padding-left: 0.5em;
+    padding-right: 3.1em;
+    border-left: none !important;
     cursor: auto;
+
+    transition:
+      all 0s linear,
+      width 0.3s ease,
+      background-color 0s linear;
+  }
+
+  + div {
+    @include extend('%border-box');
+
+    position: fixed;
+    top: -3px; // counteract inline margin
+    right: 0;
+
+    background-color: $t;
+    display: block;
+    font-size: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 11;
+
+    // Similar to the BCP link, the icon covers the bottom border in Chrome
+    border-bottom: -webkit-calc(1px) solid lighten($bgSub, 13%);
+    // We also add a border-right to preserve symmetry of the icon
+    border-right: 0.2rem solid $fgHeader;
+
+    transition:
+      background-color 0.3s ease 0.13s,
+      border-right-color 0.3s ease 0.13s;
+
+    @include dimensions(2.6rem, 3rem);
+  }
+  // Hide submit button
+  + div input {
+    display: none;
+  }
+
+  // Search icon
+  //
+  // div::before - the circle/magnifier
+  // div::after - the handle
+  + div::before,
+  + div::after {
+    @include extend('%border-box');
+    @include extend('%pseudo');
+
+    background-color: $t;
+
+    @include position(1rem, 0.7rem);
+    @include dimensions(0.8rem);
+  }
+  + div::before {
+    border: 1px solid $ovrHeader;
+    border-radius: 1rem;
+  }
+  + div::after {
+    background-color: $ovrHeader;
+    transform: rotate(-40deg);
+
+    width: 1.4px;
+    width: -webkit-calc(1px); // Handle gets too thick in Chrome
+    height: 0.6rem;
+
+    @include position(1.6rem, 1.5rem);
+  }
+  &:hover + div {
+    background-color: lighten($bgSub, 16%);
+
+    transition: background-color 0.3s ease;
+  }
+  &:focus + div {
+    background-color: lighten($bgSub, 15%);
+    border-right-color: lighten($bgSub, 15%);
+
+    transition:
+      background-color 0.3s ease,
+      border-right-color 0.3s ease;
   }
 }
