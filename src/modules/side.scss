@@ -161,9 +161,7 @@
     pointer-events: none;
     z-index: 11;
 
-    // Similar to the BCP link, the icon covers the bottom border in Chrome
-    border-bottom: -webkit-calc(1px) solid lighten($bgSub, 13%);
-    // We also add a border-right to preserve symmetry of the icon
+    // Preserve the symmetry of the icon by adding a camoflauged border-right
     border-right: 0.2rem solid $fgHeader;
 
     transition:
@@ -171,6 +169,9 @@
       border-right-color 0.3s ease 0.13s;
 
     @include dimensions(2.6rem, 3rem);
+
+    // Similar to the BCP link, the icon covers the bottom border in Chrome
+    @include no-prefix { border-bottom: -webkit-calc(1px) solid lighten($bgSub, 13%); }
   }
   // Hide submit button
   + div input {
@@ -199,11 +200,10 @@
     background-color: $ovrHeader;
     transform: rotate(-40deg);
 
-    width: 1.4px;
-    width: -webkit-calc(1px); // Handle gets too thick in Chrome
-    height: 0.6rem;
-
     @include position(1.6rem, 1.5rem);
+    @include dimensions(1.4px, 0.6rem);
+
+    @include no-prefix { width: -webkit-calc(1px); } // Handle gets too thick in Chrome
   }
   &:hover + div {
     background-color: lighten($bgSub, 16%);

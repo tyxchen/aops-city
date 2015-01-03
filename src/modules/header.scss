@@ -76,11 +76,11 @@
     color: $t;
     font-size: 0.01px;
 
-    // The icon covers the bottom border in Chrome
-    border-bottom: -webkit-calc(1px) solid lighten($bgSub, 13%);
-
     @include position(-2px, 0.25rem);
     @include dimensions(2.5rem, 3rem);
+
+    // The icon covers the bottom border in Chrome
+    @include no-prefix { border-bottom: -webkit-calc(1px) solid lighten($bgSub, 13%); }
 
     &:hover {
       background-color: lighten($bgSub, 16%);
@@ -154,7 +154,7 @@
 
     // Remove extra space from first letter in Chrome
     &::first-letter {
-      margin-right: -webkit-calc(-0.08em);
+      @include no-prefix { margin-right: -webkit-calc(-0.08em); }
     }
   }
 }

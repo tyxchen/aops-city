@@ -54,16 +54,6 @@
   }
 }
 
-// Position element with position: relative
-//
-// $values... - The values by which to shift the element. See the position
-//              mixin for possible arguments
-
-@mixin shift($values...) {
-  position: relative;
-  @include position($values...);
-}
-
 // Fix dimensions of element
 //
 // $width  - The width of the element
@@ -74,7 +64,7 @@
   height: $height;
 }
 
-// Filters
+// Use W3C filters
 //
 // $type  - The type of filter
 // $range - The filter's range (e.g. 100%)
@@ -98,4 +88,12 @@
   filter: url('data:image/svg+xml;utf8,' + $val + '##{$type}');
   /* W3C spec, Firefox 35+ */
   filter: #{$type}#{$range};
+}
+
+// Turn off autoprefixer momentarily
+
+@mixin no-prefix {
+  /* autoprefixer: off */
+  @content;
+  /* autoprefixer: on */
 }
