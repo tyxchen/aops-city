@@ -10,7 +10,11 @@
 
 // Mobile view
 
-@media only screen and (max-width: 800px), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (min-resolution: 132dpi), only screen and (min-resolution: 1.5dppx) {
+@media only screen and (max-width: 800px),
+       only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+                   and (min-resolution: 132dpi),
+       only screen and (min-resolution: 1.5dppx) {
   html {
     font-size: 2.5vh;
   }
@@ -103,7 +107,11 @@
 
 // Landscape mode requires slight edits
 
-@media only screen and (max-width: 800px) and (orientation: landscape), only screen and (-webkit-min-device-pixel-ratio: 1.5) and (orientation: landscape), only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (min-resolution: 132dpi) and (orientation: landscape), only screen and (min-resolution: 1.5dppx) and (orientation: landscape) {
+@media only screen and (max-width: 800px) and (orientation: landscape),
+       only screen and (-webkit-min-device-pixel-ratio: 1.5) and (orientation: landscape),
+       only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+                   and (min-resolution: 132dpi) and (orientation: landscape),
+       only screen and (min-resolution: 1.5dppx) and (orientation: landscape) {
   html {
     font-size: 5vh;
   }
