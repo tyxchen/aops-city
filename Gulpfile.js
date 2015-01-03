@@ -9,10 +9,14 @@
 var gulp = require('gulp'),
     sass = require('gulp-ruby-sass'),
     autoprefixer = require('gulp-autoprefixer'),
+    cssmin = require('gulp-minify-css'),
     rename = require('gulp-rename'),
     sourcemaps = require('gulp-sourcemaps');
 
-gulp.task('sass', function () {
+// Gulp Tasks
+
+// Core building
+gulp.task('build:sass', function () {
   return sass('src/main.scss', {sourcemap: true, style: 'expanded'})
     .on('error', function (e) {
       console.error(e.message);
@@ -22,27 +26,22 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('autoprefixer', ['sass'], function () {
+// Production
+gulp.task('production', ['build:sass'], function () {
   return gulp.src('dist/city.css')
-    .pipe(autoprefixer({browsers: ['last 2 versions']}));
-});
-
-gulp.task('production:sass', function () {
-  return sass('src/main.scss', {sourcemap: false, style: 'compressed'})
-    .on('error', function (e) {
-      console.error(e.message);
-    })
-    .pipe(rename({basename: 'city', suffix: '.min'}))
+    .pipe(autoprefixer({browsers: ['last 2 versions']}))
+    // normal version
+    .pipe(gulp.dest('dist/'))
+    // minified version
+    .pipe(rename({suffix: 'min'}))
+    .pipe(cssmin())
     .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('production', ['production:sass'], function () {
-  return gulp.src('dist/city.css')
-    .pipe(autoprefixer({browsers: ['last 2 versions']}));
-});
+// Default task
+gulp.task('default', ['build:sass', 'watch']);
 
-gulp.task('default', ['autoprefixer', 'watch']);
-
+// Watch files
 gulp.task('watch', function () {
-  gulp.watch(['src/**/*.scss', 'src/main.scss'], ['autoprefixer']);
+  gulp.watch(['src/**/*.scss', 'src/main.scss'], ['build:sass']);
 });
