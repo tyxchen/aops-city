@@ -15,7 +15,9 @@
        only screen and (min-device-width: 768px) and (max-device-width: 1024px)
                    and (min-resolution: 132dpi),
        only screen and (min-resolution: 1.5dppx) {
+
   html {
+    font-size: 1rem;
     font-size: 2.5vh;
   }
 
@@ -26,7 +28,8 @@
 
   // Viewport unit fallback for old mobile browsers
   #content {
-    margin-top: 3rem;
+    margin-top: 6rem;
+    margin-top: 72vh;
   }
 
   #content::before {
@@ -40,22 +43,31 @@
 
   #navigation_box {
     font-size: 0.01px;
+    opacity: 1;
   }
 
-  #left_navigation_box a {
-    display: none;
-  }
   #left_navigation_box a:nth-last-child(2) {
     display: inline-block;
     font-size: 1rem;
+    padding: 0 0.7em;
     border-top: none;
 
+    &:hover {
+      background-color: lighten($bgSub, 16%);
+    }
     &::before {
       content: "\3008";
       font-size: 0.9em;
-      padding-left: 0.5em;
       padding-right: 0.2em;
     }
+  }
+
+  #right_navigation_box {
+    display: none;
+  }
+
+  #blog_keywords + div {
+    height: calc(3rem + 1px); // cover space below icon
   }
 
   #blog_keywords:focus {
@@ -68,7 +80,7 @@
 
   div.quotetitle,
   div.quotecontent {
-    border-left: 1px solid $fgSub;
+    border-left: 1px solid $bgSub;
     padding-left: 0.5rem;
     margin: 0;
   }
