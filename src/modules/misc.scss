@@ -11,15 +11,18 @@
   }
 }
 
-// Reset inline styles
-:not(.message):not([class^="quote"]):not([class^="code"]) > [style*="font-size:"] {
-  font-size: inherit !important;
+// Tags
+div.post-tags {
+  font-size: 0.9em;
+  margin-top: 2em;
 }
 
+// Pagination
 .total-posts {
   font-size: 0.9em;
 }
 
+// "Comment" heading between each entry and its comments
 #main > p:not([id]) {
   float: right;
   margin-top: 1.5em;
@@ -30,6 +33,7 @@
     color: $fgSub;
   }
 }
+
 #main > h1 {
   padding-bottom: 0.2em;
   border-bottom: 1px solid $bgSub10;

@@ -102,6 +102,11 @@ input.btnbbcode {
 
 .panel {
   margin-bottom: 0.5em;
+
+  // Reset inline styles
+  [style*="font-size"] {
+    font-size: inherit !important;
+  }
 }
 
 // Spacing for category tab
