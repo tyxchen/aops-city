@@ -97,3 +97,25 @@ button {
     background-color: darken($bgGeneral, 10%);
   }
 }
+
+// Scrollbars
+::-webkit-scrollbar {
+  background-color: $bgGeneral;
+
+  @include dimensions(0.6rem);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $bgSub;
+  border: 0.25rem solid $bgGeneral;
+  border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: darken($bgSub, 5%);
+  border-width: 0.2rem;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: $fgSub;
+}
