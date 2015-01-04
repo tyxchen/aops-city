@@ -202,7 +202,8 @@
 
     @include position(1.6rem, 1.5rem);
     @include dimensions(1.4px, 0.6rem);
-
+  }
+  + div::after {
     @include no-prefix { width: -webkit-calc(1px); } // Handle gets too thick in Chrome
   }
   &:hover + div {

@@ -94,6 +94,5 @@
 
 @mixin no-prefix {
   /* autoprefixer: off */
-  @content;
-  /* autoprefixer: on */
+  @content
 }
