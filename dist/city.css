@@ -278,7 +278,7 @@ body::after {
   height: 3rem;
   color: transparent;
   background-color: #fff;
-  font-size: 0.8em;
+  font-size: 0.9em;
   white-space: nowrap;
   padding: 0 1em;
   border-bottom: 1px solid #ededed;
@@ -296,13 +296,13 @@ body::after {
   font-size: inherit;
   font-weight: 300;
   line-height: 3rem;
-  padding: 1.4em 0.4em;
+  padding: 1.1em 0.4em;
   border-top: 0.3em solid #383838;
   margin: 0 -0.3em;
   transition: 0.2s ease;
 }
 #navigation_box a:hover, #navigation_box #left_navigation_box a:last-child, #left_navigation_box #navigation_box a:last-child, #navigation_box a#blog_keywords:focus {
-  padding-top: 1.1em;
+  padding-top: 0.8em;
   color: #1a1a1a;
 }
 
