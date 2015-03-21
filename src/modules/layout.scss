@@ -44,6 +44,7 @@ body {
   padding: 0 5vw;
   padding-top: 5vh;
   margin-top: 72vh;
+  z-index: 10;
 
   // Create a not-so-subtle floor fade
   &::before {

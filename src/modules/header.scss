@@ -18,41 +18,45 @@
 
 #navigation_box {
   @include extend('%reset-all');
+  @include extend('%content-box');
   @include extend('%no-user-select');
   @include extend('%transition03');
 
   position: fixed;
+  height: 3rem;
 
   color: $t;
   background-color: $fgHeader;
-  font-size: 0.9em;
+  font-size: 0.8em;
 
   white-space: nowrap;
-  padding: 0.2em 1em;
-  padding-top: 0.1em;
+  padding: 0 1em;
   border-bottom: 1px solid lighten($bgSub, 13%);
 
   opacity: 0.95;
-  z-index: 10;
+  z-index: 100;
 
   @include position(0, 0, 0);
 
   a {
     @include extend('%title');
 
+    display: inline;
+
     color: $ovrHeader;
     text-shadow: none;
+    font-size: inherit;
     font-weight: 300;
-    line-height: 3em;
+    line-height: 3rem;
 
-    padding: 1em 0.4em;
+    padding: 1.4em 0.4em;
     border-top: 0.3em solid lighten($ovrHeader, 2%);
     margin: 0 -0.3em;
 
     transition: 0.2s ease;
 
     &:hover {
-      padding-top: 0.8em;
+      padding-top: 1.1em;
       color: darken($ovrHeader, 10%);
     }
 
@@ -62,6 +66,12 @@
   }
 }
 
+#left_navigation_box {
+  height: 100%;
+  font-size: inherit;
+  line-height: inherit;
+}
+
 #right_navigation_box {
   position: relative;
   margin-right: 2.2rem;
@@ -69,8 +79,13 @@
   @include dimensions(2.5em, 3em);
 
   a {
+    display: none; // FIXME: TEMPORARY HACK TO REMOVE OTHER BLOG LINKS
+  }
+  .blog-info {
     @include extend('%border-box');
     @include extend('%transition03');
+
+    display: inline; // FIXME: TEMPORARY
 
     position: absolute;
     color: $t;
