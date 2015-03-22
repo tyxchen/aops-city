@@ -23,7 +23,6 @@
   @include extend('%transition03');
 
   position: fixed;
-  height: 3rem;
 
   color: $t;
   background-color: $fgHeader;
@@ -37,6 +36,7 @@
   z-index: 100;
 
   @include position(0, 0, 0);
+  @include dimensions(auto, 3rem);
 
   a {
     @include extend('%title');
@@ -86,12 +86,12 @@
     @include extend('%transition03');
 
     display: inline; // FIXME: TEMPORARY
+    left: 0.25rem;
 
     position: absolute;
     color: $t;
     font-size: 0.01px;
 
-    @include position(-2px, 0.25rem);
     @include dimensions(2.5rem, 3rem);
 
     // The icon covers the bottom border in Chrome
@@ -141,11 +141,11 @@
   a::after {
     transition: 0.2s ease;
 
-    @include position(1.4em, 0.9em);
+    @include position(1.4em, 1em);
     @include dimensions(5px, 2px);
   }
   a::after {
-    @include position(2.2em, 1.9em);
+    @include position(2.2em, 1.8em);
   }
 }
 
