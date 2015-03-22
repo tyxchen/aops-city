@@ -76,47 +76,29 @@
   position: relative;
   margin-right: 2.2rem;
 
-  @include dimensions(2.5em, 3em);
+  @include dimensions(7.5em, 3em);
 
   a {
-    display: none; // FIXME: TEMPORARY HACK TO REMOVE OTHER BLOG LINKS
-  }
-  .blog-info {
     @include extend('%border-box');
     @include extend('%transition03');
-
-    display: inline; // FIXME: TEMPORARY
-    left: 0.25rem;
 
     position: absolute;
     color: $t;
     font-size: 0.01px;
 
     @include dimensions(2.5rem, 3rem);
-
     // The icon covers the bottom border in Chrome
     @include no-prefix { border-bottom: -webkit-calc(1px) solid lighten($bgSub, 13%); }
 
     &:hover {
       background-color: lighten($bgSub, 16%);
     }
-
-     &[href="#"] {
-      background-color: $fgHeader;
-      z-index: 15;
-      pointer-events: none;
-
-      &::before,
-      &::after {
-        display: none;
-      }
-    }
   }
 
-  // Settings icon
   //
-  // &::before, &::after - the two sliders
-  // a::before, a::after - the two knobs
+  // Icons
+  //
+
   &::before,
   &::after,
   a::before,
@@ -130,22 +112,111 @@
   &::before,
   &::after {
     z-index: 11;
+  }
 
-    @include position(0.9em, null, 0.4em);
-    @include dimensions(1px, 1.7em);
+  // Info icon
+  //
+  // &::before - the body of the "i"
+  // &::after  - the dot of the "i"
+  .blog-info {
+    left: 0;
+
+    &::before {
+      @include position(1.8em, 1.5em);
+      @include dimensions(1px, 0.85em);
+    }
+    &::after {
+      border-radius: 3px;
+
+      @include position(1.2em, calc(1.5em - 1px));
+      @include dimensions(3px, 3px);
+    }
+  }
+
+  // Subscribe icon
+  //
+  // &::before - the outer "ring"
+  // &::after  - the inner "ring"
+  // $parent::before - the central dot
+  #blog-subscribe {
+    left: 2.5rem;
+
+    &::before,
+    &::after {
+      background-color: $t;
+      border: solid invert($fgSub);
+      border-width: 1px 1px 0 0;
+    }
+    &::before {
+      border-top-right-radius: 1.5em;
+
+      @include position(1.2em, 0.8em);
+      @include dimensions(1.5em);
+    }
+    &::after {
+      border-top-right-radius: 0.9em;
+
+      @include position(1.8em, 0.8em);
+      @include dimensions(0.9em);
+    }
+  }
+  &::before {
+    border-radius: 0.3em;
+
+    @include position(2.4em, 3.95em);
+    @include dimensions(0.3em);
+  }
+
+  // Login/logout icon
+  //
+  // &::before - the door(frame)
+  // &::after  - the tip of the arrow
+  // $parent::after - the stem of the arrow
+  .blog-login,
+  .blog-logout {
+    left: 5rem;
+
+    &::before,
+    &::after {
+      background-color: $t;
+      border: 1px solid invert($fgSub);
+    }
+    &::before {
+      @include position(1.1em, 0.9em);
+      @include dimensions(1em, 1.61803em); // Golden ratio
+    }
+    &::after {
+      border-width: 1px 1px 0 0;
+      z-index: 12;
+
+      transform: rotate(45deg);
+
+      @include position(1.7092em, 1.85em);
+      @include dimensions(0.4em);
+    }
+  }
+  .blog-login::after {
+    left: 1.4em;
+    transform: rotate(-135deg);
   }
   &::after {
-    left: 1.4em;
-  }
-  a::before,
-  a::after {
-    transition: 0.2s ease;
+    box-sizing: content-box;
+    border: 3px solid $fgHeader;
+    border-left: none;
 
-    @include position(1.4em, 1em);
-    @include dimensions(5px, 2px);
+    @include position(calc(1.8092em - 3px), 7.65em);
+    @include dimensions(0.8em, 1px);
   }
-  a::after {
-    @include position(2.2em, 1.8em);
+
+  // Move info icon when user is not logged in and cover RSS icon dot
+  .blog-login + .blog-info {
+    left: 2.5rem;
+    background-color: $fgHeader;
+    z-index: 12;
+
+    &:hover {
+      background-color: lighten($bgSub, 16%);
+    }
   }
 }
 
