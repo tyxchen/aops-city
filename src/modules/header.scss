@@ -196,43 +196,53 @@
 
   // Login/logout icon
   //
-  // &::before - the door(frame)
+  // &::before - the stem of the arrow
   // &::after  - the tip of the arrow
-  // $parent::after - the stem of the arrow
+  // $parent::after - the door(frame)
   .blog-login,
   .blog-logout {
     left: 5rem;
 
     &::before,
     &::after {
-      background-color: $t;
-      border: 1px solid invert($fgSub);
+      z-index: 12;
     }
     &::before {
-      @include position(1.1em, 0.9em);
-      @include dimensions(1em, 1.61803em); // Golden ratio
+      @include extend('%content-box');
+
+      border: 3px solid $fgHeader;
+      border-left: none;
+
+      @include position(calc(1.8092em - 3px), 1.3em);
+      @include dimensions(0.7em, 1px); // Golden ratio
     }
     &::after {
+      background-color: $t;
+      border: 1px solid invert($fgSub);
       border-width: 1px 1px 0 0;
-      z-index: 12;
 
       transform: rotate(45deg);
 
-      @include position(1.7092em, 1.85em);
+      @include position(1.7092em, 1.8em);
       @include dimensions(0.4em);
     }
+    &:hover::before {
+      border-color: lighten($bgSub, 16%);
+    }
+  }
+  .blog-login::before {
+    left: 1.4em;
   }
   .blog-login::after {
-    left: 1.4em;
+    left: 1.2em;
     transform: rotate(-135deg);
   }
   &::after {
-    box-sizing: content-box;
-    border: 3px solid $fgHeader;
-    border-left: none;
+    background-color: $t;
+    border: 1px solid invert($fgSub);
 
-    @include position(calc(1.8092em - 3px), 7.65em);
-    @include dimensions(0.8em, 1px);
+    @include position(1.1em, 7em);
+    @include dimensions(1em, 1.61803em);
   }
 
   // Move info icon when user is not logged in and cover RSS icon dot
