@@ -138,6 +138,8 @@
   // &::before - the outer "ring"
   // &::after  - the inner "ring"
   // $parent::before - the central dot
+  //
+  // [title*="stop"] - The icon when the user is already subscribed
   #blog-subscribe {
     left: 2.5rem;
 
@@ -160,6 +162,31 @@
       @include dimensions(0.9em);
     }
   }
+  #blog-subscribe[title*="stop"] {
+    background-color: lighten($bgSub, 15%);
+
+    &::before {
+      border-width: 1px 0 5px 0;
+      border-bottom-color: lighten($bgSub, 15%); // Block RSS feed dot
+      border-radius: 0;
+      z-index: 12;
+
+      transform: rotate(50deg);
+
+      @include position(calc(2em + 3px), calc(0.2em + 2px));
+      @include dimensions(0.9em, 0);
+    }
+    &::after {
+      width: 1.8em;
+      border-width: 1px 0 0 0;
+      border-radius: 0;
+
+      transform: rotate(-50deg);
+
+      @include position(1.8em, 1.3em);
+    }
+  }
+
   &::before {
     border-radius: 0.3em;
 
