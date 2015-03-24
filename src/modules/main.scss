@@ -52,18 +52,22 @@ div.entry {
       content: "\00B6";
       position: absolute;
       color: $t;
-      font-size: 1.8em;
+      font-size: 1.7em;
       margin-right: 0.3em;
 
-      @include position(0.1em, 0);
+      @include position(-2.15rem, -1em);
+    }
+    img {
+      display: none;
+    }
+
+    .username-colored,
+    .username-coloured {
+      color: $fgGeneral !important;
     }
   }
   &:hover h2 > a::before {
     color: $bgSub;
-  }
-
-  img[alt='Permanent Link'] {
-    display: none;
   }
 }
 
