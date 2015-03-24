@@ -74,7 +74,7 @@
 
 #right_navigation_box {
   position: relative;
-  margin-right: 2.2rem;
+  margin-right: 2.8rem;
 
   @include dimensions(7.5em, 3em);
 
@@ -173,7 +173,7 @@
 
       transform: rotate(50deg);
 
-      @include position(calc(2em + 3px), calc(0.2em + 2px));
+      @include position(calc(2em + 3px), calc(0.2em + 3px));
       @include dimensions(0.9em, 0);
     }
     &::after {
@@ -262,6 +262,7 @@
 #header {
   position: fixed;
   height: 2em;
+  z-index: 0;
 
   @include position(31vh, 0, 0);
   @include reset((background, border));
