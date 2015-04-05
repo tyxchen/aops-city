@@ -115,58 +115,68 @@ div.modactions {
   font-size: 0.7em;
 }
 
-// Quotes and code
+// Quote blocks
 
-div.quotetitle,
-div.quotecontent {
+.bbcode_quote,
+.bbcode_quote_head,
+.bbcode_quote_body {
   @include extend('%reset-all');
 }
 
-div.quotetitle {
+.bbcode_quote {
+  width: 80%;
+  margin: auto;
+}
+
+.bbcode_quote_head {
   @include extend('%heading');
 
   color: $fgSub;
-  font-size: 1.4em;
+  font-size: 1.1em;
   font-weight: normal;
   margin-left: 1rem;
+
+  // Remove quote symbol
+  &::before {
+    content: "";
+  }
 }
 
-div.quotecontent {
-  font-size: 1.7em;
+.bbcode_quote_body {
+  font-size: 1.4em;
   margin: 0.5em 1rem;
 
-  // Reduce font size and margins on nested quotes
-
-  div.quotetitle {
+  // Increase width and reduce font size and margins on nested quotes
+  .bbcode_quote {
+    width: 90%;
+  }
+  .bbcode_quote_head {
     font-size: 0.7em;
     margin-top: 1rem;
   }
-
-  div.quotecontent {
+  .bbcode_quote_body {
     font-size: 0.8em;
   }
 }
 
-.codetitle {
-  display: none;
-}
+// Code blocks
 
-.codecontent {
+pre {
   position: relative;
   font-family: Monaco, 'DejaVu Mono', Consolas, monospace;
   white-space: pre;
   overflow-x: auto;
   margin: 0.5em 1rem;
 
-  a:link {
+  &[class] a:link {
     background-image: none;
   }
 
   // Annotate with code types
-  > div::before {
+  &::before {
     @include extend('%transition03');
 
-    content: attr(class);
+    content: "code";
     position: absolute;
 
     background-color: $bgGeneral;
@@ -175,26 +185,18 @@ div.quotecontent {
     padding: 0 0.7em;
 
     @include position(0, null, 0);
-
-    // Some languages could have better names
+  }
+  // If the code is in a language, then we display what language it is
+  &[class]::before {
+    content: attr(class);
   }
   // Fade on hover to avoid obscuring code
-  &:hover > div::before {
+  &:hover::before {
     opacity: 0.2;
   }
 
-  > .cpp::before {
+  // Some languages could have better names
+  &.cpp::before {
     content: "c++";
-  }
-  > .csharp::before {
-    content: "c#";
-  }
-  > .objc::before {
-    content: "objective-c";
-  }
-
-  ol {
-    margin-top: 0;
-    overflow-x: auto;
   }
 }
