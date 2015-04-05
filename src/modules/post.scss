@@ -8,123 +8,30 @@ fieldset {
   @include extend('%reset-all');
 }
 
-// Block out header image on post/comment pages
-#postform {
+// Fix font of posting popup
+.cmty-posting-environ {
   position: relative;
-  font-family: Lato, 'Lucida Grande', 'DejaVu Sans', Verdana, sans-serif;
+  font-family: "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+}
 
-  > fieldset {
-    color: $t;
-    margin-top: 1.5em;
+// Fix positioning of buttons
+.cmty-posting-environ-buttons .btn {
+  vertical-align: top;
+}
 
-    > p:first-child {
-      margin-top: -1em;
-    }
+// Hide comment reply window (inline styles prevent this)
+.blog-reply-window {
+  display: none !important;
+
+  // Overwrite last style and show when open
+  &.blog-reply-open {
+    display: block !important;
+  }
+  // Clearfix to prevent comment link from affecting the comment reply window
+  &.blog-reply-open:before {
+    content: "";
+    display: table;
+    clear: both;
   }
 }
 
-.comment:nth-child(2),
-#postform:first-child {
-  margin-top: -70vh;
-
-  &::after {
-    @include extend('%pseudo');
-
-    position: fixed;
-    background-color: $bgGeneral;
-
-    @include position(0);
-  }
-
-  * {
-    position: relative;
-    z-index: 1;
-  }
-}
-
-// BBCode buttons
-input.btnbbcode {
-  @include extend('%reset-all');
-  @include extend('%transition03');
-
-  font-size: inherit;
-  font-family: inherit;
-  width: auto !important;
-  color: $fgGeneral;
-  margin: 0 0.2em;
-  cursor: pointer;
-
-  &:hover {
-    color: $fgAccent;
-  }
-
-  &[value~="u"],
-  &[value~="i"] {
-    text-transform: uppercase;
-  }
-}
-
-.genmed {
-  @include extend('input.btnbbcode');
-
-  cursor: auto;
-}
-
-// Button and editing wrappers
-.submit-buttons,
-#message-box {
-  margin-top: 1em;
-}
-
-#smiley-box {
-  display: none;
-}
-
-// Tabs
-#tabs {
-  text-align: center;
-
-  li {
-    display: inline-block;
-    padding: 0 0.5em;
-    border-right: 1px solid $fgSub;
-
-    &:last-child {
-      border-right: none;
-    }
-  }
-
-  .activetab a {
-    color: $fgAccent;
-    outline: none;
-  }
-}
-
-.panel {
-  margin-bottom: 0.5em;
-
-  // Reset inline styles
-  [style*="font-size"] {
-    font-size: inherit !important;
-  }
-}
-
-// Spacing for category tab
-#category-new,
-#category-sel-add {
-  display: block;
-  margin: 0.5em 0;
-}
-
-#category-new {
-  width: 20%;
-}
-
-// Errors
-.error {
-  color: #f00;
-  background-color: $bgAccent;
-  line-height: 2em;
-  padding: 0.5em 1em;
-  margin-top: 0.5em !important;
-}

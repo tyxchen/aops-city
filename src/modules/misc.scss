@@ -17,15 +17,37 @@ div.post-tags {
   margin-top: 2em;
 }
 
-// Pagination
-.total-posts {
-  font-size: 0.9em;
+.cmty-item-tag {
+  @include extend('%transition03');
+
+  background-color: $bgGeneral !important;
+  color: $fgSub !important;
+
+  font-size: 0.7em;
+
+  &:hover {
+    background-color: $bgSub10 !important;
+  }
+}
+
+.cmty-items-input {
+  display: inline;
+  width: auto;
+  background-color: #e6e6e6;
+  padding: 0.1em 0.2em !important;
+}
+
+// Hide feed
+#feed-wrapper {
+  display: none;
 }
 
 // "Comment" heading between each entry and its comments
 #main > p:not([id]) {
+  position: relative;
   float: right;
   margin-top: 1.5em;
+  z-index: 1;
 
   a:link,
   a:hover,
