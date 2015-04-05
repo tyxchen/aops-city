@@ -73,10 +73,28 @@ div.entry {
 
 div.commentwrap {
   @include extend('.entrywrap');
+
+  padding: 0.5em;
+  margin: 0.5em;
 }
 
 div.comment {
   @include extend('.entry');
+}
+
+// Replace image in comment footer with hedera
+.cfooter .author {
+  margin: 0.7em 0;
+
+  &::before {
+    content: "\2767";
+    font-size: 1.3em;
+    vertical-align: middle;
+    margin-right: 0.1em;
+  }
+  img {
+    display: none;
+  }
 }
 
 .message {
@@ -95,11 +113,6 @@ div.comment {
 div.actions,
 div.modactions {
   font-size: 0.7em;
-}
-
-// The AoPS blog structure is kinda crazy
-div.modactions div.modactions {
-  font-size: 1em;
 }
 
 // Quotes and code
