@@ -141,7 +141,7 @@ div.modactions {
 }
 
 .bbcode_quote {
-  width: 80%;
+  width: 90%;
   margin: auto;
 }
 
@@ -163,10 +163,7 @@ div.modactions {
   font-size: 1.4em;
   margin: 0.5em 1rem;
 
-  // Increase width and reduce font size and margins on nested quotes
-  .bbcode_quote {
-    width: 90%;
-  }
+  // Reduce font size and margins on nested quotes
   .bbcode_quote_head {
     font-size: 0.7em;
     margin-top: 1rem;
