@@ -100,6 +100,7 @@ div.comment {
 .message {
   overflow-x: auto;
 
+  // Links
   a:link,
   a:hover,
   a:visited {
@@ -107,6 +108,15 @@ div.comment {
   }
   a:visited {
     color: $fgGeneral;
+  }
+
+  // Hidden labels
+  .cmty-hide-heading,
+  .cmty-hide-heading:hover {
+    border-bottom: none;
+  }
+  .cmty-hide-content {
+    @include extend('%reset-all');
   }
 }
 

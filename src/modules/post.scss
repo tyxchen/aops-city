@@ -19,6 +19,12 @@ fieldset {
   vertical-align: top;
 }
 
+
+// Extend message styles to preview box
+.cmty-post-preview-text {
+  @include extend('.message');
+}
+
 // Hide comment reply window (inline styles prevent this)
 .blog-reply-window {
   display: none !important;
