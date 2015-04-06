@@ -61,9 +61,11 @@ div.entry {
       display: none;
     }
 
+    // Overwrite inline style of username links
     .username-colored,
     .username-coloured {
-      color: $fgGeneral !important;
+      color: $fgAccent !important;
+      font-weight: normal;
     }
   }
   &:hover h2 > a::before {
@@ -94,6 +96,11 @@ div.comment {
   }
   img {
     display: none;
+  }
+
+  // Make username link "pop" less
+  strong {
+    font-weight: normal;
   }
 }
 
