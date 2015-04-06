@@ -17,6 +17,9 @@ fieldset {
 // Extend message styles to preview box
 .cmty-post-preview-text {
   @include extend('.message');
+
+  // Fix font in preview box
+  font-family: Merriweather, Garamond, times, serif;
 }
 
 // Hide comment reply window (inline styles prevent this)
