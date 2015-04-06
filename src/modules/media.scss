@@ -18,7 +18,7 @@
 
   html {
     font-size: 1rem;
-    font-size: 2.5vh;
+    font-size: 2vh;
   }
 
   // smaller sized image
@@ -30,6 +30,8 @@
   #content {
     margin-top: 6rem;
     margin-top: 72vh;
+    padding-left: 4em;
+    padding-right: 4em;
   }
 
   #content::before {
@@ -37,8 +39,9 @@
   }
 
   #header h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   #navigation_box {
