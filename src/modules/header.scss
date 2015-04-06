@@ -18,6 +18,7 @@
 
 #navigation_box {
   @include extend('%reset-all');
+  @include extend('%content-box');
   @include extend('%no-user-select');
   @include extend('%transition03');
 
@@ -28,30 +29,34 @@
   font-size: 0.9em;
 
   white-space: nowrap;
-  padding: 0.2em 1em;
-  padding-top: 0.1em;
+  padding: 0 1em;
   border-bottom: 1px solid lighten($bgSub, 13%);
 
   opacity: 0.95;
-  z-index: 10;
+  z-index: 100;
 
   @include position(0, 0, 0);
+  @include dimensions(auto, 3rem);
 
   a {
     @include extend('%title');
 
+    display: inline;
+
     color: $ovrHeader;
     text-shadow: none;
+    font-size: inherit;
     font-weight: 300;
-    line-height: 3em;
+    line-height: 3rem;
 
-    padding: 1em 0.4em;
+    padding: 1.1em 0.4em;
     border-top: 0.3em solid lighten($ovrHeader, 2%);
     margin: 0 -0.3em;
 
     transition: 0.2s ease;
 
-    &:hover {
+    &:hover,
+    &:focus {
       padding-top: 0.8em;
       color: darken($ovrHeader, 10%);
     }
@@ -62,11 +67,17 @@
   }
 }
 
+#left_navigation_box {
+  height: 100%;
+  font-size: inherit;
+  line-height: inherit;
+}
+
 #right_navigation_box {
   position: relative;
-  margin-right: 2.2rem;
+  margin-right: 2.8rem;
 
-  @include dimensions(2.5em, 3em);
+  @include dimensions(7.5em, 3em);
 
   a {
     @include extend('%border-box');
@@ -76,32 +87,18 @@
     color: $t;
     font-size: 0.01px;
 
-    @include position(-2px, 0.25rem);
     @include dimensions(2.5rem, 3rem);
 
-    // The icon covers the bottom border in Chrome
-    @include no-prefix { border-bottom: -webkit-calc(1px) solid lighten($bgSub, 13%); }
-
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: lighten($bgSub, 16%);
-    }
-
-     &[href="#"] {
-      background-color: $fgHeader;
-      z-index: 15;
-      pointer-events: none;
-
-      &::before,
-      &::after {
-        display: none;
-      }
     }
   }
 
-  // Settings icon
   //
-  // &::before, &::after - the two sliders
-  // a::before, a::after - the two knobs
+  // Icons
+  //
+
   &::before,
   &::after,
   a::before,
@@ -115,22 +112,148 @@
   &::before,
   &::after {
     z-index: 11;
-
-    @include position(0.9em, null, 0.4em);
-    @include dimensions(1px, 1.7em);
   }
-  &::after {
+
+  // Info icon
+  //
+  // &::before - the body of the "i"
+  // &::after  - the dot of the "i"
+  .blog-info {
+    left: 0;
+
+    &::before {
+      @include position(1.8em, 1.5em);
+      @include dimensions(1px, 0.85em);
+    }
+    &::after {
+      border-radius: 3px;
+
+      @include position(1.2em, calc(1.5em - 1px));
+      @include dimensions(3px, 3px);
+    }
+  }
+
+  // Subscribe icon
+  //
+  // &::before - the outer "ring"
+  // &::after  - the inner "ring"
+  // $parent::before - the central dot
+  //
+  // [title*="stop"] - The icon when the user is already subscribed
+  #blog-subscribe {
+    left: 2.5rem;
+
+    &::before,
+    &::after {
+      background-color: $t;
+      border: solid invert($fgSub);
+      border-width: 1px 1px 0 0;
+    }
+    &::before {
+      border-top-right-radius: 1.5em;
+
+      @include position(1.2em, 0.8em);
+      @include dimensions(1.5em);
+    }
+    &::after {
+      border-top-right-radius: 0.9em;
+
+      @include position(1.8em, 0.8em);
+      @include dimensions(0.9em);
+    }
+  }
+  #blog-subscribe[title*="stop"] {
+    background-color: lighten($bgSub, 15%);
+
+    &::before {
+      border-width: 1px 0 5px 0;
+      border-bottom-color: lighten($bgSub, 15%); // Block RSS feed dot
+      border-radius: 0;
+      z-index: 12;
+
+      transform: rotate(50deg);
+
+      @include position(calc(2em + 3px), calc(0.2em + 3px));
+      @include dimensions(0.9em, 0);
+    }
+    &::after {
+      width: 1.8em;
+      border-width: 1px 0 0 0;
+      border-radius: 0;
+
+      transform: rotate(-50deg);
+
+      @include position(1.8em, 1.3em);
+    }
+  }
+
+  &::before {
+    border-radius: 0.3em;
+
+    @include position(2.4em, 3.95em);
+    @include dimensions(0.3em);
+  }
+
+  // Login/logout icon
+  //
+  // &::before - the stem of the arrow
+  // &::after  - the tip of the arrow
+  // $parent::after - the door(frame)
+  .blog-login,
+  .blog-logout {
+    left: 5rem;
+
+    &::before,
+    &::after {
+      z-index: 12;
+    }
+    &::before {
+      @include extend('%content-box');
+
+      border: 3px solid $fgHeader;
+      border-left: none;
+
+      @include position(calc(1.8092em - 3px), 1.3em);
+      @include dimensions(0.7em, 1px); // Golden ratio
+    }
+    &::after {
+      background-color: $t;
+      border: 1px solid invert($fgSub);
+      border-width: 1px 1px 0 0;
+
+      transform: rotate(45deg);
+
+      @include position(1.7092em, 1.8em);
+      @include dimensions(0.4em);
+    }
+    &:hover::before {
+      border-color: lighten($bgSub, 16%);
+    }
+  }
+  .blog-login::before {
     left: 1.4em;
   }
-  a::before,
-  a::after {
-    transition: 0.2s ease;
-
-    @include position(1.4em, 0.9em);
-    @include dimensions(5px, 2px);
+  .blog-login::after {
+    left: 1.2em;
+    transform: rotate(-135deg);
   }
-  a::after {
-    @include position(2.2em, 1.9em);
+  &::after {
+    background-color: $t;
+    border: 1px solid invert($fgSub);
+
+    @include position(1.1em, 7em);
+    @include dimensions(1em, 1.61803em);
+  }
+
+  // Move info icon when user is not logged in and cover RSS icon dot
+  .blog-login + .blog-info {
+    left: 2.5rem;
+    background-color: $fgHeader;
+    z-index: 12;
+
+    &:hover {
+      background-color: lighten($bgSub, 16%);
+    }
   }
 }
 
@@ -139,6 +262,7 @@
 #header {
   position: fixed;
   height: 2em;
+  z-index: 0;
 
   @include position(31vh, 0, 0);
   @include reset((background, border));
@@ -150,11 +274,22 @@
 
     font-size: 1.1em;
     font-weight: 200;
+    text-decoration: none;
     z-index: 10;
 
     // Remove extra space from first letter in Chrome
     &::first-letter {
       @include no-prefix { margin-right: -webkit-calc(-0.08em); }
     }
+  }
+  // Add small home icon as an accessibility aid
+  a:focus h1::before {
+    content: "\f015";
+    position: absolute;
+
+    font-family: FontAwesome;
+    font-size: 0.6em;
+    opacity: 0.3;
+    margin-left: -1em;
   }
 }

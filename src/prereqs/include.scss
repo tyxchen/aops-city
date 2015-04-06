@@ -18,6 +18,12 @@
   box-sizing: border-box;
 }
 
+/* Set box-sizing to content-box */
+%content-box {
+  /* Source for %content-box */
+  box-sizing: content-box;
+}
+
 /* No user select */
 %no-user-select {
   /* Source for %no-user-select */

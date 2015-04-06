@@ -41,7 +41,7 @@ body {
 #content {
   position: relative;
   background-color: $bgGeneral;
-  padding: 0 5vw;
+  padding: 0 calc((100% - 48em) / 2); // Keep width of content constant relative to font size
   padding-top: 5vh;
   margin-top: 72vh;
 

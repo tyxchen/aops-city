@@ -11,6 +11,11 @@ a:visited {
   color: darken($fgGeneral, 9%);
 }
 
+// Add subtle border to focused links as an accessibility aid
+a:focus {
+  border-bottom: 1px dotted $bgSub !important;
+}
+
 // Headings
 h1,
 h2,
@@ -32,8 +37,7 @@ h2 {
 }
 
 // Custom underline code
-[style="text-decoration: underline"],
-.hidden-label {
+[style="text-decoration: underline"] {
   // Based on
   // https://medium.com/designing-medium/crafting-link-underlines-on-medium-7c03a9274f9
 
@@ -48,24 +52,31 @@ h2 {
 // Text inputs
 [type="text"],
 textarea {
-  @include extend('%border-box');
-  @include extend('%transition03');
-
-  background-color: $bgGeneral;
   font-size: inherit;
-  width: 100%;
 
-  padding: 0.5em;
-  border: 1px solid $bgSub10;
-  border-radius: 0.3em;
-  outline: none;
-
-  &:hover {
-    border-color: $bgSub5;
-  }
-  &:focus {
-    border-color: $bgSub;
-  }
+  //
+  // BEGIN UNREFACTORED CODE
+  //
+//  @include extend('%border-box');
+//  @include extend('%transition03');
+//
+//  background-color: $bgGeneral;
+//  font-size: inherit;
+//
+//  padding: 0.5em;
+//  border: 1px solid $bgSub10;
+//  border-radius: 0.3em;
+//  outline: none;
+//
+//  &:hover {
+//    border-color: $bgSub5;
+//  }
+//  &:focus {
+//    border-color: $bgSub;
+//  }
+  //
+  // END UNREFACTORED CODE
+  //
 }
 
 textarea {
@@ -77,28 +88,35 @@ textarea {
 [type="reset"],
 [type="submit"],
 button {
-  @include extend('%reset-all');
-  @include extend('%transition03');
-
-  background-color: $bgGeneral;
-  font-size: inherit;
-  font-family: Lato, 'Lucida Grande', 'DejaVu Sans', Verdana, sans-serif;
-
-  padding: 0.2em 0.5em !important;
-  border-bottom: 0.1em solid $bgSub;
-  border-radius: 0.3em;
-  box-shadow: 0 0 0 1px $bgSub10;
-  cursor: pointer;
-
-  &:hover {
-    background-color: darken($bgGeneral, 5%);
-  }
-  &:focus {
-    background-color: darken($bgGeneral, 10%);
-  }
+  //
+  // BEGIN UNREFACTORED CODE
+  //
+//  @include extend('%reset-all');
+//  @include extend('%transition03');
+//
+//  background-color: $bgGeneral;
+//  font-size: inherit;
+//  font-family: Lato, 'Lucida Grande', 'DejaVu Sans', Verdana, sans-serif;
+//
+//  padding: 0.2em 0.5em !important;
+//  border-bottom: 0.1em solid $bgSub;
+//  border-radius: 0.3em;
+//  box-shadow: 0 0 0 1px $bgSub10;
+//  cursor: pointer;
+//
+//  &:hover {
+//    background-color: darken($bgGeneral, 5%);
+//  }
+//  &:focus {
+//    background-color: darken($bgGeneral, 10%);
+//  }
+  //
+  // END UNREFACTORED CODE
+  //
 }
 
 // Scrollbars
+
 ::-webkit-scrollbar {
   background-color: $bgGeneral;
 
@@ -109,13 +127,19 @@ button {
   background-color: $bgSub;
   border: 0.25rem solid $bgGeneral;
   border-radius: 0.5rem;
-}
 
-::-webkit-scrollbar-thumb:hover {
-  background-color: darken($bgSub, 5%);
-  border-width: 0.2rem;
-}
+  &:hover {
+    background-color: darken($bgSub, 5%);
+    border-width: 0.2rem;
+  }
+  &:active {
+    background-color: $fgSub;
+  }
 
-::-webkit-scrollbar-thumb:active {
-  background-color: $fgSub;
+  &:horizontal {
+    border-width: 0.2rem;
+  }
+  &:horizontal:hover {
+    border-width: 0.15rem;
+  }
 }

@@ -52,32 +52,62 @@ div.entry {
       content: "\00B6";
       position: absolute;
       color: $t;
-      font-size: 1.8em;
+      font-size: 1.7em;
       margin-right: 0.3em;
 
-      @include position(0.1em, 0);
+      @include position(-2.15rem, -1em);
+    }
+    img {
+      display: none;
+    }
+
+    // Overwrite inline style of username links
+    .username-colored,
+    .username-coloured {
+      color: $fgAccent !important;
+      font-weight: normal;
     }
   }
   &:hover h2 > a::before {
     color: $bgSub;
   }
-
-  img[alt='Permanent Link'] {
-    display: none;
-  }
 }
 
 div.commentwrap {
   @include extend('.entrywrap');
+
+  padding: 0.5em;
+  margin: 0.5em;
 }
 
 div.comment {
   @include extend('.entry');
 }
 
+// Replace image in comment footer with hedera
+.cfooter .author {
+  margin: 0.7em 0;
+
+  &::before {
+    content: "\2767";
+    font-size: 1.3em;
+    vertical-align: middle;
+    margin-right: 0.1em;
+  }
+  img {
+    display: none;
+  }
+
+  // Make username link "pop" less
+  strong {
+    font-weight: normal;
+  }
+}
+
 .message {
   overflow-x: auto;
 
+  // Links
   a:link,
   a:hover,
   a:visited {
@@ -86,6 +116,15 @@ div.comment {
   a:visited {
     color: $fgGeneral;
   }
+
+  // Hidden labels
+  .cmty-hide-heading,
+  .cmty-hide-heading:hover {
+    border-bottom: none;
+  }
+  .cmty-hide-content {
+    @include extend('%reset-all');
+  }
 }
 
 div.actions,
@@ -93,63 +132,65 @@ div.modactions {
   font-size: 0.7em;
 }
 
-// The AoPS blog structure is kinda crazy
-div.modactions div.modactions {
-  font-size: 1em;
-}
+// Quote blocks
 
-// Quotes and code
-
-div.quotetitle,
-div.quotecontent {
+.bbcode_quote,
+.bbcode_quote_head,
+.bbcode_quote_body {
   @include extend('%reset-all');
 }
 
-div.quotetitle {
+.bbcode_quote {
+  width: 90%;
+  margin: auto;
+}
+
+.bbcode_quote_head {
   @include extend('%heading');
 
   color: $fgSub;
-  font-size: 1.4em;
+  font-size: 1.1em;
   font-weight: normal;
   margin-left: 1rem;
+
+  // Remove quote symbol
+  &::before {
+    content: "";
+  }
 }
 
-div.quotecontent {
-  font-size: 1.7em;
+.bbcode_quote_body {
+  font-size: 1.4em;
   margin: 0.5em 1rem;
 
   // Reduce font size and margins on nested quotes
-
-  div.quotetitle {
+  .bbcode_quote_head {
     font-size: 0.7em;
     margin-top: 1rem;
   }
-
-  div.quotecontent {
+  .bbcode_quote_body {
     font-size: 0.8em;
   }
 }
 
-.codetitle {
-  display: none;
-}
+// Code blocks
 
-.codecontent {
+pre {
   position: relative;
   font-family: Monaco, 'DejaVu Mono', Consolas, monospace;
   white-space: pre;
   overflow-x: auto;
   margin: 0.5em 1rem;
 
-  a:link {
+  &[class] a:link {
     background-image: none;
   }
 
   // Annotate with code types
-  > div::before {
+  &::before {
     @include extend('%transition03');
 
-    content: attr(class);
+    content: "code";
     position: absolute;
 
     background-color: $bgGeneral;
@@ -158,26 +199,18 @@ div.quotecontent {
     padding: 0 0.7em;
 
     @include position(0, null, 0);
-
-    // Some languages could have better names
+  }
+  // If the code is in a language, then we display what language it is
+  &[class]::before {
+    content: attr(class);
   }
   // Fade on hover to avoid obscuring code
-  &:hover > div::before {
+  &:hover::before {
     opacity: 0.2;
   }
 
-  > .cpp::before {
+  // Some languages could have better names
+  &.cpp::before {
     content: "c++";
-  }
-  > .csharp::before {
-    content: "c#";
-  }
-  > .objc::before {
-    content: "objective-c";
-  }
-
-  ol {
-    margin-top: 0;
-    overflow-x: auto;
   }
 }

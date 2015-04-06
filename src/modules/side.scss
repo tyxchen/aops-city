@@ -10,7 +10,7 @@
 }
 
 // Hide all widgets
-.widget {
+#side > div {
   display: none;
 }
 
@@ -93,8 +93,8 @@
 }
 
 // Search widget
-.widget:not([id]) {
-  display: block;
+#search-widget {
+  display: block !important;
   z-index: 10;
 
   .widget-header,
@@ -118,8 +118,8 @@
   // we need the important flag as the scss compiler messes with placeholder
   // extends, creating a #blog_keywords[type="text"] rule with border-color
   // set to lighten($bgSub, 5%)
-  border-left: 1.6em solid $fgHeader !important;
-  z-index: 11;
+  border-left: 2.5em solid $fgHeader !important;
+  z-index: 100;
   cursor: pointer;
 
   transition:
@@ -148,21 +148,21 @@
   }
 
   + div {
-    @include extend('%border-box');
+    @include extend('%content-box');
 
     position: fixed;
     top: -3px; // counteract inline margin
     right: 0;
 
     background-color: $t;
-    display: block;
+    display: block !important;
     font-size: 0;
     overflow: hidden;
     pointer-events: none;
-    z-index: 11;
+    z-index: 100;
 
-    // Preserve the symmetry of the icon by adding a camoflauged border-right
-    border-right: 0.2rem solid $fgHeader;
+    // Add a subtle delimiter
+    border-left: 1px solid $bgSub10;
 
     transition:
       background-color 0.3s ease 0.13s,
@@ -189,7 +189,7 @@
 
     background-color: $t;
 
-    @include position(1rem, 0.7rem);
+    @include position(1rem, 0.8rem);
     @include dimensions(0.8rem);
   }
   + div::before {
@@ -200,7 +200,7 @@
     background-color: $ovrHeader;
     transform: rotate(-40deg);
 
-    @include position(1.6rem, 1.5rem);
+    @include position(1.6rem, 1.6rem);
     @include dimensions(1.4px, 0.6rem);
   }
   + div::after {
