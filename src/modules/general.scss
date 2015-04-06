@@ -111,6 +111,7 @@ button {
 }
 
 // Scrollbars
+
 ::-webkit-scrollbar {
   background-color: $bgGeneral;
 
@@ -121,13 +122,19 @@ button {
   background-color: $bgSub;
   border: 0.25rem solid $bgGeneral;
   border-radius: 0.5rem;
-}
 
-::-webkit-scrollbar-thumb:hover {
-  background-color: darken($bgSub, 5%);
-  border-width: 0.2rem;
-}
+  &:hover {
+    background-color: darken($bgSub, 5%);
+    border-width: 0.2rem;
+  }
+  &:active {
+    background-color: $fgSub;
+  }
 
-::-webkit-scrollbar-thumb:active {
-  background-color: $fgSub;
+  &:horizontal {
+    border-width: 0.2rem;
+  }
+  &:horizontal:hover {
+    border-width: 0.15rem;
+  }
 }
