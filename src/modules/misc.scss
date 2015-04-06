@@ -56,6 +56,19 @@ div.post-tags {
   }
 }
 
+// Fix fonts of modals and flyout
+.aops-modal-title,
+#flyout {
+  @include extend('%heading');
+
+  text-align: left;
+  padding-right: 5px;
+}
+
+.aops-modal-body {
+  font-family: "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+}
+
 #main > h1 {
   padding-bottom: 0.2em;
   border-bottom: 1px solid $bgSub10;

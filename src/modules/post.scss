@@ -8,12 +8,6 @@ fieldset {
   @include extend('%reset-all');
 }
 
-// Fix font of posting popup
-.cmty-posting-environ {
-  position: relative;
-  font-family: "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
-}
-
 // Fix positioning of buttons
 .cmty-posting-environ-buttons .btn {
   vertical-align: top;
