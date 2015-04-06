@@ -55,7 +55,8 @@
 
     transition: 0.2s ease;
 
-    &:hover {
+    &:hover,
+    &:focus {
       padding-top: 0.8em;
       color: darken($ovrHeader, 10%);
     }
@@ -88,7 +89,8 @@
 
     @include dimensions(2.5rem, 3rem);
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: lighten($bgSub, 16%);
     }
   }
@@ -279,5 +281,15 @@
     &::first-letter {
       @include no-prefix { margin-right: -webkit-calc(-0.08em); }
     }
+  }
+  // Add small home icon as an accessibility aid
+  a:focus h1::before {
+    content: "\f015";
+    position: absolute;
+
+    font-family: FontAwesome;
+    font-size: 0.6em;
+    opacity: 0.3;
+    margin-left: -1em;
   }
 }

@@ -11,6 +11,11 @@ a:visited {
   color: darken($fgGeneral, 9%);
 }
 
+// Add subtle border to focused links as an accessibility aid
+a:focus {
+  border-bottom: 1px dotted $bgSub !important;
+}
+
 // Headings
 h1,
 h2,
