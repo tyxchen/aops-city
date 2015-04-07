@@ -34,7 +34,7 @@ gulp.task('production', ['build:sass'], function () {
     .pipe(gulp.dest('dist/'))
     // minified version
     .pipe(rename({suffix: '.min'}))
-    .pipe(cssmin())
+    .pipe(cssmin({processImport: false}))
     .pipe(gulp.dest('dist/'));
 });
 
