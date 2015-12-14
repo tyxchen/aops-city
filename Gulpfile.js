@@ -6,6 +6,12 @@
 
 'use strict';
 
+// If NodeJS version is 0.10.x, use Promise polyfill to support Autoprefixer
+if (/0.10/.test(process.version)) {
+  console.log("NodeJS 0.10.x detected; using Promise polyfill");
+  require('es6-promise').polyfill();
+}
+
 var gulp = require('gulp'),
     sass = require('gulp-ruby-sass'),
     autoprefixer = require('gulp-autoprefixer'),
