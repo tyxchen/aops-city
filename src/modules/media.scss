@@ -21,11 +21,6 @@
     font-size: 2vh;
   }
 
-  // smaller sized image
-  body::after {
-    background-image: url('http://i.imgur.com/25xM0pc.png');
-  }
-
   // Viewport unit fallback for old mobile browsers
   #content {
     margin-top: 6rem;

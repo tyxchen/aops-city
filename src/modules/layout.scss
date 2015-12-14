@@ -17,15 +17,16 @@ body {
 
     position: fixed;
 
-    // Background picture modified from
-    // http://wallpaperswide.com/manhattan-wallpapers.html
-    background-image: url('https://i.imgur.com/ICzZp79.jpg');
+    /* Background picture modified from
+       http://wallpaperswide.com/manhattan-wallpapers.html */
+    background-image: url('//cdn.artofproblemsolving.com/images/5/0/7/507c1c71bf8a07bfe0c49976c9f2a42220fccc75.jpg');
     background-position: 42% 0;
     background-size: cover;
 
     z-index: -1;
 
-    @include position(0, 0, 0, 0);
+    @include position(0, -1em, -1em, 0);
+    @include filter("blur", 3px);
   }
 }
 
@@ -59,4 +60,3 @@ body {
     @include position(-15vh, 0, 0, 100%);
   }
 }
-
