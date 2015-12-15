@@ -18,21 +18,23 @@
 
   html {
     font-size: 1rem;
-    font-size: 2vh;
+    font-size: 4vw;
   }
 
-  // Viewport unit fallback for old mobile browsers
   #content {
-    margin-top: 6rem;
-    margin-top: 72vh;
-    padding-left: 4em;
-    padding-right: 4em;
+    margin-top: 20rem;
+    padding-left: 2em;
+    padding-right: 2em;
   }
 
   #content::before {
     display: none;
   }
 
+  #header {
+    top: 8rem;
+  }
+  
   #header h1 {
     font-size: 4rem;
     text-overflow: ellipsis;
@@ -72,7 +74,7 @@
     width: 100%;
   }
 
-  #user-menu-widget strong a {
+  #user-menu-widget .username-colored {
     display: none;
   }
 
@@ -96,22 +98,8 @@
     }
   }
 
-  .codecontent {
-    white-space: normal;
-    overflow-x: visible;
-    margin-left: 0;
-
-    ol {
-      white-space: pre;
-      margin-left: 0;
-    }
-
-    > div::before {
-      top: -2.5rem;
-    }
-    &:hover > div::before {
-      opacity: 0.8
-    }
+  pre::before {
+    display: none;
   }
 }
 
@@ -123,7 +111,7 @@
                    and (min-resolution: 132dpi) and (orientation: landscape),
        only screen and (min-resolution: 1.5dppx) and (orientation: landscape) {
   html {
-    font-size: 5vh;
+    font-size: 2.5vw;
   }
 
   body::after {
@@ -131,11 +119,15 @@
   }
 
   #content {
-    margin-top: 90vh;
+    margin-top: 16rem;
+  }
+
+  #header {
+    top: 6rem;
   }
 
   #user-menu-widget .avatar {
-    top: -1.6rem;
+    top: -2.1rem;
     margin-left: -1.6rem;
 
     img {
