@@ -129,7 +129,7 @@
     background-color 0s linear 0.4s;
 
   @include reset((border, box-shadow, border-radius));
-  @include dimensions(0, 3em);
+  @include dimensions(0, 3rem);
 
   &:focus {
     @extend :hover;
