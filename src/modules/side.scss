@@ -16,6 +16,7 @@
 
 // User widget
 #user-menu-widget {
+  display: block !important;
   font-size: 0.01px;
 
   p {
@@ -27,7 +28,7 @@
     display: block;
     margin-left: -2.5rem;
 
-    @include position(-2.6rem, 50%);
+    @include position(-2.95rem, 50%);
 
     img {
       background-color: $bgSub;
@@ -40,27 +41,27 @@
     }
   }
 
-  strong a {
+  .username-colored {
     @include extend('%heading');
 
     position: absolute;
     display: block;
 
+    color: $t;
     font-size: 0.8rem;
     text-overflow: ellipsis;
-    color: $t;
     line-height: 5rem;
 
     border-radius: 50%;
-    padding: 0.2rem;
+    padding: 0.1rem;
     margin-left: -2.5rem;
     overflow: hidden;
     z-index: 1;
 
     transition: 0.15s 0.02s ease-in;
 
-    @include position(-2.7rem, 50%);
-    @include dimensions(4.8rem);
+    @include position(-2.55rem, 50%);
+    @include dimensions(5rem);
 
     &::after {
       content: "";
