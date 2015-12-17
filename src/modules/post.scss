@@ -8,9 +8,51 @@ fieldset {
   @include extend('%reset-all');
 }
 
+// Completely revamp posting form
+.cmty-posting-modal {
+    border-width: 32px;
+    border-color: $bgGeneral;
+    border-radius: 1em;
+
+    .aops-close-x {
+        @include extend('%content-box');
+        @include position(-32px, null, -32px);
+
+        color: $fgSub;
+        background-color: $t;
+
+        padding: 6px;
+        border-radius: 0;
+
+        &::before,
+        &::after {
+          @include extend('%pseudo');
+
+          background-color: invert($fgSub);
+
+          transform: rotate(45deg);
+
+          @include position(19px, 2px);
+          @include dimensions(21px, 1px);
+        }
+        &::after {
+          transform: rotate(-45deg);
+        }
+    }
+}
+.cmty-posting-top,
+.cmty-posting-button-row {
+  color: $fgGeneral;
+
+  @include reset(background);
+}
 // Fix positioning of buttons
 .cmty-posting-environ-buttons .btn {
   vertical-align: top;
+}
+// Change colour of BBCode overflow button
+.cmty-bbcode-btn {
+  color: $fgGeneral;
 }
 
 
@@ -37,4 +79,3 @@ fieldset {
     clear: both;
   }
 }
-
