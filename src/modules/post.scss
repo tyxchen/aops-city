@@ -10,9 +10,22 @@ fieldset {
 
 // Completely revamp posting form
 .cmty-posting-modal {
+  @include extend('%border-box');
     border-width: 32px;
     border-color: $bgGeneral;
-    border-radius: 1em;
+
+    // Make modal full-screen
+    // TODO: add 0.3s fade transition instead of current sudden cut
+    transform: none !important; // for the positioning hack used in the EvDo blog emulation code
+    max-width: 100% !important;
+    max-height: 100% !important;
+
+    @include position(0 !important,
+                      0 !important,
+                      0 !important,
+                      0 !important);
+    @include dimensions(100% !important,
+                        100% !important);
 
     .aops-close-x {
         @include extend('%content-box');
@@ -32,7 +45,7 @@ fieldset {
 
           transform: rotate(45deg);
 
-          @include position(19px, 2px);
+          @include position(18px, 3px);
           @include dimensions(21px, 1px);
         }
         &::after {
