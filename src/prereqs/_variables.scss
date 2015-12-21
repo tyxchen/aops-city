@@ -33,3 +33,9 @@ $bgSub10: #e6e6e6;
 $fgSub: #aaa;
 
 $t: transparent;
+
+// Animation timing variables
+// $transitionDuration       - Default duration of all UI transitions
+// $postingAnimationDuration - Duration of default animations in post.scss
+$transitionDuration: 0.3s;
+$postingAnimationDuration: 6s;

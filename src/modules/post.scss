@@ -11,48 +11,229 @@ fieldset {
 // Completely revamp posting form
 .cmty-posting-modal {
   @include extend('%border-box');
-    border-width: 32px;
-    border-color: $bgGeneral;
 
-    // Make modal full-screen
-    // TODO: add 0.3s fade transition instead of current sudden cut
-    transform: none !important; // for the positioning hack used in the EvDo blog emulation code
-    max-width: 100% !important;
-    max-height: 100% !important;
+  border-width: 32px;
+  border-color: $bgGeneral;
 
-    @include position(0 !important,
-                      0 !important,
-                      0 !important,
-                      0 !important);
-    @include dimensions(100% !important,
-                        100% !important);
+  // Make modal full-screen
+  // TODO: add 0.3s fade transition instead of current sudden cut
+  // transform prop for the positioning hack used in the EvDo blog emulation code
+  transform: none !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
 
-    .aops-close-x {
-        @include extend('%content-box');
-        @include position(-32px, null, -32px);
+  @include position(0 !important,
+                    0 !important,
+                    0 !important,
+                    0 !important);
+  @include dimensions(100% !important,
+                      100% !important);
 
-        color: $fgSub;
-        background-color: $t;
+  // Style the close button as line-art
+  .aops-close-x {
+    @include extend('%content-box');
+    @include position(-32px, null, -32px);
 
-        padding: 6px;
-        border-radius: 0;
+    color: $fgSub;
+    background-color: $t;
 
-        &::before,
-        &::after {
-          @include extend('%pseudo');
+    padding: 6px;
+    border-radius: 0;
 
-          background-color: invert($fgSub);
+    &::before,
+    &::after {
+      @include extend('%pseudo');
 
-          transform: rotate(45deg);
+      background-color: invert($fgSub);
 
-          @include position(18px, 3px);
-          @include dimensions(21px, 1px);
-        }
-        &::after {
-          transform: rotate(-45deg);
-        }
+      transform: rotate(45deg);
+
+      @include position(18px, 3px);
+      @include dimensions(21px, 1px);
     }
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  // Style faux-placeholders
+  .cmty-heading-text {
+    @include extend('%heading');
+
+    position: absolute;
+
+    opacity: 0;
+    color: $fgSub;
+    font-size: inherit;
+  }
 }
+
+// Flash faux-placeholder fields, then fade
+//
+// Subject: Flash 3 times
+// Tags: Flash 1 time
+// Body: Flash 2 times
+@keyframes flash-post-subject {
+  0%   { opacity: 1 }
+  5%   { opacity: 1 }
+  20%  { opacity: 0.5 }
+  27%  { opacity: 1 }
+  42%  { opacity: 0.5 }
+  49%  { opacity: 1 }
+  64%  { opacity: 0.5 }
+  71%  { opacity: 1 }
+  100% { opacity: 0 }
+}
+@keyframes flash-post-tags {
+  0%   { opacity: 1 }
+  49%  { opacity: 1 }
+  64%  { opacity: 0.5 }
+  71%  { opacity: 1 }
+  100% { opacity: 0 }
+}
+@keyframes flash-post-body {
+  0%   { opacity: 1 }
+  27%  { opacity: 1 }
+  42%  { opacity: 0.5 }
+  49%  { opacity: 1 }
+  64%  { opacity: 0.5 }
+  71%  { opacity: 1 }
+  100% { opacity: 0 }
+}
+
+// Subject
+.cmty-posting-subject-line {
+  position: relative;
+
+  font-size: 2.5em;
+  padding: 10px 0;
+
+  // Style faux-placeholder
+  .cmty-heading-text {
+    margin: 0.3em 0.2em;
+
+    animation: flash-post-subject $postingAnimationDuration ease;
+  }
+
+  // Style text input
+  .cmty-subject-input {
+    @include extend('%heading');
+
+    position: relative;
+
+    background-color: $t !important;
+    padding-left: 0.2em;
+
+    // Cover up the faux-placeholder for #{$transitionDuration} after focus
+    // This is to prevent the placeholder from showing behind any user-entered text
+    transition: background-color $transitionDuration $postingAnimationDuration ease,
+                border-color $transitionDuration ease;
+
+    @include dimensions(100%, 2em);
+
+    &:focus {
+      background-color: $bgGeneral !important;
+
+      // Make sure the transition to the focus state is snappy
+      transition: background-color $transitionDuration 0s ease,
+                  border-color $transitionDuration ease;
+    }
+  }
+
+  // Remove the forum context
+  .cmty-post-in {
+    display: none;
+  }
+}
+
+// Tags
+.cmty-tags-line {
+  padding: 0;
+
+  // Again, the faux-placeholder
+  .cmty-heading-text {
+    text-align: left;
+    margin: 0.2em;
+
+    animation: flash-post-tags $postingAnimationDuration ease;
+  }
+
+  // Reset a few AoPS styles
+  .cmty-items-input-box {
+    background-color: $t;
+
+    padding: 0;
+    border: none;
+  }
+
+  // The tags input box
+  // Dear AoPS devs: the world is a better place w/o !important. Don't use it and I won't either :)
+  .cmty-items-input {
+    @include extend('%heading');
+
+    background-color: $t !important;
+
+    padding: 0.3em 0.2em !important;
+    margin-bottom: 0.5em;
+
+    transition: background-color $transitionDuration $postingAnimationDuration ease,
+                border-color $transitionDuration ease;
+
+    /* Following styles copied from text inputs; see general.scss */
+    border-width: 0 0 1px !important;
+    border-style: solid !important;
+    border-color: $bgSub5 !important;
+
+    &:hover {
+      border-color: $bgSub !important;
+    }
+    &:focus {
+      background-color: $bgGeneral !important;
+      border-color: $fgSub !important;
+
+      transition: background-color $transitionDuration 0s ease,
+                  border-color $transitionDuration ease;
+    }
+  }
+}
+
+// Post body
+// Create a faux-placeholder from pseudo-elements
+.cmty-posting-box-container::before {
+  @include extend('%heading');
+
+  content: "Message";
+  position: absolute;
+
+  opacity: 0;
+  color: $fgSub;
+  font-size: 1.2em;
+
+  margin: 0.3em;
+
+  animation: flash-post-body $postingAnimationDuration ease;
+}
+
+// The post textarea
+.cmty-posting-box-container .cmty-post-textarea {
+  position: relative;
+
+  background-color: $t;
+  padding: 0.5em 0.3em;
+
+  transition: background-color $transitionDuration $postingAnimationDuration ease,
+              border-color $transitionDuration ease;
+
+  &:focus {
+    background-color: $bgGeneral;
+
+    transition: background-color $transitionDuration 0s ease,
+                border-color $transitionDuration ease;
+  }
+}
+
+// Buttons
+// Reset colour scheme of buttons
 .cmty-posting-top,
 .cmty-posting-button-row {
   color: $fgGeneral;
@@ -68,7 +249,11 @@ fieldset {
   color: $fgGeneral;
 }
 
-
+// Change colour scheme of preview bar
+.cmty-posting-preview-bar {
+  background-color: $bgGeneral;
+  color: $fgGeneral;
+}
 // Extend message styles to preview box
 .cmty-post-preview-text {
   @include extend('.message');
