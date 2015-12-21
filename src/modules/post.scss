@@ -9,18 +9,33 @@ fieldset {
 }
 
 // Completely revamp posting form
+// To facilitate the enter/exit animations, we make the modal wrapper visible on the DOM level at
+// all times, but invisible to user actions…
+.aops-modal-wrapper {
+  display: block !important;
+  pointer-events: none;
+
+  // …until the modal is open.
+  .aops-modal-open & {
+    pointer-events: all;
+  }
+}
+
+// Styling the actual modal itself
 .cmty-posting-modal {
   @include extend('%border-box');
 
   border-width: 32px;
   border-color: $bgGeneral;
+  box-shadow: 0 0 10% $fgGeneral;
 
   // Make modal full-screen
-  // TODO: add 0.3s fade transition instead of current sudden cut
-  // transform prop for the positioning hack used in the EvDo blog emulation code
-  transform: none !important;
   max-width: 100% !important;
   max-height: 100% !important;
+
+  // Animate modal to slide in from bottom
+  transform: translateY(110%) !important;
+  transition: transform 2*$transitionDuration ease;
 
   @include position(0 !important,
                     0 !important,
@@ -28,6 +43,21 @@ fieldset {
                     0 !important);
   @include dimensions(100% !important,
                       100% !important);
+
+  .aops-modal-open & {
+    transform: translateY(0) !important;
+  }
+
+  // Fade in the modal's contents
+  .aops-modal-content-wrapper {
+    opacity: 0;
+
+    transition: opacity 2*$transitionDuration 2*$transitionDuration ease;
+
+    .aops-modal-open & {
+      opacity: 1;
+    }
+  }
 
   // Style the close button as line-art
   .aops-close-x {
