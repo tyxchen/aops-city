@@ -52,35 +52,24 @@ h2 {
 // Text inputs
 [type="text"],
 textarea {
+  @include extend('%border-box');
+  @include extend('%transition03');
+
+  background-color: $bgGeneral;
   font-size: inherit;
-
-  //
-  // BEGIN UNREFACTORED CODE
-  //
-//  @include extend('%border-box');
-//  @include extend('%transition03');
-//
-//  background-color: $bgGeneral;
-//  font-size: inherit;
-//
-//  padding: 0.5em;
-//  border: 1px solid $bgSub10;
-//  border-radius: 0.3em;
-//  outline: none;
-//
-//  &:hover {
-//    border-color: $bgSub5;
-//  }
-//  &:focus {
-//    border-color: $bgSub;
-//  }
-  //
-  // END UNREFACTORED CODE
-  //
 }
+// Apply border styles to *all* text inputs
+:root input[type="text"],
+:root textarea {
+  border-width: 0 0 1px;
+  border-color: $bgSub5;
 
-textarea {
-  resize: vertical;
+  &:hover {
+    border-color: $bgSub;
+  }
+  &:focus {
+    border-color: $fgSub;
+  }
 }
 
 // Buttons
@@ -91,25 +80,19 @@ button {
   //
   // BEGIN UNREFACTORED CODE
   //
-//  @include extend('%reset-all');
-//  @include extend('%transition03');
-//
-//  background-color: $bgGeneral;
-//  font-size: inherit;
-//  font-family: Lato, 'Lucida Grande', 'DejaVu Sans', Verdana, sans-serif;
-//
-//  padding: 0.2em 0.5em !important;
-//  border-bottom: 0.1em solid $bgSub;
-//  border-radius: 0.3em;
-//  box-shadow: 0 0 0 1px $bgSub10;
-//  cursor: pointer;
-//
-//  &:hover {
-//    background-color: darken($bgGeneral, 5%);
-//  }
-//  &:focus {
-//    background-color: darken($bgGeneral, 10%);
-//  }
+  @include extend('%reset-all');
+  @include extend('%transition03');
+
+  color: $fgGeneral;
+  background-color: $bgGeneral;
+
+  &:hover {
+    color: $fgGeneral;
+    background-color: darken($bgGeneral, 5%);
+  }
+  &:focus {
+    background-color: darken($bgGeneral, 10%);
+  }
   //
   // END UNREFACTORED CODE
   //
