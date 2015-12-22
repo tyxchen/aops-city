@@ -46,5 +46,5 @@
 /* Transitions */
 %transition03 {
   /* Source for %transition03 */
-  transition: 0.3s ease;
+  transition: $transitionDuration ease;
 }

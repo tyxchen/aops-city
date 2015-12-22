@@ -19,14 +19,13 @@ body {
 
     /* Background picture modified from
        http://wallpaperswide.com/manhattan-wallpapers.html */
-    background-image: url('//cdn.artofproblemsolving.com/images/5/0/7/507c1c71bf8a07bfe0c49976c9f2a42220fccc75.jpg');
+    background-image: url('//cdn.artofproblemsolving.com/attachments/6/0/b1a1d0345461b5089850fb65d52df908d4d177.jpg');
     background-position: 42% 0;
     background-size: cover;
 
     z-index: -1;
 
     @include position(0, -1em, -1em, 0);
-    @include filter("blur", 3px);
   }
 }
 
