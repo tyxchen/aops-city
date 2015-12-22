@@ -264,7 +264,7 @@
   height: 2em;
   z-index: 0;
 
-  @include position(31vh, 0, 0);
+  @include position(calc(36vh - 2.5rem), 0, 0);
   @include reset((background, border));
 
   h1 {
@@ -272,7 +272,7 @@
     @include extend('%reset-all');
     @include extend('%no-user-select');
 
-    font-size: 1.1em;
+    font-size: 5rem;
     font-weight: 200;
     text-decoration: none;
     z-index: 10;
