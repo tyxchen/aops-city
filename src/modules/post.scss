@@ -9,17 +9,22 @@ fieldset {
 }
 
 // Completely revamp posting form
-// To facilitate the enter/exit animations, we make the modal wrapper visible on the DOM level at
-// all times, but invisible to user actions…
-.aops-modal-wrapper {
-  display: block !important;
-  pointer-events: none;
 
-  // …until the modal is open.
-  .aops-modal-open & {
-    pointer-events: all;
-  }
-}
+// NOTE: ANIMATIONS DO NOT WORK DUE TO DYNAMICALLY INSERTED HTML
+//       CODE LEFT AS REFERENCE
+
+// ANIMATION CODE
+// // To facilitate the enter/exit animations, we make the modal wrapper visible on the DOM level at
+// // all times, but invisible to user actions…
+// .aops-modal-wrapper {
+//   display: block !important;
+//   pointer-events: none;
+//
+//   // …until the modal is open.
+//   .aops-modal-open & {
+//     pointer-events: all;
+//   }
+// }
 
 // Styling the actual modal itself
 .cmty-posting-modal {
@@ -33,9 +38,13 @@ fieldset {
   max-width: 100% !important;
   max-height: 100% !important;
 
+  // Overwrite EvDo modal positioning hack
+  transform: none !important;
+
+  // ANIMATION CODE
   // Animate modal to slide in from bottom
-  transform: translateY(110%) !important;
-  transition: transform $transitionDuration ease;
+  // transform: translateY(110%) !important;
+  // transition: transform $transitionDuration ease;
 
   @include position(0 !important,
                     0 !important,
@@ -44,20 +53,21 @@ fieldset {
   @include dimensions(100% !important,
                       100% !important);
 
-  .aops-modal-open & {
-    transform: translateY(0) !important;
-  }
-
-  // Fade in the modal's contents
-  .aops-modal-content-wrapper {
-    opacity: 0;
-
-    transition: opacity $transitionDuration $transitionDuration ease;
-
-    .aops-modal-open & {
-      opacity: 1;
-    }
-  }
+  // ANIMATION CODE
+  // .aops-modal-open & {
+  //   transform: translateY(0) !important;
+  // }
+  //
+  // // Fade in the modal's contents
+  // .aops-modal-content-wrapper {
+  //   opacity: 0;
+  //
+  //   transition: opacity $transitionDuration $transitionDuration ease;
+  //
+  //   .aops-modal-open & {
+  //     opacity: 1;
+  //   }
+  // }
 
   // Style the close button as line-art
   .aops-close-x {
@@ -163,6 +173,7 @@ fieldset {
 
     &:focus {
       background-color: $bgGeneral !important;
+      padding-left: 0.2em;
 
       // Make sure the transition to the focus state is snappy
       transition: background-color $transitionDuration 0s ease,
@@ -219,6 +230,7 @@ fieldset {
     }
     &:focus {
       background-color: $bgGeneral !important;
+      padding: 0.3em 0.2em !important;
       border-color: $fgSub !important;
 
       transition: background-color $transitionDuration 0s ease,
@@ -256,6 +268,7 @@ fieldset {
 
   &:focus {
     background-color: $bgGeneral;
+    padding: 0.5em 0.3em;
 
     transition: background-color $transitionDuration 0s ease,
                 border-color $transitionDuration ease;
