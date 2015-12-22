@@ -53,7 +53,7 @@
     border-top: 0.3em solid lighten($ovrHeader, 2%);
     margin: 0 -0.3em;
 
-    transition: 0.2s ease;
+    transition: $transitionDuration ease;
 
     &:hover,
     &:focus {

@@ -35,7 +35,7 @@ fieldset {
 
   // Animate modal to slide in from bottom
   transform: translateY(110%) !important;
-  transition: transform 2*$transitionDuration ease;
+  transition: transform $transitionDuration ease;
 
   @include position(0 !important,
                     0 !important,
@@ -52,7 +52,7 @@ fieldset {
   .aops-modal-content-wrapper {
     opacity: 0;
 
-    transition: opacity 2*$transitionDuration 2*$transitionDuration ease;
+    transition: opacity $transitionDuration $transitionDuration ease;
 
     .aops-modal-open & {
       opacity: 1;
