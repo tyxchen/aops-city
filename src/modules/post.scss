@@ -283,20 +283,24 @@ fieldset {
 
   @include reset(background);
 }
+
 // Fix positioning of buttons
 .cmty-posting-environ-buttons .btn {
   vertical-align: top;
 }
+
 // Change colour of BBCode overflow button
 .cmty-bbcode-btn {
   color: $fgGeneral;
 }
 
+// Preview
 // Change colour scheme of preview bar
 .cmty-posting-preview-bar {
   background-color: $bgGeneral;
   color: $fgGeneral;
 }
+
 // Extend message styles to preview box
 .cmty-post-preview-text {
   @include extend('.message');
@@ -305,18 +309,64 @@ fieldset {
   font-family: Merriweather, Garamond, times, serif;
 }
 
-// Hide comment reply window (inline styles prevent this)
+// Replies
 .blog-reply-window {
+  // Cover up the "Comment" link (useless — clicking on it results in no action)
+  position: relative;
+  z-index: 1;
+  background-color: $bgGeneral;
+
+  // Hide comment reply window (inline styles prevent this)
   display: none !important;
+
+  padding: 0 1em;
+  border: 1px solid $bgSub5;
 
   // Overwrite last style and show when open
   &.blog-reply-open {
     display: block !important;
   }
+
   // Clearfix to prevent comment link from affecting the comment reply window
-  &.blog-reply-open:before {
+  &.blog-reply-open::before {
     content: "";
     display: table;
     clear: both;
+  }
+
+  // Change faux-placeholder message to a more context-appropriate one
+  .cmty-posting-box-container::before {
+    content: "Comment"
+  }
+  
+  // Align action buttons with the "Comment" link
+  .cmty-posting-environ {
+    top: -2.1em;
+    z-index: 1;
+    margin-bottom: -2.1em;
+  }
+
+  // Reset the colour scheme of the buttons bar
+  .cmty-posting-button-row {
+    background-color: $bgGeneral;
+  }
+
+  .cmty-cancel-posting-x {
+    color: $fgGeneral;
+  }
+
+  // Align submit button to the left
+  .cmty-submit-button {
+    float: left;
+  }
+
+  // Also, introduce extra padding on mobile
+  .cmty-posting-button-row.cmty-phone {
+    margin-bottom: 1.1em;
+  }
+
+  // Remove annoying border from preview box
+  .cmty-post-preview {
+    border: none;
   }
 }
