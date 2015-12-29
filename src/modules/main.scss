@@ -118,9 +118,17 @@ div.comment {
   }
 
   // Hidden labels
-  .cmty-hide-heading,
+  .cmty-hide-heading:link,
   .cmty-hide-heading:hover {
     border-bottom: none;
+
+    // Change custom underline to offer distinction between link and hidden text
+    background-image: linear-gradient(to right,
+                                      currentColor 0%,
+                                      currentColor 50%,
+                                      $bgGeneral 50%,
+                                      $bgGeneral 100%);
+    background-size: 2px 1px;
   }
   .cmty-hide-content {
     @include extend('%reset-all');
