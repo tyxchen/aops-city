@@ -6,7 +6,7 @@
 // Post new entry
 //
 #post-new-entry {
-  @include extend('%heading');
+  @include extend('%modal-font');
 
   &-img {
     display: none;
@@ -60,6 +60,8 @@ div.post-tags {
 .cmty-editable-item-close {
   @include extend('button');
 
+  font-family: AoPS;
+
   &:hover {
     background-color: $bgGeneral;
   }
@@ -99,26 +101,30 @@ div.post-tags {
 //
 // Fix fonts of modals and flyout
 //
-.aops-modal-title,
-#flyout {
+.aops-modal-title {
   @include extend('%heading');
+}
 
+.aops-modal-body,
+#flyout {
+  @include extend('%modal-font');
+}
+
+#flyout {
   text-align: left;
   padding-right: 5px;
 }
 
-.aops-modal-body {
-  font-family: "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
-}
-
 // <3
 #main::after {
-  content: "City.css made by NMK, with \2665.";
+  @include extend('%modal-font');
+
+  content: "City made by NMK, with \2665.";
   position: relative;
   top: 2em;
-  font-size: 0.8em;
-  font-family: Lato, 'Lucida Grande', 'DejaVu Sans', Verdana, sans-serif;
-  color: $fgSub;
   display: block;
+
+  color: $fgSub;
+  font-size: 0.8em;
   text-align: center;
 }

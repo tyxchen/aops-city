@@ -86,6 +86,7 @@ button {
   //
   @include extend('%reset-all');
   @include extend('%transition03');
+  @include extend('%modal-font');
 
   color: $fgGeneral;
   background-color: $bgGeneral;

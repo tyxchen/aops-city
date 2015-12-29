@@ -43,6 +43,12 @@
   font-family: Raleway, Lato, Roboto, 'Segoe UI', 'Lucida Grande', 'DejaVu Sans', sans-serif;
 }
 
+/* Import font for modals */
+%modal-font {
+  /* Source for %modal-font */
+  font-family: Lato, 'Helvetica Neue', HelveticaNeue, Helvetica, Arial, sans-serif;
+}
+
 /* Transitions */
 %transition03 {
   /* Source for %transition03 */

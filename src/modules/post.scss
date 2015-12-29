@@ -311,6 +311,8 @@ fieldset {
 
 // Replies
 .blog-reply-window {
+  @include extend('%modal-font');
+
   // Cover up the "Comment" link (useless — clicking on it results in no action)
   position: relative;
   z-index: 1;
@@ -338,7 +340,7 @@ fieldset {
   .cmty-posting-box-container::before {
     content: "Comment"
   }
-  
+
   // Align action buttons with the "Comment" link
   .cmty-posting-environ {
     top: -2.1em;
