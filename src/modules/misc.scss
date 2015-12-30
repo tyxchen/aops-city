@@ -58,7 +58,7 @@ div.post-tags {
 }
 
 .cmty-editable-item-close {
-  @include extend('button');
+  @include extend('.btn');
 
   font-family: AoPS;
 

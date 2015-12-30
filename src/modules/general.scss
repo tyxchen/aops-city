@@ -50,46 +50,41 @@ h2 {
 }
 
 // Text inputs
-[type="text"],
+input[type="text"],
 textarea {
   @include extend('%border-box');
   @include extend('%transition03');
 
   background-color: $bgGeneral;
   font-size: inherit;
-}
-// Apply border styles to *all* text inputs
-:root input[type="text"],
-:root textarea {
-  border-width: 0 0 1px;
-  border-color: $bgSub5;
 
-  &:hover {
-    border-color: $bgSub;
-  }
-  &:focus {
-    padding: inherit;
-
+  // Apply border styles to *all* text inputs
+  :root & {
     border-width: 0 0 1px;
-    border-style: solid;
-    border-color: $fgSub;
+    border-color: $bgSub5;
+
+    &:hover {
+      border-color: $bgSub;
+    }
+    &:focus {
+      border-width: 0 0 1px;
+      border-style: solid;
+      border-color: $fgSub;
+    }
   }
 }
 
 // Buttons
-[type="button"]:not(.btnbbcode),
-[type="reset"],
-[type="submit"],
-button {
-  //
-  // BEGIN UNREFACTORED CODE
-  //
-  @include extend('%reset-all');
+:root .btn {
   @include extend('%transition03');
   @include extend('%modal-font');
 
   color: $fgGeneral;
   background-color: $bgGeneral;
+
+  padding: 0 0.5em;
+
+  @include reset((background, border, margin));
 
   &:hover {
     color: $fgGeneral;
@@ -98,9 +93,6 @@ button {
   &:focus {
     background-color: darken($bgGeneral, 10%);
   }
-  //
-  // END UNREFACTORED CODE
-  //
 }
 
 // Scrollbars
