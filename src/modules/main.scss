@@ -41,6 +41,7 @@ div.entry {
     text-overflow: ellipsis;
     padding-right: 0;
   }
+
   h2 {
     font-size: 0.9em;
     margin-left: 0.3em;
@@ -51,12 +52,14 @@ div.entry {
 
       content: "\00B6";
       position: absolute;
+
       color: $t;
       font-size: 1.7em;
       margin-right: 0.3em;
 
       @include position(-2.15rem, -1em);
     }
+
     img {
       display: none;
     }
@@ -68,6 +71,7 @@ div.entry {
       font-weight: normal;
     }
   }
+
   &:hover h2 > a::before {
     color: $bgSub;
   }
@@ -90,10 +94,12 @@ div.comment {
 
   &::before {
     content: "\2767";
-    font-size: 1.3em;
     vertical-align: middle;
+
+    font-size: 1.3em;
     margin-right: 0.1em;
   }
+
   img {
     display: none;
   }
@@ -130,6 +136,7 @@ div.comment {
                                       $bgGeneral 100%);
     background-size: 2px 1px;
   }
+
   .cmty-hide-content {
     @include extend('%reset-all');
   }
@@ -176,6 +183,7 @@ div.modactions {
     font-size: 0.7em;
     margin-top: 1rem;
   }
+
   .bbcode_quote_body {
     font-size: 0.8em;
   }
@@ -208,10 +216,12 @@ pre {
 
     @include position(0, null, 0);
   }
+
   // If the code is in a language, then we display what language it is
   &[class]::before {
     content: attr(class);
   }
+
   // Fade on hover to avoid obscuring code
   &:hover::before {
     opacity: 0.2;
@@ -220,5 +230,18 @@ pre {
   // Some languages could have better names
   &.cpp::before {
     content: "c++";
+  }
+}
+
+// Polls
+.cmty-poll-display {
+  margin-top: 0;
+  margin-bottom: 1em;
+
+  @include reset((background-color, padding, border));
+
+  // Style poll bars to follow colour scheme
+  .cmty-poll-result-bar {
+    background-color: $bgSub5;
   }
 }
