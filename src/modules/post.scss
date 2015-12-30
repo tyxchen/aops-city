@@ -239,6 +239,29 @@ fieldset {
   }
 }
 
+// Polls
+.cmty-poll-build {
+  background-color: $bgGeneral;
+  color: $fgGeneral;
+
+  border-bottom: 1px solid $bgSub5;
+
+  .cmty-poll-question,
+  .cmty-poll-inputs {
+    @include extend('textarea');
+
+    padding: 0.3em 0.2em;
+
+    &:focus {
+      padding: 0.3em 0.2em;
+    }
+  }
+  .cmty-poll-inputs {
+    height: 6em;
+    resize: none;
+  }
+}
+
 // Compostion
 // Placeholder for splitting the view into composition and preview areas
 %posting-split {
@@ -247,6 +270,10 @@ fieldset {
 
   .cmty-edit-post & {
     height: calc(100% - 8.5rem) !important;
+  }
+  
+  .cmty-posting-with-poll & {
+    height: calc(100% - 22.4rem) !important;
   }
 }
 
