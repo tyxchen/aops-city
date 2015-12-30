@@ -30,7 +30,7 @@ fieldset {
 .cmty-posting-modal {
   @include extend('%border-box');
 
-  border-width: 32px;
+  border-width: 1.8rem;
   border-color: $bgGeneral;
   box-shadow: 0 0 10% $fgGeneral;
 
@@ -239,40 +239,117 @@ fieldset {
   }
 }
 
-// Post body
-// Create a faux-placeholder from pseudo-elements
-.cmty-posting-box-container::before {
-  @include extend('%heading');
+// Compostion
+// Placeholder for splitting the view into composition and preview areas
+%posting-split {
+  width: 50%;
+  height: calc(100% - 10.9rem) !important;
 
-  content: "Message";
-  position: absolute;
-
-  opacity: 0;
-  color: $fgSub;
-  font-size: 1.2em;
-
-  margin: 0.3em;
-
-  animation: flash-post-body $postingAnimationDuration ease;
+  .cmty-edit-post & {
+    height: calc(100% - 8.5rem) !important;
+  }
 }
 
-// The post textarea
-.cmty-posting-box-container .cmty-post-textarea {
-  position: relative;
+.cmty-posting-box-container {
+  @include extend('%posting-split');
 
-  background-color: $t;
-  padding: 0.5em 0.3em;
+  float: left;
 
-  transition: background-color $transitionDuration $postingAnimationDuration ease,
-              border-color $transitionDuration ease;
+  // Create a faux-placeholder from pseudo-elements
+  &::before {
+    @include extend('%heading');
 
-  &:focus {
-    background-color: $bgGeneral;
-    padding: 0.5em 0.3em;
+    content: "Message";
+    position: absolute;
 
-    transition: background-color $transitionDuration 0s ease,
-                border-color $transitionDuration ease;
+    opacity: 0;
+    color: $fgSub;
+    font-size: 1.2em;
+
+    margin: 0.3em;
+
+    animation: flash-post-body $postingAnimationDuration ease;
   }
+
+  .cmty-post-textarea {
+    position: relative;
+
+    background-color: $t;
+    padding: 0.5em 0.3em;
+    border: none;
+
+    transition: background-color $transitionDuration $postingAnimationDuration ease;
+
+    &:focus {
+      background-color: $bgGeneral;
+      padding: 0.5em 0.3em;
+      border: none;
+
+      transition: background-color $transitionDuration 0s ease;
+    }
+  }
+}
+
+.cmty-post-preview {
+  @include extend('%posting-split');
+
+  display: block !important;
+  float: right;
+
+  border-left: 1px solid $bgSub5;
+}
+
+.cmty-posting-preview-bar {
+  position: fixed;
+  left: -100%;
+
+  // Change colour scheme of preview bar
+  background-color: $bgGeneral;
+  color: $fgGeneral;
+
+  // Always hide the "open preview" action
+  .cmty-posting-preview-bar-hidden {
+    display: none !important;
+  }
+
+  // Always show the "preview is open" actions"
+  .cmty-posting-preview-bar-shown {
+    display: block !important;
+  }
+
+  // Position "refresh preview" and "view attachments" buttons below the composition areas
+  .cmty-refresh-preview,
+  .cmty-preview-bar-attachments {
+    position: fixed;
+    bottom: 0;
+
+    font-size: 0.8rem;
+    padding: 0.5em;
+    margin: 0;
+  }
+
+  .cmty-refresh-preview {
+    z-index: 1;
+
+    border-top: 1px solid $bgSub5;
+
+    left: 1.8rem;
+    right: 1.8rem;
+  }
+
+  .cmty-preview-bar-attachments {
+    z-index: 10;
+
+    left: 1.5rem;
+  }
+}
+
+// Extend message styles to preview box
+.cmty-post-preview-text {
+  @include extend('.message');
+
+  // Fix font in preview box
+  font-family: Merriweather, Garamond, times, serif;
 }
 
 // Buttons
@@ -292,21 +369,6 @@ fieldset {
 // Change colour of BBCode overflow button
 .cmty-bbcode-btn {
   color: $fgGeneral;
-}
-
-// Preview
-// Change colour scheme of preview bar
-.cmty-posting-preview-bar {
-  background-color: $bgGeneral;
-  color: $fgGeneral;
-}
-
-// Extend message styles to preview box
-.cmty-post-preview-text {
-  @include extend('.message');
-
-  // Fix font in preview box
-  font-family: Merriweather, Garamond, times, serif;
 }
 
 // Replies
