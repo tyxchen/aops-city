@@ -104,6 +104,10 @@
   }
 }
 
+fieldset {
+  @include extend('%reset-all');
+}
+
 #blog_keywords {
   @include extend('%heading');
   @include extend('%transition03');
