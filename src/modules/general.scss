@@ -74,13 +74,21 @@ textarea {
   }
 }
 
+
+//
 // Buttons
+//
+
 :root .btn {
   @include extend('%transition03');
   @include extend('%modal-font');
 
-  color: $fgGeneral;
+  height: 1.4em;
   background-color: $bgGeneral;
+
+  color: $fgGeneral;
+  font-size: inherit;
+  line-height: 1.4em;
 
   padding: 0 0.5em;
 
@@ -105,7 +113,8 @@ textarea {
 
 ::-webkit-scrollbar-thumb {
   background-color: $bgSub;
-  border: 0.25rem solid $bgGeneral;
+  border: solid $bgGeneral;
+  border-width: 0.2rem 0.25rem;
   border-radius: 0.5rem;
 
   &:hover {
