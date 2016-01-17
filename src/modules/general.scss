@@ -4,6 +4,7 @@
  * Encompasses links, buttons, etc.
  */
 
+
 // Links
 a:link,
 a:hover,
@@ -16,7 +17,11 @@ a:focus {
   border-bottom: 1px dotted $bgSub !important;
 }
 
+
+//
 // Headings
+//
+
 h1,
 h2,
 h3,
@@ -36,7 +41,11 @@ h2 {
   font-size: 1.2em;
 }
 
+
+//
 // Custom underline code
+//
+
 [style="text-decoration: underline"] {
   // Based on
   // https://medium.com/designing-medium/crafting-link-underlines-on-medium-7c03a9274f9
@@ -49,7 +58,11 @@ h2 {
   background-position: 0 1.06em;
 }
 
+
+//
 // Text inputs
+//
+
 input[type="text"],
 textarea {
   @include extend('%border-box');
@@ -103,7 +116,10 @@ textarea {
   }
 }
 
+
+//
 // Scrollbars
+//
 
 ::-webkit-scrollbar {
   background-color: $bgGeneral;

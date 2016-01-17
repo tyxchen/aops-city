@@ -13,7 +13,10 @@
   padding-bottom: 3em;
 }
 
-// Entries
+
+//
+// Entries and comments
+//
 
 // Add margin to first entry
 #main > div:first-child {
@@ -147,7 +150,10 @@ div.modactions {
   font-size: 0.7em;
 }
 
+
+//
 // Quote blocks
+//
 
 .bbcode_quote,
 .bbcode_quote_head,
@@ -189,7 +195,10 @@ div.modactions {
   }
 }
 
+
+//
 // Code blocks
+//
 
 pre {
   position: relative;
@@ -233,7 +242,11 @@ pre {
   }
 }
 
+
+//
 // Polls
+//
+
 .cmty-poll-display {
   margin-top: 0;
   margin-bottom: 1em;
