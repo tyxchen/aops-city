@@ -138,7 +138,7 @@ fieldset {
     @extend :hover;
 
     width: 15em;
-    background-color: lighten($bgSub, 15%);
+    background-color:$bgSub10;
     color: $ovrHeader;
     padding-left: 0.5em;
     padding-right: 3.1em;
@@ -184,13 +184,13 @@ fieldset {
   }
 
   &:hover + div {
-    background-color: lighten($bgSub, 16%);
+    background-color: $bgSub10;
 
     transition: background-color $transitionDuration ease;
   }
   &:focus + div {
-    background-color: lighten($bgSub, 15%);
-    border-right-color: lighten($bgSub, 15%);
+    background-color: $bgSub10;
+    border-right-color: $bgSub10;
 
     transition:
       background-color $transitionDuration ease,
