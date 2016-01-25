@@ -121,7 +121,7 @@
   .cmty-posting-box-container,
   .cmty-post-preview {
     width: 50%;
-    height: calc(100% - 9.9rem) !important;
+    height: calc(100% - 11.9rem) !important;
     margin-top: 1rem;
 
     // .cmty-edit-comment & {
@@ -129,11 +129,11 @@
     // }
 
     .cmty-edit-post & {
-      height: calc(100% - 7.5rem) !important;
+      height: calc(100% - 9.5rem) !important;
     }
 
     .cmty-posting-with-poll & {
-      height: calc(100% - 21.4rem) !important;
+      height: calc(100% - 23.4rem) !important;
     }
   }
 
@@ -195,25 +195,23 @@
       left: 1.5rem;
     }
   }
+}
 
 
 //
 // Faux-placeholders
 //
+.cmty-posting-environ .cmty-heading-text,
+.cmty-posting-environ .cmty-posting-box-container::before {
+  @include extend('%heading');
 
-  // Style faux-placeholders
-  .cmty-heading-text,
-  .cmty-posting-box-container::before {
-    @include extend('%heading');
+  position: absolute;
 
-    position: absolute;
+  opacity: 0;
+  color: $fgSub;
+  font-size: inherit;
 
-    opacity: 0;
-    color: $fgSub;
-    font-size: inherit;
-
-    animation: flash-post-fields $postingAnimationDuration ease;
-  }
+  animation: flash-post-fields $postingAnimationDuration ease;
 }
 
 // Shared styles for faux-placeholder inputs
@@ -364,11 +362,13 @@
 }
 
 // Extend message styles to preview box
-.cmty-post-preview-text {
+.cmty-post-preview-text.aops-scroll-content {
   @include extend('.message');
 
   // Fix font in preview box
   font-family: Merriweather, Garamond, times, serif;
+
+  padding: 0 1em 1em;
 }
 
 
@@ -414,7 +414,8 @@
   display: none !important;
 
   padding: 0 1em;
-  border: 1px solid $bgSub5;
+  border: 1px solid $bgGeneral;
+  border-top-color: $bgSub10;
 
   // Overwrite last style and show when open
   &.blog-reply-open {
