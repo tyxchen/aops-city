@@ -8,18 +8,13 @@
   }
 }
 
-// Mobile view
 
-@media only screen and (max-width: 800px),
-       only screen and (-webkit-min-device-pixel-ratio: 1.5),
-       only screen and (min-device-width: 768px) and (max-device-width: 1024px)
-                   and (min-resolution: 132dpi),
-       only screen and (min-resolution: 1.5dppx) {
+//
+// Mobile-specific styles
+//
 
-  html {
-    font-size: 1rem;
-    font-size: 4vw;
-  }
+// Small-screened devices. This applies to any screen with a viewport width of <= 1000px
+@media only screen and (max-width: 1000px) {
 
   body::after {
     top: -41rem;
@@ -28,6 +23,7 @@
 
   #content {
     margin-top: 20rem;
+    padding-top: 2em;
     padding-left: 2em;
     padding-right: 2em;
   }
@@ -106,18 +102,44 @@
   pre::before {
     display: none;
   }
+
+  // Posting stuff
+  // Remove split view
+  .cmty-posting-modal .cmty-post-preview,
+  .cmty-posting-preview-bar {
+    display: none !important;
+  }
+
+  .cmty-posting-modal .cmty-posting-box-container {
+    width: 100%;
+    float: none;
+
+    .cmty-post-textarea,
+    .cmty-post-textarea:focus {
+      border-width: 0 0 1px;
+    }
+  }
+
+  .cmty-posting-modal .cmty-posting-button-row {
+    display: none;
+  }
+
+  .cmty-posting-modal .cmty-posting-button-row.cmty-phone {
+    display: block;
+
+    .cmty-posting-environ-buttons {
+      width: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      width: auto;
+    }
+  }
 }
 
 // Landscape mode requires slight edits
-
-@media only screen and (max-width: 800px) and (orientation: landscape),
-       only screen and (-webkit-min-device-pixel-ratio: 1.5) and (orientation: landscape),
-       only screen and (min-device-width: 768px) and (max-device-width: 1024px)
-                   and (min-resolution: 132dpi) and (orientation: landscape),
-       only screen and (min-resolution: 1.5dppx) and (orientation: landscape) {
-  html {
-    font-size: 2.5vw;
-  }
+@media only screen and (max-width: 1000px) and (orientation: landscape) {
 
   body::after {
     top: -4rem;
@@ -139,9 +161,28 @@
       @include dimensions(3rem);
     }
   }
+}
 
-  .comment:nth-child(2),
-  #postform:first-child {
-    margin-top: -80vh;
+// Fixes for HiDPI screens (retina displays, etc.)
+
+@media only screen and (max-width: 1000px) and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (max-width: 1000px) and (min-resolution: 1.5dppx) {
+
+  html {
+    font-size: 32pt;
+  }
+
+  // Enlargen elements styled with pixel units
+  .cmty-posting-modal .aops-close-x {
+    transform: scale(2);
+  }
+}
+
+// Landscape edits for above
+@media only screen and (max-width: 1000px) and (-webkit-min-device-pixel-ratio: 1.5) and (orientation: landscape),
+       only screen and (max-width: 1000px) and (min-resolution: 1.5dppx) and (orientation: landscape) {
+
+  html {
+    font-size: 21pt;
   }
 }
