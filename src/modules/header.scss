@@ -93,6 +93,13 @@
     color: $t;
     font-size: 0.01px;
 
+    background: {
+      color: $t;
+      repeat: no-repeat;
+      size: auto 40%;
+      position: center;
+    }
+
     @include dimensions(2.5rem, 3rem);
 
     &:hover,
@@ -105,166 +112,39 @@
   //
   // Icons
   //
-  // TODO: replace with with SVG icons for consistency across platforms
-  //
-
-  &::before,
-  &::after,
-  a::before,
-  a::after {
-    @include extend('%pseudo');
-
-    background-color: invert($fgSub);
-    font-size: 0.8rem;
-    pointer-events: none;
-  }
-
-  &::before,
-  &::after {
-    z-index: 11;
-  }
 
   // Info icon
-  //
-  // &::before - the body of the "i"
-  // &::after  - the dot of the "i"
 
   .blog-info {
     left: 0;
-
-    &::before {
-      @include position(1.8em, 1.5em);
-      @include dimensions(1px, 0.85em);
-    }
-
-    &::after {
-      border-radius: 3px;
-
-      @include position(1.2em, calc(1.5em - 1px));
-      @include dimensions(3px, 3px);
-    }
+    background-image: url($SVGInfoIcon);
   }
 
   // Subscribe icon
-  //
-  // &::before - the outer "ring"
-  // &::after  - the inner "ring"
-  // $parent::before - the central dot
   //
   // [title*="stop"] - The icon when the user is already subscribed
 
   #blog-subscribe {
     left: 2.5rem;
 
-    &::before,
-    &::after {
-      background-color: $t;
-      border: solid invert($fgSub);
-      border-width: 1px 1px 0 0;
+    background-image: url($SVGSubscribeIcon);
+
+    &[title*="stop"] {
+      background-image: url($SVGSubscribedIcon);
     }
-
-    &::before {
-      border-top-right-radius: 1.5em;
-
-      @include position(1.2em, 0.8em);
-      @include dimensions(1.5em);
-    }
-
-    &::after {
-      border-top-right-radius: 0.9em;
-
-      @include position(1.8em, 0.8em);
-      @include dimensions(0.9em);
-    }
-  }
-  #blog-subscribe[title*="stop"] {
-    background-color: lighten($bgSub, 15%);
-
-    &::before {
-      border-width: 1px 0 5px 0;
-      border-bottom-color: lighten($bgSub, 15%); // Block RSS feed dot
-      border-radius: 0;
-      z-index: 12;
-
-      transform: rotate(50deg);
-
-      @include position(calc(2em + 3px), calc(0.2em + 3px));
-      @include dimensions(0.9em, 0);
-    }
-
-    &::after {
-      width: 1.8em;
-      border-width: 1px 0 0 0;
-      border-radius: 0;
-
-      transform: rotate(-50deg);
-
-      @include position(1.8em, 1.3em);
-    }
-  }
-
-  &::before {
-    border-radius: 0.3em;
-
-    @include position(2.4em, 3.95em);
-    @include dimensions(0.3em);
   }
 
   // Login/logout icon
-  //
-  // &::before - the stem of the arrow
-  // &::after  - the tip of the arrow
-  // $parent::after - the door(frame)
 
   .blog-login,
   .blog-logout {
     left: 5rem;
 
-    &::before,
-    &::after {
-      z-index: 12;
-    }
-
-    &::before {
-      @include extend('%content-box');
-
-      border: 3px solid $fgHeader;
-      border-left: none;
-
-      @include position(calc(1.8092em - 3px), 1.3em);
-      @include dimensions(0.7em, 1px); // Golden ratio
-    }
-
-    &::after {
-      background-color: $t;
-      border: 1px solid invert($fgSub);
-      border-width: 1px 1px 0 0;
-
-      transform: rotate(45deg);
-
-      @include position(1.7092em, 1.8em);
-      @include dimensions(0.4em);
-    }
-    &:hover::before {
-      border-color: lighten($bgSub, 16%);
-    }
+    background-image: url($SVGLoginIcon);
   }
 
-  .blog-login::before {
-    left: 1.4em;
-  }
-
-  .blog-login::after {
-    left: 1.2em;
-    transform: rotate(-135deg);
-  }
-
-  &::after {
-    background-color: $t;
-    border: 1px solid invert($fgSub);
-
-    @include position(1.1em, 7em);
-    @include dimensions(1em, 1.61803em);
+  .blog-logout {
+    background-image: url($SVGLogoutIcon);
   }
 
   // Move info icon when user is not logged in and cover RSS icon dot
