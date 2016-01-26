@@ -54,7 +54,7 @@
     border-top: none;
 
     &:hover {
-      background-color: lighten($bgSub, 16%);
+      background-color: $bgSub10; 
     }
     &::before {
       content: "\3008";
