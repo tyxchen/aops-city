@@ -123,18 +123,21 @@
     width: 50%;
     height: calc(100% - 11.9rem) !important;
     margin-top: 1rem;
+  }
 
-    // .cmty-edit-comment & {
-    //   height: calc(100% - 2.3rem) !important;
-    // }
+  // .cmty-edit-comment .cmty-posting-box-container,
+  // .cmty-edit-comment .cmty-post-preview {
+  //   height: calc(100% - 3.3rem) !important;
+  // }
 
-    .cmty-edit-post & {
-      height: calc(100% - 9.5rem) !important;
-    }
+  .cmty-edit-post .cmty-posting-box-container,
+  .cmty-edit-post .cmty-post-preview {
+    height: calc(100% - 9.5rem) !important;
+  }
 
-    .cmty-posting-with-poll & {
-      height: calc(100% - 23.4rem) !important;
-    }
+  .cmty-posting-with-poll .cmty-posting-box-container,
+  .cmty-posting-with-poll .cmty-post-preview {
+    height: calc(100% - 26.8rem) !important;
   }
 
   .cmty-posting-box-container {
@@ -315,20 +318,26 @@
 
   border-bottom: 1px solid $bgSub5;
 
-  .cmty-poll-question,
-  .cmty-poll-inputs {
-    @include extend('textarea');
-
-    padding: 0.3em 0.2em;
-
-    &:focus {
-      padding: 0.3em 0.2em;
-    }
-  }
   .cmty-poll-inputs {
     height: 6em;
     resize: none;
   }
+}
+
+.cmty-poll-question,
+.cmty-poll-inputs {
+  @include extend('textarea');
+
+  padding: 0.3em 0.2em;
+
+  &:focus {
+    padding: 0.3em 0.2em;
+  }
+}
+
+.cmty-poll-left,
+.cmty-poll-right {
+  width: 100%;
 }
 
 // Compostion
@@ -357,6 +366,8 @@
 //
 // Change colour scheme of preview bar
 .cmty-posting-preview-bar {
+  @include extend('%no-user-select');
+
   background-color: $bgGeneral;
   color: $fgGeneral;
 }
