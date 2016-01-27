@@ -1,8 +1,220 @@
-// Master include file
+// Variables
 
-@import "variables";
-@import "mixins";
-@import "icons";
+// Default palette. Use in all (slight variations permitted) situations.
+//
+// $bgGeneral - General background. Use for, well, general backgrounds.
+// $fgGeneral - General text colour. Use for general text
+// $bgAccent  - Accent background colour. Use for backgrounds that require
+//              attention
+// $fgAccent  - Accent foreground colour. Use for foregrounds that require
+//              attention
+// $fgHeader  - Header text colour. Use for text in the header
+// $ovrHeader - Overlay colour. Use for text overlayed on images
+//
+// Sub palette. Use in situations that require "down-popping".
+//
+// $bgSub     - Muted gray background
+// $bgSub5    - $bgSub, 5% lighter
+// $bgSub10   - $bgSub, 10% lighter
+// $fgSub     - Muted gray foreground
+
+$bgGeneral: #fff;
+$fgGeneral: #444;
+$bgAccent: #ffffcf;
+$fgAccent: #090909;
+
+$fgHeader: #fff;
+$ovrHeader: #333;
+
+$bgSub: #ccc;
+$bgSub5: #d9d9d9;
+$bgSub10: #e6e6e6;
+
+$fgSub: #aaa;
+
+$t: transparent;
+
+// Animation timing variables
+// $transitionDuration       - Default duration of all UI transitions
+// $postingAnimationDuration - Duration of default animations in post.scss
+$transitionDuration: 0.3s;
+$postingAnimationDuration: 6s;
+
+// Mixins
+
+// Extends
+//
+// $selector - The selector to extend
+
+@mixin extend($selector) {
+  /* Rule extends #{$selector} */
+  @extend #{$selector};
+}
+
+// Reset properties
+//
+// $props - A list of properties to reset
+
+@mixin reset($props) {
+  @each $prop in $props {
+    @if index((background, background-image, border, box-shadow), $prop) {
+      #{$prop}: none;
+    } @else if $prop == background-color {
+      background-color: $t;
+    } @else if index((width, height), $prop) {
+      #{$prop}: 100%;
+    } @else {
+      #{$prop}: 0;
+    }
+  }
+}
+
+// Position element
+//
+// $top    - The value for `top`
+// $left   - The value for `left`
+// $right  - The value for `right`
+// $bottom - The value for `bottom`
+
+@mixin position($top: null, $left: null, $right: null, $bottom: null) {
+  @if $left == null and $right == null and $bottom == null {
+    $left: $top;
+    $right: $top;
+    $bottom: $top;
+  }
+  @if $top != null {
+    top: $top;
+  }
+  @if $left != null {
+    left: $left;
+  }
+  @if $right != null {
+    right: $right;
+  }
+  @if $bottom != null {
+    bottom: $bottom;
+  }
+}
+
+// Fix dimensions of element
+//
+// $width  - The width of the element
+// $height - The height of the element. Defaults to its width if not specified.
+
+@mixin dimensions($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+// Use W3C filters
+//
+// $type  - The type of filter
+// $range - The filter's range (e.g. 100%)
+
+@mixin filter($type, $range) {
+  $val: '<svg version="1.1" xmlns="http://www.w3.org/2000/svg"><filter id="#{$type}">';
+  $ulrange: $range/($range*0+1);
+  $range: '(' + $range + ')'; // we can't add brackets at the exact rule for whatever reason
+
+  @if $type == 'blur' {
+    $val: $val + '<feGaussianBlur stdDeviation="#{$ulrange}"/>';
+  } @else if $type == 'grayscale' {
+    $val: $val + '<feColorMatrix type="saturate" values="0"/>';
+  }
+
+  $val: $val + '</filter></svg>';
+
+  /* Chrome 18+, Safari 6+, Opera 15+ */
+  -webkit-filter: #{$type}#{$range};
+  /* Firefox 34- */
+  filter: url('data:image/svg+xml;utf8,' + $val + '##{$type}');
+  /* W3C spec, Firefox 35+ */
+  filter: #{$type}#{$range};
+}
+
+// Turn off autoprefixer momentarily
+
+@mixin no-prefix {
+  /* autoprefixer: off */
+  @content
+}
+
+// Icons
+//
+// All icons created with SVG-edit
+// https://github.com/SVG-Edit/svgedit
+
+//
+// Info icon
+//
+// <?xml version="1.0"?>
+// <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+//   <g>
+//     <circle id="circle" fill="none" stroke="#333" r="14" cx="15" cy="15"/>
+//     <circle id="dot" fill="#333" stroke-width="0" r="1" cx="15" cy="7.5"/>
+//     <path id="i" fill="#333" stroke-width="0" d="m12.5,11.5l3.5,0l0,11q0,0.5 0.5,0.5l1,0l0,1l-5,0l0,-1l1,0q0.5,0 0.5,-0.5l0,-9.5q0,-0.5 -0.5,-0.5l-1,0l0,-1z"/>
+//   </g>
+// </svg>
+$SVGInfoIcon: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+DQo8c3ZnIHdpZHRoPSIzMCIgaGVpZ2h0PSIzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Zz48Y2lyY2xlIGlkPSJjaXJjbGUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMzMyIgcj0iMTQiIGN4PSIxNSIgY3k9IjE1Ii8+PGNpcmNsZSBpZD0iZG90IiBmaWxsPSIjMzMzIiBzdHJva2Utd2lkdGg9IjAiIHI9IjEiIGN4PSIxNSIgY3k9IjcuNSIvPjxwYXRoIGlkPSJpIiBmaWxsPSIjMzMzIiBzdHJva2Utd2lkdGg9IjAiIGQ9Im0xMi41LDExLjVsMy41LDBsMCwxMXEwLDAuNSAwLjUsMC41bDEsMGwwLDFsLTUsMGwwLC0xbDEsMHEwLjUsMCAwLjUsLTAuNWwwLC05LjVxMCwtMC41IC0wLjUsLTAuNWwtMSwwbDAsLTF6Ii8+PC9nPjwvc3ZnPg==";
+
+
+//
+// Subscribe/Bookmark icon
+//
+// <?xml version="1.0"?>
+// <svg width="27" height="31" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+//   <g>
+//     <path id="mark" fill="none" stroke="#333" d="m0.5,1l25.5,0l0,28.5l-12.5,-9.5l-12.5,9.5l0,-28.5z"/>
+//   </g>
+// </svg>
+$SVGSubscribeIcon: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+DQo8c3ZnIHdpZHRoPSIyNyIgaGVpZ2h0PSIzMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Zz48cGF0aCBpZD0ibWFyayIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzIiBkPSJtMC41LDFsMjUuNSwwbDAsMjguNWwtMTIuNSwtOS41bC0xMi41LDkuNWwwLC0yOC41eiIvPjwvZz48L3N2Zz4=";
+
+// <?xml version="1.0"?>
+// <svg width="27" height="31" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+//   <g>
+//     <path id="mark" fill="#333" stroke="#333" d="m0.5,1l25.5,0l0,28.5l-12.5,-9.5l-12.5,9.5l0,-28.5z"/>
+//   </g>
+// </svg>
+$SVGSubscribedIcon: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+DQo8c3ZnIHdpZHRoPSIyNyIgaGVpZ2h0PSIzMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Zz48cGF0aCBpZD0ibWFyayIgZmlsbD0iIzMzMyIgc3Ryb2tlPSIjMzMzIiBkPSJtMC41LDFsMjUuNSwwbDAsMjguNWwtMTIuNSwtOS41bC0xMi41LDkuNWwwLC0yOC41eiIvPjwvZz48L3N2Zz4=";
+
+
+//
+// Door icons
+//
+// <?xml version="1.0"?>
+// <svg width="27" height="31" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+//   <g>
+//     <path id="door" fill="none" stroke="#333" d="m1,1l18,0l0,12.5m0,4l0,12.5l-18,0L1,.5"/>
+//     <path id="arrow" fill="none" stroke="#333" d="m12,15.5l14.5,0M16,11l-4.5,4.5l4.5,4.5"/>
+//   </g>
+// </svg>
+$SVGLoginIcon: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+DQo8c3ZnIHdpZHRoPSIyNyIgaGVpZ2h0PSIzMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Zz48cGF0aCBpZD0iZG9vciIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBkPSJtMSwxbDE4LDBsMCwxMi41bTAsNGwwLDEyLjVsLTE4LDBMMSwuNSIvPjxwYXRoIGlkPSJhcnJvdyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBkPSJtMTIsMTUuNWwxNC41LDBNMTYsMTFsLTQuNSw0LjVsNC41LDQuNSIvPjwvZz48L3N2Zz4=";
+
+// <?xml version="1.0"?>
+// <svg width="27" height="31" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+//   <g>
+//     <path id="door" fill="none" stroke="#333" d="m1,1l18,0l0,12.5m0,4l0,12.5l-18,0L1,.5"/>
+//     <path id="arrow" fill="none" stroke="#333" d="m12,15.5l14.5,0M22,11l4.5,4.5l-4.5,4.5"/>
+//   </g>
+// </svg>
+$SVGLogoutIcon: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+DQo8c3ZnIHdpZHRoPSIyNyIgaGVpZ2h0PSIzMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Zz48cGF0aCBpZD0iZG9vciIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBkPSJtMSwxbDE4LDBsMCwxMi41bTAsNGwwLDEyLjVsLTE4LDBMMSwuNSIvPjxwYXRoIGlkPSJhcnJvdyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBkPSJtMTIsMTUuNWwxNC41LDBNMjIsMTFsNC41LDQuNWwtNC41LDQuNSIvPjwvZz48L3N2Zz4=";
+
+
+//
+// Search icon
+//
+// <?xml version="1.0"?>
+// <svg width="28" height="31" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+//   <g>
+//     <circle id="circle" fill="none" stroke="#333" r="10" cx="11" cy="11"/>
+//     <path id="line" stroke="#333" d="m27.069691,30.15111l-9.641821,-11.490669"/>
+//   </g>
+// </svg>
+$SVGSearchIcon: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+DQo8c3ZnIHdpZHRoPSIyOCIgaGVpZ2h0PSIzMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Zz48Y2lyY2xlIGlkPSJjaXJjbGUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMzMyIgcj0iMTAiIGN4PSIxMSIgY3k9IjExIi8+PHBhdGggaWQ9ImxpbmUiIHN0cm9rZT0iIzMzMyIgZD0ibTI3LjA2OTY5MSwzMC4xNTExMWwtOS42NDE4MjEsLTExLjQ5MDY2OSIvPjwvZz48L3N2Zz4=";
+
+// Fonts
+
+@import url(//brick.a.ssl.fastly.net/Raleway:200,300/Merriweather:200,200i,700,700i/Lato:400,700);
 
 /**
  * Groups
