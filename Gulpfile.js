@@ -13,7 +13,7 @@ if (/0.10/.test(process.version)) {
 }
 
 var gulp = require('gulp'),
-    sass = require('gulp-ruby-sass'),
+    sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     cssmin = require('gulp-minify-css'),
     rename = require('gulp-rename'),
@@ -23,12 +23,14 @@ var gulp = require('gulp'),
 
 // Core building
 gulp.task('build:sass', function () {
-  return sass('src/main.scss', {sourcemap: true, style: 'expanded'})
-    .on('error', function (e) {
-      console.error(e.message);
-    })
-    .pipe(sourcemaps.write({sourceRoot: './'}))
+  return gulp.src('src/main.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass({
+      sourcemap: true,
+      outputStyle: 'expanded'
+    }).on('error', sass.logError))
     .pipe(rename({basename: 'city'}))
+    .pipe(sourcemaps.write('./', {sourceRoot: './'}))
     .pipe(gulp.dest('dist/'));
 });
 
