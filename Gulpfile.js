@@ -21,9 +21,36 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps');
 
 var folders = {
-      globals: 'src/prereqs/',
-      dist: 'dist/'
-    };
+  globals: 'src/prereqs/',
+  dist: 'dist/'
+};
+
+
+//
+// node-sass functions
+//
+// Experimental according to documentation but that doesn't prevent it
+// from working
+
+var functions = {
+  // Turns SVG Code into a base64 data URI
+  // Used in _icons.scss
+  //
+  // @param $svg A valid SVG document
+  // @return A data URI of the base64 encoded representation of the given
+  //         SVG document
+
+  'svg_to_base64($svg)': function svg_to_base64(svg, done) {
+    var String = require('node-sass').types.String,
+        src = svg.getValue(),
+        base64;
+      src = src.replace(/[\s\\a]+(?=<)/g, "");
+
+    base64 = new Buffer(src).toString('base64');
+
+    done(new String('data:image/svg+xml;base64,' + base64));
+  }
+};
 
 // Gulp Tasks
 
@@ -46,7 +73,8 @@ gulp.task('build:sass', ['build:concat'], function () {
     .pipe(sourcemaps.init())
     .pipe(sass({
       sourcemap: true,
-      outputStyle: 'expanded'
+      outputStyle: 'expanded',
+      functions: functions
     }).on('error', sass.logError))
     .pipe(rename({basename: 'city'}))
     .pipe(sourcemaps.write('./', {sourceRoot: './'}))
