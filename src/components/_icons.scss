@@ -1,0 +1,70 @@
+// Icons
+//
+// All icons created with SVG-edit
+// https://github.com/SVG-Edit/svgedit
+
+//
+// Info icon
+//
+
+$SVGInfoIcon: svg_to_base64('<?xml version="1.0"?>
+<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <g>
+    <circle id="circle" fill="none" stroke="#{$ovrHeader}" r="14" cx="15" cy="15"/>
+    <circle id="dot" fill="#{$ovrHeader}" stroke-width="0" r="1" cx="15" cy="7.5"/>
+    <path id="i" fill="#{$ovrHeader}" stroke-width="0" d="m12.5,11.5l3.5,0l0,11q0,0.5 0.5,0.5l1,0l0,1l-5,0l0,-1l1,0q0.5,0 0.5,-0.5l0,-9.5q0,-0.5 -0.5,-0.5l-1,0l0,-1z"/>
+  </g>
+</svg>');
+
+
+//
+// Subscribe/Bookmark icon
+//
+
+$SVGSubscribeIcon: svg_to_base64('<?xml version="1.0"?>
+<svg width="27" height="31" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <g>
+    <path id="mark" fill="none" stroke="#{$ovrHeader}" d="m0.5,1l25.5,0l0,28.5l-12.5,-9.5l-12.5,9.5l0,-28.5z"/>
+  </g>
+</svg>');
+
+$SVGSubscribedIcon: svg_to_base64('<?xml version="1.0"?>
+<svg width="27" height="31" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <g>
+    <path id="mark" fill="#{$ovrHeader}" stroke="#{$ovrHeader}" d="m0.5,1l25.5,0l0,28.5l-12.5,-9.5l-12.5,9.5l0,-28.5z"/>
+  </g>
+</svg>');
+
+
+//
+// Door icons
+//
+
+$SVGLoginIcon: svg_to_base64('<?xml version="1.0"?>
+<svg width="27" height="31" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <g>
+    <path id="door" fill="none" stroke="#{$ovrHeader}" d="m1,1l18,0l0,12.5m0,4l0,12.5l-18,0L1,.5"/>
+    <path id="arrow" fill="none" stroke="#{$ovrHeader}" d="m12,15.5l14.5,0M16,11l-4.5,4.5l4.5,4.5"/>
+  </g>
+</svg>');
+
+$SVGLogoutIcon: svg_to_base64('<?xml version="1.0"?>
+<svg width="27" height="31" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <g>
+    <path id="door" fill="none" stroke="#{$ovrHeader}" d="m1,1l18,0l0,12.5m0,4l0,12.5l-18,0L1,.5"/>
+    <path id="arrow" fill="none" stroke="#{$ovrHeader}" d="m12,15.5l14.5,0M22,11l4.5,4.5l-4.5,4.5"/>
+  </g>
+</svg>');
+
+
+//
+// Search icon
+//
+
+$SVGSearchIcon: svg_to_base64('<?xml version="1.0"?>
+<svg width="28" height="31" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <g>
+    <circle id="circle" fill="none" stroke="#{$ovrHeader}" r="10" cx="11" cy="11"/>
+    <path id="line" stroke="#{$ovrHeader}" d="m27.069691,30.15111l-9.641821,-11.490669"/>
+  </g>
+</svg>');

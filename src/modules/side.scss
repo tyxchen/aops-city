@@ -167,7 +167,7 @@ fieldset {
 
     background: {
       color: $t;
-      image: url($SVGSearchIcon);
+      image: url("#{$SVGSearchIcon}");
       repeat: no-repeat;
       size: auto 40%;
       position: center;

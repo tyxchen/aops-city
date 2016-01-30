@@ -12,11 +12,24 @@
  * Released under the MIT license (see LICENSE.md)
  */
 
-// Fonts
-@import 'prereqs/fonts';
+/**
+ * Components
+ */
 
-// Variables, placeholders, mixins, etc.
-@import 'prereqs/include';
+// Global variables
+@import 'components/variables';
+
+// Icon variables
+@import 'components/icons';
+
+// @import for fonts
+@import 'components/fonts';
+
+// Mixins
+@import 'components/mixins';
+
+// Placeholders
+@import 'components/placeholders';
 
 /**
  * Modules

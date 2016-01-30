@@ -118,7 +118,7 @@
 
   .blog-info {
     left: 0;
-    background-image: url($SVGInfoIcon);
+    background-image: url("#{$SVGInfoIcon}");
   }
 
   // Subscribe icon
@@ -128,10 +128,10 @@
   #blog-subscribe {
     left: 2.5rem;
 
-    background-image: url($SVGSubscribeIcon);
+    background-image: url("#{$SVGSubscribeIcon}");
 
     &[title*="stop"] {
-      background-image: url($SVGSubscribedIcon);
+      background-image: url("#{$SVGSubscribedIcon}");
     }
   }
 
@@ -141,11 +141,11 @@
   .blog-logout {
     left: 5rem;
 
-    background-image: url($SVGLoginIcon);
+    background-image: url("#{$SVGLoginIcon}");
   }
 
   .blog-logout {
-    background-image: url($SVGLogoutIcon);
+    background-image: url("#{$SVGLogoutIcon}");
   }
 
   // Move info icon when user is not logged in and cover RSS icon dot
