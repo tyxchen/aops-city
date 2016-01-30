@@ -14,14 +14,13 @@ if (/0.10/.test(process.version)) {
 
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
-    concat = require('gulp-concat'),
     rename = require('gulp-rename'),
     autoprefixer = require('gulp-autoprefixer'),
     cssmin = require('gulp-minify-css'),
     sourcemaps = require('gulp-sourcemaps');
 
 var folders = {
-  globals: 'src/prereqs/',
+  globals: 'src/components/',
   dist: 'dist/'
 };
 
@@ -44,7 +43,7 @@ var functions = {
     var String = require('node-sass').types.String,
         src = svg.getValue(),
         base64;
-      src = src.replace(/[\s\\a]+(?=<)/g, "");
+      src = src.replace(/[\s\\a]+(?=<)/g, '');
 
     base64 = new Buffer(src).toString('base64');
 
@@ -54,21 +53,9 @@ var functions = {
 
 // Gulp Tasks
 
-// Concatenate globals
-gulp.task('build:concat', function () {
-  return gulp.src([
-    folders.globals + '_variables.scss',
-    folders.globals + '_mixins.scss',
-    folders.globals + '_icons.scss',
-    folders.globals + '_fonts.scss',
-    folders.globals + '_placeholders.scss'
-  ])
-    .pipe(concat('include.scss'))
-    .pipe(gulp.dest(folders.globals));
-});
 
 // Core building
-gulp.task('build:sass', ['build:concat'], function () {
+gulp.task('build:sass', function () {
   return gulp.src('src/main.scss')
     .pipe(sourcemaps.init())
     .pipe(sass({
