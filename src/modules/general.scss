@@ -61,6 +61,10 @@ h2 {
   background-position: 0 1.06em;
 }
 
+[style*='underline'] {
+  @include extend('%link-underline');
+}
+
 
 //
 // Text inputs
