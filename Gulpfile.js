@@ -15,8 +15,6 @@ if (/0.10/.test(process.version)) {
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
     rename = require('gulp-rename'),
-    autoprefixer = require('gulp-autoprefixer'),
-    cssmin = require('gulp-minify-css'),
     sourcemaps = require('gulp-sourcemaps');
 
 var folders = {
@@ -51,8 +49,10 @@ var functions = {
   }
 };
 
-// Gulp Tasks
 
+//
+// Gulp Tasks
+//
 
 // Core building
 gulp.task('build:sass', function () {
@@ -70,13 +70,18 @@ gulp.task('build:sass', function () {
 
 // Production
 gulp.task('production', ['build:sass'], function () {
+  // We use Autoprefixer and cssnano *only* when building for production, thus these "require"
+  // statements are separate from the others
+  var autoprefixer = require('gulp-autoprefixer'),
+      cssnano = require('gulp-cssnano');
+
   return gulp.src(folders.dist + 'city.css')
     .pipe(autoprefixer({browsers: ['last 2 versions']}))
     // normal version
     .pipe(gulp.dest(folders.dist))
     // minified version
     .pipe(rename({suffix: '.min'}))
-    .pipe(cssmin({processImport: false}))
+    .pipe(cssnano())
     .pipe(gulp.dest(folders.dist));
 });
 
