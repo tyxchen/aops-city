@@ -2,6 +2,7 @@
  * @media module
  */
 
+
 @media all {
   html {
     font-size: 17px;
@@ -14,8 +15,8 @@
 //
 
 // Small-screened devices. This applies to any screen with a viewport width of <= 1000px
-@media only screen and (max-width: 1000px) {
 
+@media only screen and (max-width: 1000px) {
   body::after {
     top: -41rem;
     bottom: 0;
@@ -124,12 +125,6 @@
   .cmty-posting-modal .cmty-posting-box-container {
     width: 100%;
     float: none;
-
-    .cmty-post-textarea,
-    .cmty-post-textarea:focus {
-      border-width: 0 0 1px;
-      border-radius: 0; // dangit iOS
-    }
   }
 
   .cmty-posting-modal .cmty-posting-button-row {
@@ -148,11 +143,17 @@
       width: auto;
     }
   }
+
+  .cmty-post-textarea,
+  .cmty-post-textarea:focus {
+    border-width: 0 0 1px;
+    border-radius: 0; // dangit iOS
+  }
 }
 
 // Landscape mode requires slight edits
-@media only screen and (max-width: 1000px) and (orientation: landscape) {
 
+@media only screen and (max-width: 1000px) and (orientation: landscape) {
   body::after {
     top: -4rem;
   }

@@ -2,9 +2,11 @@
  * Miscellaneous stuff
  */
 
+
 //
 // Post new entry
 //
+
 #post-new-entry {
   @include extend('%modal-font');
 
@@ -13,9 +15,11 @@
   }
 }
 
+
 //
 // Tags
 //
+
 div.post-tags {
   font-size: 0.9em;
   margin-top: 2em;
@@ -51,6 +55,7 @@ div.post-tags {
   &:hover {
     border-color: $bgSub !important;
   }
+
   &:focus {
     padding: 0em 0.2em !important;
     border-color: $fgSub !important;
@@ -67,16 +72,20 @@ div.post-tags {
   }
 }
 
+
 //
 // Hide feed
 //
+
 #feed-wrapper {
   display: none;
 }
 
+
 //
 // "Comment" heading between each entry and its comments
 //
+
 #main > h1 {
   padding-bottom: 0.2em;
   border-bottom: 1px solid $bgSub10;
@@ -98,9 +107,11 @@ div.post-tags {
   }
 }
 
+
 //
 // Fix fonts of modals and flyout
 //
+
 .aops-modal-title {
   @include extend('%heading');
 }
@@ -114,6 +125,7 @@ div.post-tags {
   text-align: left;
   padding-right: 5px;
 }
+
 
 // <3
 #main::after {

@@ -71,7 +71,7 @@
 
 @mixin filter($type, $range) {
   $val: '<svg version="1.1" xmlns="http://www.w3.org/2000/svg"><filter id="#{$type}">';
-  $ulrange: $range/($range*0+1);
+  $ulrange: $range/($range * 0+1);
   $range: '(' + $range + ')'; // we can't add brackets at the exact rule for whatever reason
 
   @if $type == 'blur' {

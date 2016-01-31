@@ -1,11 +1,14 @@
 /**
  * General module
  *
- * Encompasses links, buttons, etc.
+ * Encompasses shared styles for individual component elements
  */
 
 
+//
 // Links
+//
+
 a:link,
 a:hover,
 a:visited {
@@ -45,11 +48,11 @@ h2 {
 //
 // Custom underline code
 //
+// Based on
+// https://medium.com/designing-medium/crafting-link-underlines-on-medium-7c03a9274f9
 
-[style="text-decoration: underline"] {
-  // Based on
-  // https://medium.com/designing-medium/crafting-link-underlines-on-medium-7c03a9274f9
-
+%link-underline {
+  /* Source for %link-underline */
   text-decoration: none !important;
 
   background-image: linear-gradient(to bottom, currentColor, currentColor);
@@ -93,8 +96,8 @@ textarea {
 //
 
 :root .btn {
-  @include extend('%transition03');
   @include extend('%modal-font');
+  @include extend('%transition03');
 
   background-color: $bgGeneral;
 
@@ -104,7 +107,7 @@ textarea {
 
   padding: 0 0.8em;
 
-  @include reset((background, border, margin));
+  @include reset(background border margin);
   @include dimensions(auto, 1.4em);
 
   &:hover {

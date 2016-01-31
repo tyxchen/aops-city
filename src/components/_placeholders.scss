@@ -4,7 +4,7 @@
 /* Reset background, padding, border & margin */
 %reset-all {
   /* Source for %reset-all */
-  @include reset((background, padding, border, margin));
+  @include reset(background padding border margin);
 }
 
 /* Set box-sizing to border-box */

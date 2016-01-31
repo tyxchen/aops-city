@@ -4,6 +4,7 @@
  * Encompasses sidebar
  */
 
+
 #side {
   @include reset(padding);
   @include dimensions(0);
@@ -15,6 +16,7 @@
 }
 
 // User widget
+
 #user-menu-widget {
   display: block !important;
   font-size: 0.01px;
@@ -22,6 +24,9 @@
   p {
     display: none;
   }
+
+  // Frame the avatar in a circle, place it where the content and hero/header intersect,
+  // and fade in the blog owner's name on a hover event
 
   .avatar {
     position: absolute;
@@ -58,7 +63,7 @@
     overflow: hidden;
     z-index: 1;
 
-    transition: 0.5*$transitionDuration 0.2*$transitionDuration ease-in;
+    transition: (0.5 * $transitionDuration) (0.2 * $transitionDuration) ease-in;
 
     @include position(-2.55rem, 50%);
     @include dimensions(5rem);
@@ -94,6 +99,7 @@
 }
 
 // Search widget
+
 #search-widget {
   display: block !important;
   z-index: 10;
@@ -108,6 +114,7 @@ fieldset {
   @include extend('%reset-all');
 }
 
+// Overlay the search input with a custom button that is invisible to pointer events
 #blog_keywords {
   @include extend('%heading');
   @include extend('%transition03');
@@ -131,14 +138,12 @@ fieldset {
     width $transitionDuration ease,
     background-color 0s $transitionDuration linear;
 
-  @include reset((border, box-shadow, border-radius));
+  @include reset(border box-shadow border-radius);
   @include dimensions(0, 3rem);
 
   &:focus {
-    @extend :hover;
-
     width: 15em;
-    background-color:$bgSub10;
+    background-color: $bgSub10;
     color: $ovrHeader;
     padding-left: 0.5em;
     padding-right: 3.1em;
@@ -151,7 +156,7 @@ fieldset {
       background-color 0s linear;
   }
 
-  // Icon overlay — the actual search icon
+  // Button overlay
   + div {
     @include extend('%content-box');
 
@@ -177,8 +182,8 @@ fieldset {
     border-left: 1px solid $bgSub10;
 
     transition:
-      background-color $transitionDuration ease 0.38*$transitionDuration,
-      border-right-color $transitionDuration ease 0.38*$transitionDuration;
+      background-color $transitionDuration ease 0.38 * $transitionDuration,
+      border-right-color $transitionDuration ease 0.38 * $transitionDuration;
 
     @include dimensions(2.6rem, 3rem);
   }
@@ -188,6 +193,7 @@ fieldset {
 
     transition: background-color $transitionDuration ease;
   }
+
   &:focus + div {
     background-color: $bgSub10;
     border-right-color: $bgSub10;
@@ -197,7 +203,7 @@ fieldset {
       border-right-color $transitionDuration ease;
   }
 
-  // Hide submit button
+  // Hide (legitimate) submit button
   + div input {
     display: none;
   }

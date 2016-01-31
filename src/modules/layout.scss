@@ -4,7 +4,6 @@
  * Encompasses body, wrapper, and general layout
  */
 
-// Body
 
 body {
   font-family: Merriweather, Garamond, times, serif;
@@ -36,7 +35,7 @@ body {
   width: 100%;
   padding: 0;
 
-  @include reset((background, border));
+  @include reset(background border);
 }
 
 #content {
@@ -59,4 +58,13 @@ body {
 
     @include position(-15vh, 0, 0, 100%);
   }
+}
+
+#main {
+  @include extend('%reset-all');
+  @include extend('%border-box');
+
+  position: relative;
+  width: 100%;
+  padding-bottom: 3em;
 }

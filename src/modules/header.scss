@@ -60,10 +60,6 @@
     margin: 0 -0.3em;
 
     transition: $transitionDuration ease;
-
-    @at-root #left_navigation_box a:last-child {
-      @extend :hover;
-    }
   }
 }
 
@@ -73,7 +69,8 @@
   line-height: inherit;
 
   a:hover,
-  a:focus {
+  a:focus,
+  a:last-child {
     padding-top: 0.75em;
     color: darken($ovrHeader, 10%);
   }
@@ -171,7 +168,7 @@
   z-index: 0;
 
   @include position(calc(36vh - 2.5rem), 0, 0);
-  @include reset((background, border));
+  @include reset(background border);
 
   h1 {
     @include extend('%title');
@@ -182,12 +179,8 @@
     font-weight: 200;
     text-decoration: none;
     z-index: 10;
-
-    // Remove extra space from first letter in Chrome
-    &::first-letter {
-      @include no-prefix { margin-right: -webkit-calc(-0.08em); }
-    }
   }
+
   // Add small home icon as an accessibility aid
   a:focus h1::before {
     content: "\f015";

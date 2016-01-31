@@ -1,24 +1,26 @@
 /**
- * Main module
+ * Entry module
  *
- * Encompasses #main, entries, comments, and postform
+ * Encompasses entries and comments
  */
-
-#main {
-  @include extend('%reset-all');
-  @include extend('%border-box');
-
-  position: relative;
-  width: 100%;
-  padding-bottom: 3em;
-}
 
 
 //
 // Entries and comments
 //
 
+div.actions,
+div.modactions {
+  font-size: 0.7em;
+}
+
+
+//
+// Entry-specific selectors
+//
+
 // Add margin to first entry
+
 #main > div:first-child {
   margin-top: 1em;
 }
@@ -27,7 +29,7 @@ div.entrywrap,
 div.entry {
   line-height: 2em;
 
-  @include reset((background-color, border));
+  @include reset(background-color border);
 }
 
 div.entrywrap a {
@@ -39,12 +41,14 @@ div.entry {
   padding: 0 1.2em;
   margin: 0 -1.4em;
 
+  // Entry title
   h1 {
     overflow: hidden;
     text-overflow: ellipsis;
     padding-right: 0;
   }
 
+  // Entry dateline
   h2 {
     font-size: 0.9em;
     margin-left: 0.3em;
@@ -80,6 +84,11 @@ div.entry {
   }
 }
 
+
+//
+// Comment-specific selectors
+//
+
 div.commentwrap {
   @include extend('.entrywrap');
 
@@ -92,6 +101,7 @@ div.comment {
 }
 
 // Replace image in comment footer with hedera
+
 .cfooter .author {
   margin: 0.7em 0;
 
@@ -113,6 +123,11 @@ div.comment {
   }
 }
 
+
+//
+// Universal text styles
+//
+
 .message {
   overflow-x: auto;
 
@@ -120,40 +135,34 @@ div.comment {
   a:link,
   a:hover,
   a:visited {
-    @include extend('[style="text-decoration: underline"]');
+    @include extend('%link-underline');
   }
+
   a:visited {
     color: $fgGeneral;
   }
-
-  // Hidden labels
-  .cmty-hide-heading:link,
-  .cmty-hide-heading:hover {
-    border-bottom: none;
-
-    // Change custom underline to offer distinction between link and hidden text
-    background-image: linear-gradient(to right,
-                                      currentColor 0%,
-                                      currentColor 50%,
-                                      $bgGeneral 50%,
-                                      $bgGeneral 100%);
-    background-size: 2px 1px;
-  }
-
-  .cmty-hide-content {
-    @include extend('%reset-all');
-  }
 }
 
-div.actions,
-div.modactions {
-  font-size: 0.7em;
+// Hidden labels
+
+.cmty-hide-heading:link,
+.cmty-hide-heading:hover {
+  border-bottom: none;
+
+  // Change custom underline to offer distinction between link and hidden text
+  background-image: linear-gradient(to right,
+                                    currentColor 0%,
+                                    currentColor 50%,
+                                    $bgGeneral 50%,
+                                    $bgGeneral 100%);
+  background-size: 2px 1px;
 }
 
+.cmty-hide-content {
+  @include extend('%reset-all');
+}
 
-//
 // Quote blocks
-//
 
 .bbcode_quote,
 .bbcode_quote_head,
@@ -176,7 +185,7 @@ div.modactions {
 
   // Remove quote symbol
   &::before {
-    content: "";
+    content: '';
   }
 }
 
@@ -195,10 +204,7 @@ div.modactions {
   }
 }
 
-
-//
 // Code blocks
-//
 
 pre {
   position: relative;
@@ -242,16 +248,13 @@ pre {
   }
 }
 
-
-//
 // Polls
-//
 
 .cmty-poll-display {
   margin-top: 0;
   margin-bottom: 1em;
 
-  @include reset((background-color, padding, border));
+  @include reset(background-color padding border);
 
   // Style poll bars to follow colour scheme
   .cmty-poll-result-bar {
