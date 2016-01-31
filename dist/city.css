@@ -11,6 +11,9 @@
  *
  * Released under the MIT license (see LICENSE.md)
  */
+/**
+ * Components
+ */
 @import url(//brick.a.ssl.fastly.net/Raleway:200,300/Merriweather:200,200i,700,700i/Lato:400,700);
 /**
  * Groups
@@ -1322,7 +1325,7 @@ div.post-tags {
     overflow: hidden;
   }
   #navigation_box {
-    font-size: 0.01px;
+    font-size: 0;
     opacity: 1;
   }
   #left_navigation_box a:nth-last-child(2) {
@@ -1370,6 +1373,12 @@ div.post-tags {
   pre::before {
     display: none;
   }
+  .aops-modal-open {
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
   .cmty-posting-modal .cmty-post-preview,
   .cmty-posting-preview-bar {
     display: none !important;
@@ -1381,6 +1390,7 @@ div.post-tags {
   .cmty-posting-modal .cmty-posting-box-container .cmty-post-textarea,
   .cmty-posting-modal .cmty-posting-box-container .cmty-post-textarea:focus {
     border-width: 0 0 1px;
+    border-radius: 0;
   }
   .cmty-posting-modal .cmty-posting-button-row {
     display: none;
@@ -1414,21 +1424,6 @@ div.post-tags {
   #user-menu-widget .avatar img {
     width: 3rem;
     height: 3rem;
-  }
-}
-
-@media only screen and (max-width: 1000px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 1000px) and (min-resolution: 1.5dppx) {
-  html {
-    font-size: 32pt;
-  }
-  .cmty-posting-modal .aops-close-x {
-    transform: scale(2);
-  }
-}
-
-@media only screen and (max-width: 1000px) and (-webkit-min-device-pixel-ratio: 1.5) and (orientation: landscape), only screen and (max-width: 1000px) and (min-resolution: 1.5dppx) and (orientation: landscape) {
-  html {
-    font-size: 21pt;
   }
 }
 

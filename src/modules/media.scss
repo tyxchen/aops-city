@@ -43,7 +43,7 @@
   }
 
   #navigation_box {
-    font-size: 0.01px;
+    font-size: 0;
     opacity: 1;
   }
 
@@ -54,8 +54,9 @@
     border-top: none;
 
     &:hover {
-      background-color: $bgSub10; 
+      background-color: $bgSub10;
     }
+
     &::before {
       content: "\3008";
       font-size: 0.9em;
@@ -104,6 +105,16 @@
   }
 
   // Posting stuff
+
+  // Deny scrolling when posting modal is open, to prevent scrolling-related bugs (of which there
+  // are too many to list)
+  .aops-modal-open {
+    position: fixed;
+    overflow: hidden;
+
+    @include reset(width height);
+  }
+
   // Remove split view
   .cmty-posting-modal .cmty-post-preview,
   .cmty-posting-preview-bar {
@@ -117,6 +128,7 @@
     .cmty-post-textarea,
     .cmty-post-textarea:focus {
       border-width: 0 0 1px;
+      border-radius: 0; // dangit iOS
     }
   }
 
@@ -160,29 +172,5 @@
     img {
       @include dimensions(3rem);
     }
-  }
-}
-
-// Fixes for HiDPI screens (retina displays, etc.)
-
-@media only screen and (max-width: 1000px) and (-webkit-min-device-pixel-ratio: 1.5),
-       only screen and (max-width: 1000px) and (min-resolution: 1.5dppx) {
-
-  html {
-    font-size: 32pt;
-  }
-
-  // Enlargen elements styled with pixel units
-  .cmty-posting-modal .aops-close-x {
-    transform: scale(2);
-  }
-}
-
-// Landscape edits for above
-@media only screen and (max-width: 1000px) and (-webkit-min-device-pixel-ratio: 1.5) and (orientation: landscape),
-       only screen and (max-width: 1000px) and (min-resolution: 1.5dppx) and (orientation: landscape) {
-
-  html {
-    font-size: 21pt;
   }
 }
