@@ -103,7 +103,7 @@
 
     background: {
       color: $t;
-      image: url("#{$SVGXIcon}");
+      image: url('#{$SVGXIcon}');
       repeat: no-repeat;
       size: 40%;
       position: center;
@@ -345,7 +345,7 @@
 .cmty-posting-box-container {
   // Create a faux-placeholder from pseudo-elements
   &::before {
-    content: "Message";
+    content: 'Message';
     font-size: 1.2em;
     margin: 0.3em;
   }
@@ -449,14 +449,14 @@
 
   // Clearfix to prevent comment link from affecting the comment reply window
   &.blog-reply-open::before {
-    content: "";
+    content: '';
     display: table;
     clear: both;
   }
 
   // Change faux-placeholder message to a more context-appropriate one
   .cmty-posting-box-container::before {
-    content: "Comment"
+    content: 'Comment';
   }
 
   // Align action buttons with the "Comment" link

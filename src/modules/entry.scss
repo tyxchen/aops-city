@@ -57,7 +57,7 @@ div.entry {
     > a::before {
       @include extend('%transition03');
 
-      content: "\00B6";
+      content: '\00B6';
       position: absolute;
 
       color: $t;
@@ -106,7 +106,7 @@ div.comment {
   margin: 0.7em 0;
 
   &::before {
-    content: "\2767";
+    content: '\2767';
     vertical-align: middle;
 
     font-size: 1.3em;
@@ -221,7 +221,7 @@ pre {
   &::before {
     @include extend('%transition03');
 
-    content: "code";
+    content: 'code';
     position: absolute;
 
     background-color: $bgGeneral;
@@ -244,7 +244,7 @@ pre {
 
   // Some languages could have better names
   &.cpp::before {
-    content: "c++";
+    content: 'c++';
   }
 }
 
