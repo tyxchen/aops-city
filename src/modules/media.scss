@@ -115,6 +115,11 @@
 
   // Posting stuff
 
+  .cmty-posting-modal {
+    border-top-width: 0;
+    border-bottom-width: 0.8rem;
+  }
+
   // Deny scrolling when posting modal is open, to prevent scrolling-related bugs (of which there
   // are too many to list)
   .aops-modal-open {
