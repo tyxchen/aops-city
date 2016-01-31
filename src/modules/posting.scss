@@ -95,25 +95,18 @@
     @include extend('%content-box');
     @include position(-32px, null, -32px);
 
-    color: $fgSub;
-    background-color: $t;
+    color: $t;
 
-    padding: 6px;
+    padding: 1em;
     border-radius: 0;
 
-    &::before,
-    &::after {
-      @include extend('%pseudo');
-
-      background-color: invert($fgSub);
-
-      transform: rotate(45deg);
-
-      @include position(18px, 3px);
-      @include dimensions(21px, 1px);
-    }
-    &::after {
-      transform: rotate(-45deg);
+    background: {
+      color: $t;
+      image: url("#{$SVGXIcon}");
+      repeat: no-repeat;
+      size: 40%;
+      position: center;
+      clip: content-box;
     }
   }
 
